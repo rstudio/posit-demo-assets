@@ -2,25 +2,33 @@
 
 Welcome to your Posit Team evaluation environment!
 
+## Video series
+
+Do you prefer watching videos over reading? Check out the [end-to-end data science workflows video series](https://www.youtube.com/watch?v=L6lh2u5pFhc&list=PL9HYL-VRX0oRsUB5AgNMQuKuHPpNDLBVt&pp=iAQB) for inspiration for what Posit Team enables your team to accomplish!
+
 ## Getting Started
 
 Here you will find three products:
 
 -   **Posit Workbench** is your development environment for creating R and Python code and running large computationally intensive jobs in a secure and scaleable environment.
-  -   User Guide: [Posit Workbench User Guide](https://docs.posit.co/ide/server-pro/user/)
-
 -   **Posit Connect** is a publishing platform for hosting the work your team creates in R and Python.
-  -   User Guide: [Posit Connect Documentation - Posit Connect User Guide](https://docs.posit.co/connect/user/)
-
 -   **Posit Package Manager** is a repository management server to organize and centralize R and Python packages across your organization.
-  -   User Guide: [User Guide - Posit Package Manager](https://docs.posit.co/rspm/user/)
+
+### User guides 
+
+Learn how to get the most out of each product and the full list of features. 
+
+-   [Posit Workbench User Guide](https://docs.posit.co/ide/server-pro/user/)
+-   [Posit Connect User Guide](https://docs.posit.co/connect/user/)
+-   [Posit Package Manager User Guide](https://docs.posit.co/rspm/user/)
+  
 
 ### New to R or Python?
 
 Check out our getting started resources: 
 
--   R: [R in Posit Workbench](https://docs.posit.co/ide/server-pro/user/posit-workbench/guide/r.html)
--   Python: [Python in Posit Workbench](https://docs.posit.co/ide/server-pro/user/posit-workbench/guide/python.html)
+-   [R in Posit Workbench](https://docs.posit.co/ide/server-pro/user/posit-workbench/guide/r.html)
+-   [Python in Posit Workbench](https://docs.posit.co/ide/server-pro/user/posit-workbench/guide/python.html)
 
 If you have a question about a particular code issue, we'd recommend starting by creating a reproducible example (or reprex). This will often help as the process of creating an example will help you think about your problem in a way that helps solve it, and will help to capture the problem in a way that will allow others to understand the issue clearly.
 
@@ -31,12 +39,6 @@ Posit Community is our supported site for getting, giving and accepting data sci
 Reach out to your Posit point person! Your Customer Success rep is your point person for getting the most value out of your existing product subscriptions, and guiding you to solutions with all things data science, R, Python and Posit. If you aren't sure who your Customer Success rep is email [sales\@posit.co](mailto:sales@posit.co){.email} and ask to be introduced.
 
 Get technical help! Premium support is email-based access to Posit Support Engineers during the workday and work week. Learn how to submit support tickets: [here](https://support.posit.co/hc/en-us/articles/360004788294-How-do-I-submit-a-Support-ticket-#)
-
-## What are the things you can do with Posit Team? 
-
-### Video tutorials 
-
-Check out the [end-to-end data science workflows video series](https://www.youtube.com/watch?v=L6lh2u5pFhc&list=PL9HYL-VRX0oRsUB5AgNMQuKuHPpNDLBVt&pp=iAQB) for inspiration!
 
 ## Exploring this project
 
