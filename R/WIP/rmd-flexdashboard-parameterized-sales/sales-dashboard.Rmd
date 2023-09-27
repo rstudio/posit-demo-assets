@@ -1,0 +1,183 @@
+---
+title: "Sales Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    theme:
+      bg: "#101010"
+      fg: "#FDF7F7" 
+      primary: "#ED79F9"
+      base_font:
+        google: Prompt
+      code_font:
+        google: JetBrains Mono
+    orientation: columns
+    vertical_layout: fill
+params:
+  state:
+    label: "State:"
+    value: All
+    input: select
+    choices: [All, Texas, Massachusetts, California, Washington, Georgia, New York, Oregon, Maine]
+  city:
+    label: "City:"
+    value: All
+    input: select
+    choices: [All, Dallas, Boston, Los Angeles, San Francisco, Seattle, Atlanta, New York City, Portland, Austin]
+  category:
+    label: "Category:"
+    value: All
+    input: select
+    choices: [All, Charging Cable, Headphones, Phone, Laptop, Monitor, 
+Batteries, TV, Dryer, Washing Machine]
+  start_date:
+    label: "Start Date:"
+    value: "2019-01-01"
+    input: date
+  end_date:
+    label: "End Date:"
+    value: "2020-01-01"
+    input: date
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(downloadthis)
+thematic::thematic_rmd()
+
+main_df <- read_csv("data/all_year_sales.csv") %>%
+  mutate(total_sales = `Quantity Ordered` * `Price Each`) %>%
+  filter(`Order Date` >= params$start_date, `Order Date` <= params$end_date)
+
+# filtering
+if (params$state != "All") {
+  main_df <- main_df %>%
+    filter(State == params$state)
+}
+if (params$city != "All") {
+  main_df <- main_df %>%
+    filter(City == params$city)
+}
+if (params$category != "All") {
+  main_df <- main_df %>%
+    filter(Category == params$category)
+}
+```
+
+\
+```{r}
+xfun::embed_file("data/all_year_sales.csv", text = "Download Data as CSV")
+```
+\
+
+
+Column {.tabset}
+-----------------------------------------------------------------------
+
+### Sales Per City
+
+```{r}
+sales_total_city <- main_df %>%
+  group_by(City, Category) %>%
+  summarize(Sales = sum(total_sales, na.rm = T)) %>%
+  ungroup()
+  
+ggplot(data=sales_total_city, aes(x=reorder(City, Sales, function(x){ sum(x) }), y=Sales, fill=Category)) +
+  geom_bar(stat="identity") +
+  xlab("City") +
+  scale_y_continuous(labels=dollar_format(prefix="$")) +
+  coord_flip() +
+  scale_fill_brewer(palette="Set3")
+```
+
+### Sales Per State
+
+```{r}
+sales_total_state <- main_df %>%
+  group_by(State, Category) %>%
+  summarize(Sales = sum(total_sales, na.rm = T)) %>%
+  ungroup()
+  
+ggplot(data=sales_total_state, aes(x=reorder(State, Sales, function(x){ sum(x) }), y=Sales, fill=Category)) +
+  geom_bar(stat="identity") +
+  xlab("State") +
+  scale_y_continuous(labels=dollar_format(prefix="$")) +
+  scale_fill_brewer(palette="Set3") +
+  coord_flip()
+```
+
+### Sales Per Category
+
+```{r}
+sales_total_category <- main_df %>%
+  group_by(Category) %>%
+  summarize(Sales = sum(total_sales, na.rm = T)) %>%
+  ungroup()
+  
+ggplot(data=sales_total_state, aes(x=reorder(Category, Sales, function(x){ sum(x) }), y=Sales)) +
+  geom_bar(stat="identity") +
+  xlab("Category") +
+  scale_y_continuous(labels=dollar_format(prefix="$")) +
+  scale_fill_brewer(palette="Set3") +
+  coord_flip()
+```
+
+
+Column {.tabset}
+-----------------------------------------------------------------------
+
+### Sales Weekly by City
+
+```{r}
+sales_total_week_city <- main_df %>%
+  group_by(week = as.Date(floor_date(`Order Date`, 'weeks')), City) %>%
+  summarize(Sales = sum(total_sales, na.rm = T)) %>%
+  ungroup()
+
+ggplot(data=sales_total_week_city, aes(x=week, y=Sales, fill=City)) +
+  geom_bar(stat="identity") +
+  xlab("Week") +
+  facet_wrap(~City) +
+  scale_y_continuous(labels=dollar_format(prefix="$")) +
+  scale_x_date(date_breaks = "3 month", date_labels =  "%b") +
+  scale_fill_brewer(palette="Set3") +
+  theme(legend.position="none")
+```
+
+### Sales Weekly by State
+
+```{r}
+sales_total_week_state <- main_df %>%
+  group_by(week = as.Date(floor_date(`Order Date`, 'weeks')), State) %>%
+  summarize(Sales = sum(total_sales, na.rm = T)) %>%
+  ungroup()
+
+ggplot(data=sales_total_week_state, aes(x=week, y=Sales, fill=State)) +
+  geom_bar(stat="identity") +
+  xlab("Week") +
+  facet_wrap(~State) +
+  scale_y_continuous(labels=dollar_format(prefix="$")) +
+  scale_x_date(date_breaks = "3 month", date_labels =  "%b") +
+  scale_fill_brewer(palette="Set3") +
+  theme(legend.position="none")
+```
+
+### Sales Weekly by Category
+
+```{r}
+sales_total_week_category <- main_df %>%
+  group_by(week = as.Date(floor_date(`Order Date`, 'weeks')), Category) %>%
+  summarize(Sales = sum(total_sales, na.rm = T)) %>%
+  ungroup()
+
+ggplot(data=sales_total_week_category, aes(x=week, y=Sales, fill=Category)) +
+  geom_bar(stat="identity") +
+  xlab("Week") +
+  facet_wrap(~Category) +
+  scale_y_continuous(labels=dollar_format(prefix="$")) +
+  scale_x_date(date_breaks = "3 month", date_labels =  "%b") +
+  scale_fill_brewer(palette="Set3") +
+  theme(legend.position="none")
+```

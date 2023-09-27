@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "locale": "en_US.UTF-8",
+  "metadata": {
+    "appmode": "quarto-static"
+  },
+  "quarto": {
+    "version": "1.1.189",
+    "engines": [
+      "jupyter"
+    ]
+  },
+  "python": {
+    "version": "3.10.4",
+    "package_manager": {
+      "name": "pip",
+      "version": "22.3.1",
+      "package_file": "requirements.txt"
+    }
+  },
+  "files": {
+    ".gitignore": {
+      "checksum": "06d306ff933a023ca365a9fbf6589381"
+    },
+    "README.md": {
+      "checksum": "0ecee7ad8ddb45110229b1b0c23c3b96"
+    },
+    "_extensions/quarto-ext/lightbox/_extension.yml": {
+      "checksum": "3db0b546785dbeb0117afef962c424bd"
+    },
+    "_extensions/quarto-ext/lightbox/lightbox.css": {
+      "checksum": "f94b9cae12f142eaf34dc631afa138fc"
+    },
+    "_extensions/quarto-ext/lightbox/lightbox.lua": {
+      "checksum": "2ceffdc78094bca8e55b4be6d37cb12d"
+    },
+    "_extensions/quarto-ext/lightbox/resources/css/glightbox.min.css": {
+      "checksum": "9b438b29cef1c212d1c65a877ffc7232"
+    },
+    "_extensions/quarto-ext/lightbox/resources/js/glightbox.min.js": {
+      "checksum": "2b4c8cbaade24ecb58bcb0d89694ccee"
+    },
+    "_publish.yml": {
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "_quarto.yml": {
+      "checksum": "ab8efbe8e2d5444405b716b3bb917b3f"
+    },
+    "img/Chengdu-pandas-d10.jpg": {
+      "checksum": "55ef49ea2db1762990435c43e2a8dca0"
+    },
+    "img/Lion_waiting_in_Namibia.jpg": {
+      "checksum": "c407f20233958896edd2bc90cc1cba12"
+    },
+    "img/Panthera_tigris_corbetti_(Tierpark_Berlin)_832-714-(118).jpg": {
+      "checksum": "40aa373fb50f06112555bcc941aaf6e0"
+    },
+    "img/The_Wizard_of_Oz_1955_Lobby_Card.jpg": {
+      "checksum": "bdbf9246bd2eb7ff5942b3bdc0f3a401"
+    },
+    "quarto-python-lightbox.qmd": {
+      "checksum": "c1083bb396a02e22466cca0b5c5e7f6c"
+    },
+    "requirements.txt": {
+      "checksum": "d98af85c5ab8fce1fd8ad751ab9263fd"
+    }
+  }
+}
