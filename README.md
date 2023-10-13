@@ -44,6 +44,33 @@ Get technical help! Premium support is email-based access to Posit Support Engin
 
 We've created a handful of examples to explore to see what is possible with Posit Team. Follow the suggested curriculum below for a more guided order to exploring the project, or feel free to follow what stands out to you. 
 
+### How to open content
+
+#### R content 
+
+Navigate to the project folder you want to work in.
+
+Restore the needed packages into the renv environment. 
+
+```r
+setwd("./R/shiny-penguins/")
+renv::restore()
+```
+
+#### Python content 
+
+Create a virtual environment in the folder you want to work in. 
+
+Restore the needed packages into the virtual environment. 
+
+```bash
+cd Python/dash-app
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -U pip setuptools wheel
+python3 -m pip install -r requirements.txt
+```
+
 ### First hour
 
 Goal: Orient yourself to the interfaces to the different products and resources for learning.
@@ -167,3 +194,13 @@ For Python based projects the requirements are:
 2.  Record the package versions to a `requirements.txt` file. Working inside a `venv` will make it so that only the minimum packages needed to support your project are included. Read [this](https://docs.posit.co/connect/admin/python/package-management/index.html) for more on Python package management.
 3.  Create the [`manifest.json` file](https://docs.posit.co/connect/user/publishing-cli-notebook/index.html#creating-a-manifest-for-future-deployment) to support git-backed publishing
 4.  Submit the Pull Request (PR) to have your changes added to this repository.
+
+## Compatibility 
+
+We are running with these versions of the products: 
+
+- R versions: 4.3.1, 4.1.3, 3.6.3
+- Python versions: 3.11.4, 3.10.12, 3.9.17
+- Quarto version: 1.3.433
+
+
