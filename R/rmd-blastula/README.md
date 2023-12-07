@@ -1,4 +1,4 @@
-# Blastula Example
+# rmd-blastula
 
 ## Environment variable requirements
 

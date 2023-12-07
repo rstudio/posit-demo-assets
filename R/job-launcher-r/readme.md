@@ -1,4 +1,4 @@
-# Jobs in RStudio
+# job-launcher-r
 
 Note: This page is using text from [here](https://solutions.rstudio.com/r/jobs/) and the [blog post](https://www.rstudio.com/blog/rstudio-1-2-jobs/), both very good references. 
 
