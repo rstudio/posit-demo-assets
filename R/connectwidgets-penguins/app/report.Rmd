@@ -12,7 +12,7 @@ library(dplyr)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 client <- connect(
-  server  = "https://colorado.posit.co/rsc/",
+  server  = Sys.getenv("CONNECT_SERVER"),
   api_key = Sys.getenv("CONNECT_API_KEY")
 )
 ```
