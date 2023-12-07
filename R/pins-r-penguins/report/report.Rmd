@@ -40,9 +40,8 @@ board <- pins::board_connect(auth = "envvar")
 
 board |> 
   pins::pin_write(
-    penguins, 
-    name = paste0(Sys.getenv("OWNER_GUID"),"/penguins_pins_r_demo"),
-    # name = paste0(Sys.getenv("OWNER_GUID"),"/penguins_pins_r_demo"),
+    penguins,
+    name = paste0(Sys.getenv("OWNER_GUID"), "/penguins_pins_r_demo"),
     type = "csv"
   )
 ```
@@ -59,8 +58,7 @@ You can easily read the data into R using pins:
 board <- pins::board_connect(auth = "envvar")
 
 board |> 
-  #pins::pin_read("sam.edwardes/penguins_pins_r_demo") |> 
-  pins::pin_read(paste0(Sys.getenv("OWNER_GUID"),"/penguins_pins_r_demo")) |> 
+  pins::pin_read(paste0(Sys.getenv("OWNER_GUID"), "/penguins_pins_r_demo")) |> 
   dplyr::glimpse()
 ```
 
