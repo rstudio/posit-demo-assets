@@ -7,7 +7,7 @@ A demo of connect widgets in RStudio Connect.
 
 ![](app/imgs/screenshot.png)
 
-## Environment requirements
+## Environment variable requirements
 
 This content needs to have the following environment variables set to function:
 - `CONNECT_SERVER` the URL of your Connect server, for Test Drive it will be in this format: https://YOUR_DOMAIN_HERE.eval.posit.co/cnct
