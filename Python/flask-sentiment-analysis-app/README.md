@@ -11,7 +11,7 @@ python train.py
 ## Deploy
 
 ```
-rsconnect deploy api . -n <SERVER-NAME>
+rsconnect deploy api .
 ```
 
 ## Resources

@@ -3,7 +3,7 @@
 ## Deploy
 
 ```
-rsconnect deploy fastapi . -n <SERVER-NICKNAME>
+rsconnect deploy fastapi .
 ```
 ## Resources
 

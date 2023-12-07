@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 import dash
 import pandas as pd
 from dash import dcc, html
@@ -115,4 +117,4 @@ def update_graph(
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(debug=True)
