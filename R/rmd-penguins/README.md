@@ -1,9 +1,6 @@
-# demo-rmd-penguins
+# R Markdown Report with Penguins Data
 
-An parameterized RMarkdown report!
-
-- Code: <https://github.com/SamEdwardes/demo-rmd-penguins>
-- Deployment: <https://colorado.rstudio.com/rsc/demo-rmd-penguins/>
+A parameterized RMarkdown report!
 
 ![](report/imgs/report-screenshot.png)
 
@@ -12,7 +9,7 @@ An parameterized RMarkdown report!
 To render the report run:
 
 ```r
-knit_with_parameters("~/projects/demo-rmd-penguins/report.Rmd")
+knit_with_parameters("report/report.Rmd")
 ```
 
 ## Deployment

@@ -12,7 +12,7 @@ Two routes are defined:
 ## Deploy
 
 ```
-rsconnect deploy api . -n <SERVER-NICKNAME>
+rsconnect deploy api .
 ```
 
 #### Resources

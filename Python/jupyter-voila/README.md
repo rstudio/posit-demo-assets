@@ -11,7 +11,7 @@ Voilà allows you to convert a Jupyter Notebook into an interactive dashboard.
 ## Deploy
 
 ```
-rsconnect deploy voila . --multi-notebook -n <SERVER-NICKNAME> 
+rsconnect deploy voila . --multi-notebook
 ```
 
 ## Resources

@@ -3,7 +3,7 @@
 ## Deploy
 
 ```
-rsconnect deploy streamlit . -n <SERVER-NICKNAME>
+rsconnect deploy streamlit .
 ```
 
 ## Resources

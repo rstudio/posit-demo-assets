@@ -7,7 +7,7 @@ This example is from Plotly's [Dash tutorial](https://dash.plot.ly/getting-start
 ## Deploy
 
 ```
-rsconnect deploy dash . -n <SERVER-NICKNAME>
+rsconnect deploy dash .
 ```
 
 ## Resources

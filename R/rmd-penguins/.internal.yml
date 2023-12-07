@@ -1,0 +1,9 @@
+default:
+  content:
+    - name: "Penguins Document"
+      path: "./report"
+      description: "A report of penguin data measurements, built with R Markdown."
+      tag:
+        - "Examples|R|R Markdown"
+      url: "/r/rmd-penguins/"
+      image: "./report/imgs/culmen_depth.png"

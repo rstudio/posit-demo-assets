@@ -1,9 +1,6 @@
-# demo-shiny-penguins
+# Shiny Dashboard with Penguins Data
 
 Palmer's penguins shiny dashboard demo.
-
-- Code: <https://github.com/SamEdwardes/demo-shiny-penguins>
-- Deployment: <https://colorado.rstudio.com/rsc/demo-shiny-penguins/>
 
 ![screenshot](./imgs/app-screenshot.png)
 
@@ -23,7 +20,7 @@ Update the code, and then run:
 rsconnect::writeManifest()
 ```
 
-The app will be automatically redeployed by RStudio Connect.
+The app will be automatically redeployed by Posit Connect.
 
 ### Programatic
 

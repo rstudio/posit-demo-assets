@@ -3,7 +3,7 @@
 ## Deploy
 
 ```
-rsconnect deploy shiny . -n <SERVER-NICKNAME>
+rsconnect deploy shiny .
 ```
 
 ## Resources

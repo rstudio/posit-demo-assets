@@ -1,4 +1,5 @@
 r_version := "4.2.3"
+BINARY_PATH := if os() == "linux" { "/__linux__/jammy"} else { "" }
 
 default:
     just --list
@@ -8,7 +9,7 @@ bootstrap:
     if [ ! -d {{invocation_directory()}}/renv/ ]; then rig run -r {{r_version}} -e "renv::init(project = '{{invocation_directory()}}', repos = 'https://p3m.dev/cran/latest')"; fi
 
 restore:
-    if [ -f {{invocation_directory()}}/renv.lock ]; then rig run -r {{r_version}} -e "renv::restore(repos = 'https://p3m.dev/cran/latest')"; fi
+    if [ -f {{invocation_directory()}}/renv.lock ]; then rig run -r {{r_version}} -e "renv::restore(repos = 'https://p3m.dev/cran{{BINARY_PATH}}/latest')"; fi
 
 # remove renv from working directory
 clean:

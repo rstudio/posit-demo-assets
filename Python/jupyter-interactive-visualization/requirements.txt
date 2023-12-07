@@ -1,0 +1,5 @@
+--index-url https://p3m.dev/pypi/2022-12-09/simple
+numpy
+plotly
+bokeh
+notebook
