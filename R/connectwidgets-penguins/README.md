@@ -1,4 +1,4 @@
-# connect-widgets-penguins
+# Using connectwidgets with Posit Connect
 
 A demo of connect widgets in RStudio Connect.
 

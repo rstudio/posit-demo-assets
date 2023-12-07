@@ -1,4 +1,4 @@
-# rmd-flexdashboard-parameterized-sales
+# R Markdown Based Flexdashboard with Sales Data
 
 A demo of a parameterized sales dashboard build using flexdashboard in an R Markdown file.
 

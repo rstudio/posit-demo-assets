@@ -1,4 +1,4 @@
-# shiny-penguins
+# Shiny Dashboard with Penguins Data
 
 Palmer's penguins shiny dashboard demo.
 

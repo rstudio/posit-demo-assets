@@ -1,4 +1,4 @@
-# plumber-penguins
+# Plumber API with Penguins Data
 
 A demo of how to use [Plumber](https://www.rplumber.io/index.html) to create APIs on Posit Connect.
 

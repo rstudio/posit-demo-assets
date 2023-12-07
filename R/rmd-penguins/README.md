@@ -1,4 +1,4 @@
-# demo-rmd-penguins
+# R Markdown Report with Penguins Data
 
 A parameterized RMarkdown report!
 

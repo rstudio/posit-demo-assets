@@ -1,4 +1,4 @@
-# pins-r-penguins
+# Using pins with Penguins Data
 
 A demo of using pins with RStudio pro products.
 

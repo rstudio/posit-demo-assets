@@ -1,6 +1,5 @@
 # Image Classification with Shiny and PyTorch
 
-
 ## Deploy
 
 ```r

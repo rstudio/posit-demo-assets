@@ -1,4 +1,4 @@
-# rmd-blastula
+# R Markdown Blastula Email Sending
 
 ## Environment variable requirements
 
