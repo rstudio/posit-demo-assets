@@ -195,12 +195,3 @@ For Python based projects the requirements are:
 3.  Create the [`manifest.json` file](https://docs.posit.co/connect/user/publishing-cli-notebook/index.html#creating-a-manifest-for-future-deployment) to support git-backed publishing
 4.  Submit the Pull Request (PR) to have your changes added to this repository.
 
-## Compatibility 
-
-We are running with these versions of the products: 
-
-- R versions: 4.3.1, 4.1.3, 3.6.3
-- Python versions: 3.11.4, 3.10.12, 3.9.17
-- Quarto version: 1.3.433
-
-
