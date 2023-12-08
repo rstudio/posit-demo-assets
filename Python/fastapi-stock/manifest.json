@@ -6,16 +6,25 @@
     "entrypoint": "main"
   },
   "python": {
-    "version": "3.10.0",
+    "version": "3.11.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.0.1",
+      "version": "23.2.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "f978bfe76823199781dace6b2e3a8bc6"
+      "checksum": "ae5edf585e957db633fad13d6e2fa9ca"
+    },
+    ".internal.yml": {
+      "checksum": "1675209966d04e186e77e266409d0b4e"
+    },
+    "README.md": {
+      "checksum": "54d318448f0d3f3af9eea92b5c7599a1"
+    },
+    "fastapi-stock.png": {
+      "checksum": "528f3dfdd2984a725398a8c4dbf6156e"
     },
     "main.py": {
       "checksum": "a8d8820f25be4dc8e2bf51a5ba1690b6"
