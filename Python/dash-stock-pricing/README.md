@@ -13,8 +13,4 @@ rsconnect deploy dash .
 ## Learn more
 
 * [Dash User Guide](https://dash.plotly.com/)
-* [User Guide: Dash](https://docs.posit.co/connect/user/dash/)
-
-## Requirements
-
-* Python version 3.7 or higher
+* [Posit Connect User Guide: Dash](https://docs.posit.co/connect/user/dash/)
