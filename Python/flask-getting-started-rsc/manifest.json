@@ -6,19 +6,25 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.10.0",
+    "version": "3.11.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.0.1",
+      "version": "23.2.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "8d6edf2dedd1ca913165abec8a3beb86"
+      "checksum": "f3bbb1f5cb93fc9c7946859931132721"
+    },
+    "README.md": {
+      "checksum": "7d13e4b1c1843638f3b766c1b64b8cdc"
     },
     "app.py": {
-      "checksum": "9dcfbffbfa4f022525af8c47b9a0e976"
+      "checksum": "97a4329602214c7e49afca478ba37a52"
+    },
+    "getting-started-flask.png": {
+      "checksum": "4e617c88e590a6e31d3f86db0f4a3eef"
     },
     "static/api-snippet.png": {
       "checksum": "7d75b4ee6c3834edc79e114b8b371c21"
@@ -27,7 +33,7 @@
       "checksum": "ee9656d5610fbc4ad05d1c1413618341"
     },
     "templates/index.html": {
-      "checksum": "8d670a0d9a9082893c7970a2680b6d95"
+      "checksum": "45d683c60a7a5e11d5557e4d9c848e07"
     }
   }
 }
