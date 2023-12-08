@@ -1,10 +1,10 @@
 # Python Jobs in Workbench
 
-Note: This page is using text from the [VS Code / Utilizing teh Workbench Job Launcher](https://docs.posit.co/ide/server-pro/user/vs-code/guide/workbench-jobs.html) section in the Workbench User Guide. 
+Note: This page is using text from the [VS Code / Utilizing the Workbench Job Launcher](https://docs.posit.co/ide/server-pro/user/vs-code/guide/workbench-jobs.html) section in the Workbench User Guide. 
 
 Long running tasks like simulation studies can be run as background or launched into remote resources in order to keep your original coding session open for other work.
 
-## VS Code 
+## Usage in VS Code
 
 ### Access the Workbench Jobs pane
 

@@ -6,31 +6,31 @@
     "entrypoint": ""
   },
   "python": {
-    "version": "3.10.12",
+    "version": "3.11.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.3.1",
+      "version": "23.2.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "44e80fabd94a432739599512034f4738"
+      "checksum": "7b0d91ed5494a7b89b6b36f4c4d6ce61"
     },
     ".internal.yml": {
-      "checksum": "e214c5fc2f19138e48b9579e3a731e00"
+      "checksum": "a9fdf100d8a7f7ebc4364c3bd6eb6b28"
     },
     "README.md": {
-      "checksum": "b9980b76a9c5b600cd33ff3e70e007b6"
+      "checksum": "f2b5a4d1c63825e12af05af49f0cae8d"
     },
     "bqplot.ipynb": {
-      "checksum": "9f283b29889500e6c78e83ad1257e03f"
+      "checksum": "b8e0142580333884c8e25379c74de9b3"
     },
     "hash.ipynb": {
-      "checksum": "72f44e0fa678573992c7cf553ecb9a6f"
+      "checksum": "9374db80fa67cdc9ff264683d3af6173"
     },
     "ipyvolume.ipynb": {
-      "checksum": "f8df24eb0418afaa205b0cb1dbb49628"
+      "checksum": "56a4d1a4e342e3fd6dd5f0fe849a5b5f"
     },
     "voila.png": {
       "checksum": "7b1b11e04f0ded89a30adc69b86d1834"

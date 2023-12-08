@@ -1,10 +1,34 @@
 # Interactive Data Visualization with Jupyter Notebooks
 
+## Usage
+
+```bash
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+```
+
+- Open the `jupyter-interactive-notebook.ipynb` file for interactive use.
+- Chose the just created `.venv` as the selected kernel.
+- Click "Run All"
+
 ## Deploy
 
+### rsconnect-python CLI
+
+```bash
+rsconnect deploy notebook jupyter-interactive-visualization.ipynb
 ```
-rsconnect deploy notebook jupyter-interactive-notebook.ipynb
+
+### Git-backed
+
+Update the code, and then run:
+
+```bash
+rsconnect write-manifest notebook --overwrite jupyter-interactive-visualization.ipynb
 ```
+
+Commit the new `manifest.json` file to the git repo along with the code.
 
 ## Resources 
 

@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
 import dash
 import pandas as pd
 from dash import dcc, html

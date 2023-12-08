@@ -6,19 +6,22 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.10.0",
+    "version": "3.11.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.0.1",
+      "version": "23.2.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "5516f0c68a7d99f0818f784db41dc1fb"
+      "checksum": "64f5693e5c981c56fa575424de93c432"
+    },
+    "README.md": {
+      "checksum": "64db5d4ed981b49cd751a7039157bad5"
     },
     "app.py": {
-      "checksum": "96adf17f1be9681ceaca0689d164fdf9"
+      "checksum": "93f287990eb3003c4adf5a734f99c8fb"
     },
     "model/meta.json": {
       "checksum": "dac5074cb7cf0a693e3652287b48c43b"
@@ -240,10 +243,13 @@
       "checksum": "0cb0b9c589c0624c9c78dd3d83e946f6"
     },
     "templates/app.html": {
-      "checksum": "b9dae6059fa66ee2c7c056c07e6b2cf6"
+      "checksum": "6b2f1ad16426ad16e6f39cc8e537b8bb"
     },
     "templates/result.html": {
-      "checksum": "f918492991c4e4aef260ffb9e5a99a39"
+      "checksum": "b4f15bdc8addc153315f167548aada9e"
+    },
+    "train.py": {
+      "checksum": "01a48fac33a8ddac5597a7b6c4df687e"
     }
   }
 }
