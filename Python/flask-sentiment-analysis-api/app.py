@@ -1,6 +1,10 @@
 import spacy
 from flask import Flask, request, jsonify
+import os
 app = Flask(__name__)
+if 'RS_SERVER_URL' in os.environ and os.environ['RS_SERVER_URL']:
+  from werkzeug.middleware.proxy_fix import ProxyFix
+  app.wsgi_app = ProxyFix(app.wsgi_app, x_prefix=1)
 
 model_dir = "model"
 
