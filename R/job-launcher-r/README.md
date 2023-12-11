@@ -1,4 +1,4 @@
-# Launching R Jobs in Workbench
+# R Jobs in Workbench
 
 Note: This page is using text from [here](https://solutions.rstudio.com/r/jobs/) and the [blog post](https://www.rstudio.com/blog/rstudio-1-2-jobs/), both very good references. 
 
