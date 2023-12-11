@@ -41,7 +41,7 @@ rsconnect::deployDoc(
 Update the code, and then run:
 
 ```r
-rsconnect::writeManifest()
+rsconnect::writeManifest(appDir = "report")
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
