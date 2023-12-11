@@ -8,6 +8,7 @@ resource_files:
 ```{r setup, include=FALSE}
 library(connectwidgets)
 library(dplyr)
+library(rsconnect)
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
@@ -25,8 +26,7 @@ A curated list of Posit Connect demos using the [Palmer Penguins](https://alliso
 ```{r}
 client |> 
   content() |> 
-  by_tags("Demo: Palmer Penguins") |> 
-  by_tags("Application") |> 
+  filter(title == "Penguins Dashboard") |>
   rsc_grid()
 ```
 
@@ -35,8 +35,7 @@ client |>
 ```{r}
 client |> 
   content() |> 
-  by_tags("Demo: Palmer Penguins") |> 
-  by_tags("API") |> 
+  filter(title == "Penguins API") |>
   rsc_grid()
 ```
 
@@ -45,28 +44,18 @@ client |>
 ```{r}
 client |> 
   content() |> 
-  by_tags("Demo: Palmer Penguins") |> 
-  by_tags("Document") |> 
+  filter(title == "Penguins Document") |>
   rsc_grid()
 ```
 
-## Pins
-
-```{r}
-client |> 
-  content() |> 
-  by_tags("Demo: Palmer Penguins") |> 
-  by_tags("Pins") |> 
-  rsc_grid()
-```
 
 ## R Content
 
 ```{r}
 client |> 
   content() |> 
-  by_tags("Demo: Palmer Penguins") |> 
   by_tags("R") |> 
+  filter(stringr::str_detect(title, "Penguins")) |>
   rsc_grid()
 ```
 
@@ -75,7 +64,7 @@ client |>
 ```{r}
 client |> 
   content() |> 
-  by_tags("Demo: Palmer Penguins") |> 
   by_tags("Python") |> 
+  filter(stringr::str_detect(title, "Penguins")) |>
   rsc_grid()
 ```
