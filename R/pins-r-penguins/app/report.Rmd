@@ -41,7 +41,7 @@ board <- pins::board_connect(auth = "envvar")
 board |> 
   pins::pin_write(
     penguins,
-    name = paste0(Sys.getenv("OWNER_GUID"), "/penguins_pins_r_demo"),
+    name = "penguins_pins_r_demo",
     type = "csv"
   )
 ```
@@ -58,36 +58,7 @@ You can easily read the data into R using pins:
 board <- pins::board_connect(auth = "envvar")
 
 board |> 
-  pins::pin_read(paste0(Sys.getenv("OWNER_GUID"), "/penguins_pins_r_demo")) |> 
+  pins::pin_read(paste0(Sys.getenv("OWNER_USERNAME"), "/penguins_pins_r_demo")) |> 
   dplyr::glimpse()
 ```
 
-
-## Environment Variables explained
-
-The three variables that are needed for pinned content: 
-
- - CONNECT_API_KEY=**REDACTED**
- - CONNECT_SERVER=**REDACTED**
- - OWNER_GUID=**REDACTED**
- 
-Variables are being saved to the user level .Renviron config file when working on the file in Workbench. [`usethis`](https://usethis.r-lib.org/) has a function for creating and editing the .Renviron file: 
-
-```r
-library(usethis)
-usethis::edit_r_environ()
-```
-
-Add the variables to that file in the format `variable_name = "variable_value"` and save it. Restart the session so the new environment variables will be loaded with `ctrl shift f10` or through the RStudio IDE through the **Session** dropdown and selecting **Restart R**. 
-
-Saved variables are accessed inline with:
-
-```r
-variable_name <- Sys.getenv("variable_name")
-```
-
-See the Connect User Guide for adding the variables using the UI to deployed content: <https://docs.posit.co/connect/user/content-settings/index.html#content-vars>
-
-## Git-backed deployments
-
-Write the manifest: `rsconnect::writeManifest(appDir="pins-r-penguins/report")`
