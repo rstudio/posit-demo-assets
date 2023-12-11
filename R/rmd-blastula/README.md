@@ -8,18 +8,33 @@ This content needs to have the following environment variables set to function:
  
 Variables can be saved in an .Renviron config file when working with this project. [`usethis`](https://usethis.r-lib.org/) has a function for creating and editing .Renviron files: 
 
+Add the variables to that file in the format `KEY=VALUE` and save it. Restart the session so the new environment variables will be loaded with `ctrl shift f10` or through the RStudio IDE through the **Session** dropdown and selecting **Restart R**.
+
+## Usage
+
+Setup the `renv` environment:
+
 ```r
-library(usethis)
-usethis::edit_r_environ()
+renv::activate()
+renv::restore()
 ```
 
-Add the variables to that file in the format `KEY=VALUE` and save it. Restart the session so the new environment variables will be loaded with `ctrl shift f10` or through the RStudio IDE through the **Session** dropdown and selecting **Restart R**.
+To render the report locally to preview the email:
+
+```r
+rmarkdown::render("full-report.Rmd")
+```
 
 ## Deployment
 
+### Push Button
+
+Open `full-report.Rmd` and use the blue publish icon in the upper right corner of the IDE code pane.
+Ensure you select "Publish document with source code" and include `full-report.Rmd` and `email.Rmd` documents.
+
 ### Git-backed
 
-After making any code changes run the following:
+Update the code, and then run:
 
 ```r
 rsconnect::writeManifest(
@@ -28,3 +43,12 @@ rsconnect::writeManifest(
   appFiles = c("email.Rmd")
 )
 ```
+
+Commit the new `manifest.json` file to the git repo along with the code.
+
+## Resources
+
+[Posit Connect User Guide: Email Customization](https://docs.posit.co/connect/user/rmarkdown/index.html#r-markdown-email-customization)
+[Posit Solutions: Custom Emails with R Markdown and Blastula](https://solutions.posit.co/write-code/blastula/index.html)
+
+
