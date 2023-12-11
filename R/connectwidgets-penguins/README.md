@@ -21,14 +21,14 @@ Add the variables to that file in the format `KEY=VALUE` and save it. Restart th
 
 ## Usage
 
-Setup `renv` environment:
+Setup the `renv` environment:
 
 ```r
 renv::activate()
 renv::restore()
 ```
 
-To render the report locally:
+To render the dashboard either use the "Knit" button on the top of the IDE code pane and select "Knit to HTML" or use:
 
 ```r
 rmarkdown::render("app/report.Rmd")

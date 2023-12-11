@@ -26,7 +26,7 @@ renv::activate()
 renv::restore()
 ```
 
-To render the report locally:
+To render the dashboard either use the "Knit" button on the top of the IDE code pane and select "Knit to HTML" or use:
 
 ```r
 rmarkdown::render("rmarkdown-notebook.Rmd")

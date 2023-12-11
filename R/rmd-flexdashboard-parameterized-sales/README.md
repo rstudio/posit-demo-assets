@@ -13,7 +13,7 @@ renv::activate()
 renv::restore()
 ```
 
-To render the dashboard run:
+To render the dashboard either use the "Knit" button on the top of the IDE code pane and select "Knit with Parameters" or use:
 
 ```r
 knit_with_parameters("sales-dashboard.Rmd")
@@ -23,7 +23,7 @@ knit_with_parameters("sales-dashboard.Rmd")
 
 ### Push Button
 
-Use the "Knit" button on the top of the IDE code pane and select "Knit with Parameters".
+Use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 

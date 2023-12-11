@@ -29,7 +29,7 @@ rmarkdown::render("full-report.Rmd")
 
 ### Push Button
 
-Open `full-report.Rmd` and use the blue publish icon in the upper right corner of the IDE code pane.
+Use the blue publish icon in the upper right corner of the IDE code pane.
 Ensure you select "Publish document with source code" and include `full-report.Rmd` and `email.Rmd` documents.
 
 ### Git-backed
