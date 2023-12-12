@@ -41,6 +41,7 @@ database = demo-data
 First we load the `tidyverse` set of packages and the `DBI` database interface package.
 
 ```{r}
+#| warning: false
 library(tidyverse)
 library(DBI)
 ```
@@ -48,6 +49,7 @@ library(DBI)
 Then we establish a connection the the desired database. In this case `Demo Datasets (DuckDB)`, which is defined as a DSN in `/etc/odbc.ini`.
 
 ```{r}
+#| warning: false
 con <- dbConnect(odbc::odbc(), "Demo Datasets (DuckDB)", timeout = 10)
 con
 ```
@@ -59,6 +61,7 @@ con
 The simplest way is to retrieve the entire table from the database and bring it in memory. Here we bring the entire `covid` table from the `main` catalog into memory.
 
 ```{r}
+#| warning: false
 table_name <- "covid"
 
 data_all <- dbReadTable(con, table_name)
@@ -68,6 +71,7 @@ head(data_all)
 Check the size of the data returned:
 
 ```{r}
+#| warning: false
 format(object.size(data_all), units = "MB")
 ```
 
@@ -78,6 +82,7 @@ When working with larger quantities of data, retrieving entire tables is less pr
 In the code below, no computation is done, SQL is generated under the hood and shown by `show_query()`.
 
 ```{r}
+#| warning: false
 library(dbplyr)
 
 data <- tbl(con, table_name) |>
@@ -90,6 +95,7 @@ data <- tbl(con, table_name) |>
 The query is executed by the database and the resulting data is retrieved when `collect()` is called.
 
 ```{r}
+#| warning: false
 data_summary <- data |> collect() |> ungroup() |> mutate(total_new_cases = bit64::as.integer64(total_new_cases))
 data_summary
 ```
@@ -101,6 +107,7 @@ Data can be written to a database utilizing the same tools as used during the re
 ### Create a new table
 
 ```{r}
+#| warning: false
 write_table_name <- "covid_summary"
 
 dbWriteTable(
@@ -116,12 +123,14 @@ dbWriteTable(
 Check how many rows currently exist in the `covid_summary` table.
 
 ```{r}
+#| warning: false
 tbl(con, write_table_name) %>% summarize(n())
 ```
 
 Append 5 new rows and check the amount of rows in the table now.
 
-```
+```{r}
+#| warning: false
 data_partial <- data_summary[1:5,]
 results <- dbWriteTable(con, write_table_name, data_partial, append = T)
 tbl(con, write_table_name) %>% summarize(n())
