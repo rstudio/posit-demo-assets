@@ -8,10 +8,17 @@ A Dash application makes it easy to transform your analysis into an interactive 
 
 ## Usage
 
+Setup the `venv` environment:
+
 ```bash
 python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
 python app.py
 ```
 

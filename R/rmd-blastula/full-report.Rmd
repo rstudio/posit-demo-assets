@@ -74,7 +74,7 @@ content |>
   scale_fill_manual(values = colour_mapping_lang) +
   scale_y_continuous(label=comma) +
   labs(
-    title = "Distribution of Content Deployed on Colorado",
+    title = "Distribution of Content Deployed",
     subtitle = "By Langauge and Type",
     x = "Type",
     y = "Count",
@@ -96,57 +96,12 @@ content |>
   geom_label(aes(label = percent(percent, accuracy = 1)), nudge_y = 100) +
   scale_y_continuous(label=comma) +
   labs(
-    title = "Distribution of Content Deployed on Colorado",
+    title = "Distribution of Content Deployed",
     subtitle = "By App Mode",
     x = "App Mode",
     y = "Count"
   ) +
   coord_flip()
-```
-
-We can see how the type of content deployed changes over time.
-
-## Langauge
-
-```{r content-deployed-by-time-by-lang}
-#| fig-align: center
-content |> 
-  mutate(create_year_month = floor_date(created_time, unit = "month")) |> 
-  group_by(language, create_year_month) |> 
-  summarise(count = n(), .groups = "drop") |> 
-  ggplot(aes(x = create_year_month, y = count)) +
-  geom_col(aes(fill = language)) + 
-  scale_fill_manual(values = colour_mapping_lang) + 
-  scale_y_continuous(label=comma) +
-  labs(
-    title = "Content Creation Over Time",
-    subtitle = "By langauge",
-    x = "Month",
-    y = "Count",
-    fill = "Language"
-  )
-```
-
-## Type
-
-```{r content-deployed-by-time-by-type}
-#| fig-align: center
-#| 
-content |> 
-  mutate(create_year_month = floor_date(created_time, unit = "month")) |> 
-  group_by(app_type, create_year_month) |> 
-  summarise(count = n(), .groups = "drop") |> 
-  ggplot(aes(x = create_year_month, y = count)) +
-  geom_col(aes(fill = app_type)) + 
-  scale_fill_manual(values = colour_mapping_type) +
-  scale_y_continuous(label=comma) +
-  labs(
-    title = "Content Creation Over Time",
-    subtitle = "By app type",
-    x = "Month",
-    y = "Count",
-    fill = "App Type"
-  )
 ```
 
 ## Send email

@@ -1,9 +1,0 @@
-default:
-  content:
-    - name: "Reticulated Image Classification with Shiny and PyTorch"
-      path: "."
-      description: "A Shiny for R app powered by a PyTorch Model"
-      tag:
-        - "Examples|Python|Reticulate"
-      url: "/reticulate/shiny-pytorch/"
-      image: "reticulated-image-classifier.png"

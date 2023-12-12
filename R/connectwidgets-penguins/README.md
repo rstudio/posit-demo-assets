@@ -2,9 +2,6 @@
 
 A demo of connect widgets in RStudio Connect.
 
-- Code: <https://github.com/SamEdwardes/demo-connect-widgets-penguins>
-- Deployment: <https://colorado.rstudio.com/rsc/demo-connect-widgets-penguins/>
-
 ![](app/imgs/screenshot.png)
 
 ## Environment variable requirements
@@ -24,7 +21,14 @@ Add the variables to that file in the format `KEY=VALUE` and save it. Restart th
 
 ## Usage
 
-To render the report locally:
+Setup the `renv` environment:
+
+```r
+renv::activate()
+renv::restore()
+```
+
+To render the dashboard either use the "Knit" button on the top of the IDE code pane and select "Knit to HTML" or use:
 
 ```r
 rmarkdown::render("app/report.Rmd")
@@ -32,9 +36,24 @@ rmarkdown::render("app/report.Rmd")
 
 ## Deployment
 
+### Push Button
+
+Use the blue publish icon in the upper right corner of the IDE code pane.
+
+### rsconnect package
+
+You can also deploy using the rsconnect package:
+
+```
+rsconnect::deployDoc(
+  doc = "app/report.Rmd",
+  appTitle = "Connect Widget Example"
+)
+```
+
 ### Git-backed
 
-To deploy to RStudio connect refresh the manifest.json file:
+Update the code, and then run:
 
 ```r
 rsconnect::writeManifest(
@@ -43,15 +62,8 @@ rsconnect::writeManifest(
 )
 ```
 
-Then, push any changes to git. RStudio connect will automatically deploy any changes.
+Commit the new `manifest.json` file to the git repo along with the code.
 
-### Programmatic
+## Resources
 
-You can also deploy using the rsconnect api:
-
-```
-rsconnect::deployDoc(
-  doc = "app/report.Rmd",
-  appTitle = "Connect Widget Example"
-)
-```
+[Posit Connect How-to Guide: Custom Landing Page with connectwidgets](https://docs.posit.co/connect/how-to/connectwidgets/index.html#connectwidgets)
