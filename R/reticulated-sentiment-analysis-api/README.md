@@ -24,10 +24,10 @@ renv::activate()
 renv::restore()
 ```
 
-To run the API locally select `api/plumber.R` and either use the "Run API" button on the top right of the IDE code pane or use:
+To run the API locally select `plumber.R` and either use the "Run API" button on the top right of the IDE code pane or use:
 
 ```r
-plumber::pr("api/plumber.R") |>
+plumber::pr("plumber.R") |>
   plumber::pr_run()
 ```
 
@@ -37,30 +37,19 @@ plumber::pr("api/plumber.R") |>
 
 Use the blue publish icon in the upper right corner of the IDE code pane.
 
-### rsconnect package
-
-You can also deploy using the rsconnect package:
-
-```
-rsconnect::deployAPI(
-  api = "api",
-  appTitle = "Sentiment Analysis API using Reticulate"
-)
-```
-
 ### Git-backed
 
 Update the code, and then run:
 
 ```r
-rsconnect::writeManifest("api")
+rsconnect::writeManifest()
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
 
 ## Training
 
-This example has a pre-created `api/model` directory. If you wish to re-run the training then run the `api/train.Rmd` script.
+This example has a pre-created `model` directory. If you wish to re-run the training then run the `train.Rmd` script.
 
 ## Resources
 

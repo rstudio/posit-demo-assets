@@ -20,7 +20,7 @@
   "packages": {
     "Matrix": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "Matrix",
         "Version": "1.6-4",
@@ -53,7 +53,7 @@
     },
     "R6": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "R6",
         "Title": "Encapsulated Classes with Reference Semantics",
@@ -78,7 +78,7 @@
     },
     "Rcpp": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "Rcpp",
         "Title": "Seamless R and C++ Integration",
@@ -104,7 +104,7 @@
     },
     "RcppTOML": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "RcppTOML",
         "Type": "Package",
@@ -132,7 +132,7 @@
     },
     "base64enc": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "base64enc",
         "Version": "0.1-3",
@@ -154,7 +154,7 @@
     },
     "bslib": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "bslib",
         "Title": "Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'",
@@ -187,7 +187,7 @@
     },
     "cachem": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "cachem",
         "Version": "1.0.8",
@@ -214,15 +214,15 @@
     },
     "cli": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "cli",
         "Title": "Helpers for Developing Command Line Interfaces",
-        "Version": "3.6.2",
-        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")),\n    person(\"Hadley\", \"Wickham\", role = \"ctb\"),\n    person(\"Kirill\", \"Müller\", role = \"ctb\"),\n    person(\"Salim\", \"Brüggemann\", , \"salim-b@pm.me\", role = \"ctb\",\n           comment = c(ORCID = \"0000-0002-5329-5987\")),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
+        "Version": "3.6.1",
+        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")),\n    person(\"Hadley\", \"Wickham\", role = \"ctb\"),\n    person(\"Kirill\", \"Müller\", role = \"ctb\"),\n    person(\"RStudio\", role = c(\"cph\", \"fnd\"))\n  )",
         "Description": "A suite of tools to build attractive command line interfaces\n    ('CLIs'), from semantic elements: headings, lists, alerts, paragraphs,\n    etc. Supports custom themes via a 'CSS'-like language. It also\n    contains a number of lower level 'CLI' elements: rules, boxes, trees,\n    and 'Unicode' symbols with 'ASCII' alternatives. It support ANSI\n    colors and text styles as well.",
         "License": "MIT + file LICENSE",
-        "URL": "https://cli.r-lib.org, https://github.com/r-lib/cli",
+        "URL": "https://cli.r-lib.org, https://github.com/r-lib/cli#readme",
         "BugReports": "https://github.com/r-lib/cli/issues",
         "Depends": "R (>= 3.4)",
         "Imports": "utils",
@@ -230,19 +230,19 @@
         "Config/Needs/website": "r-lib/asciicast, bench, brio, cpp11, decor, desc,\nfansi, prettyunits, sessioninfo, tidyverse/tidytemplate,\nusethis, vctrs",
         "Config/testthat/edition": "3",
         "Encoding": "UTF-8",
-        "RoxygenNote": "7.2.3",
+        "RoxygenNote": "7.2.1.9000",
         "NeedsCompilation": "yes",
-        "Packaged": "2023-12-10 22:38:10 UTC; gaborcsardi",
-        "Author": "Gábor Csárdi [aut, cre],\n  Hadley Wickham [ctb],\n  Kirill Müller [ctb],\n  Salim Brüggemann [ctb] (<https://orcid.org/0000-0002-5329-5987>),\n  Posit Software, PBC [cph, fnd]",
+        "Packaged": "2023-03-22 13:59:32 UTC; gaborcsardi",
+        "Author": "Gábor Csárdi [aut, cre],\n  Hadley Wickham [ctb],\n  Kirill Müller [ctb],\n  RStudio [cph, fnd]",
         "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2023-12-11 07:40:13 UTC",
-        "Built": "R 4.3.2; x86_64-pc-linux-gnu; 2023-12-12 13:31:41 UTC; unix"
+        "Repository": "RSPM",
+        "Date/Publication": "2023-03-23 12:52:05 UTC",
+        "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-05-30 12:26:27 UTC; unix"
       }
     },
     "crayon": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "crayon",
         "Title": "Colored Terminal Output",
@@ -268,7 +268,7 @@
     },
     "curl": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "curl",
         "Type": "Package",
@@ -297,7 +297,7 @@
     },
     "digest": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "digest",
         "Author": "Dirk Eddelbuettel <edd@debian.org> with contributions\n by Antoine Lucas, Jarek Tuszynski, Henrik Bengtsson, Simon Urbanek,\n Mario Frasca, Bryan Lewis, Murray Stokely, Hannes Muehleisen,\n Duncan Murdoch, Jim Hester, Wush Wu, Qiang Kou, Thierry Onkelinx,\n Michel Lang, Viliam Simko, Kurt Hornik, Radford Neal, Kendon Bell,\n Matthew de Queljoe, Ion Suruceanu, Bill Denney, Dirk Schumacher,\n Winston Chang, and Dean Attali.",
@@ -323,7 +323,7 @@
     },
     "ellipsis": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "ellipsis",
         "Version": "0.3.2",
@@ -349,7 +349,7 @@
     },
     "evaluate": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "evaluate",
         "Type": "Package",
@@ -377,7 +377,7 @@
     },
     "fastmap": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "fastmap",
         "Title": "Fast Data Structures",
@@ -401,7 +401,7 @@
     },
     "fontawesome": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "fontawesome",
@@ -430,7 +430,7 @@
     },
     "fs": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "fs",
         "Title": "Cross-Platform File System Operations Based on 'libuv'",
@@ -463,7 +463,7 @@
     },
     "glue": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "glue",
         "Title": "Interpreted String Literals",
@@ -493,7 +493,7 @@
     },
     "here": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "here",
         "Title": "A Simpler Way to Find Your Files",
@@ -522,7 +522,7 @@
     },
     "highr": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "highr",
         "Type": "Package",
@@ -550,7 +550,7 @@
     },
     "htmltools": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "htmltools",
@@ -581,7 +581,7 @@
     },
     "httpuv": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "httpuv",
@@ -611,7 +611,7 @@
     },
     "jquerylib": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "jquerylib",
         "Title": "Obtain 'jQuery' as an HTML Dependency Object",
@@ -635,7 +635,7 @@
     },
     "jsonlite": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "jsonlite",
         "Version": "1.8.8",
@@ -661,7 +661,7 @@
     },
     "knitr": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "knitr",
         "Type": "Package",
@@ -691,7 +691,7 @@
     },
     "later": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "later",
         "Type": "Package",
@@ -719,7 +719,7 @@
     },
     "lattice": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "lattice",
         "Version": "0.22-5",
@@ -749,7 +749,7 @@
     },
     "lifecycle": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "lifecycle",
         "Title": "Manage the Life Cycle of your Package Functions",
@@ -778,7 +778,7 @@
     },
     "magrittr": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "magrittr",
@@ -807,7 +807,7 @@
     },
     "memoise": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "memoise",
         "Title": "'Memoisation' of Functions",
@@ -832,7 +832,7 @@
     },
     "mime": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "mime",
         "Type": "Package",
@@ -857,7 +857,7 @@
     },
     "plumber": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Encoding": "UTF-8",
         "Package": "plumber",
@@ -890,7 +890,7 @@
     },
     "png": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "png",
         "Version": "0.1-8",
@@ -912,7 +912,7 @@
     },
     "promises": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "promises",
@@ -942,7 +942,7 @@
     },
     "rappdirs": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "rappdirs",
@@ -968,9 +968,40 @@
         "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-04-21 21:46:15 UTC; unix"
       }
     },
+    "renv": {
+      "Source": "CRAN",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
+      "description": {
+        "Package": "renv",
+        "Type": "Package",
+        "Title": "Project Environments",
+        "Version": "1.0.3",
+        "Authors@R": "c(\n    person(\"Kevin\", \"Ushey\", role = c(\"aut\", \"cre\"), email = \"kevin@rstudio.com\",\n           comment = c(ORCID = \"0000-0003-2880-7407\")),\n    person(\"Hadley\", \"Wickham\", role = c(\"aut\"), email = \"hadley@rstudio.com\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n    )",
+        "Description": "A dependency management toolkit for R. Using 'renv', you can create\n    and manage project-local R libraries, save the state of these libraries to\n    a 'lockfile', and later restore your library as required. Together, these\n    tools can help make your projects more isolated, portable, and reproducible.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://rstudio.github.io/renv/, https://github.com/rstudio/renv",
+        "BugReports": "https://github.com/rstudio/renv/issues",
+        "Imports": "utils",
+        "Suggests": "BiocManager, cli, covr, cpp11, devtools, gitcreds, jsonlite,\nknitr, miniUI, packrat, pak, R6, remotes, reticulate,\nrmarkdown, rstudioapi, shiny, testthat, uuid, waldo, yaml,\nwebfakes",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.2.3",
+        "VignetteBuilder": "knitr",
+        "Config/Needs/website": "tidyverse/tidytemplate",
+        "Config/testthat/edition": "3",
+        "Config/testthat/parallel": "true",
+        "Config/testthat/start-first": "bioconductor,python,install,restore,snapshot,retrieve,remotes",
+        "NeedsCompilation": "no",
+        "Packaged": "2023-09-18 18:18:27 UTC; kevin",
+        "Author": "Kevin Ushey [aut, cre] (<https://orcid.org/0000-0003-2880-7407>),\n  Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),\n  Posit Software, PBC [cph, fnd]",
+        "Maintainer": "Kevin Ushey <kevin@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2023-09-19 08:10:02 UTC",
+        "Built": "R 4.3.0; ; 2023-09-20 11:13:18 UTC; unix"
+      }
+    },
     "reticulate": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "reticulate",
         "Type": "Package",
@@ -1000,7 +1031,7 @@
     },
     "rlang": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "rlang",
         "Version": "1.1.2",
@@ -1031,7 +1062,7 @@
     },
     "rmarkdown": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "rmarkdown",
@@ -1061,7 +1092,7 @@
     },
     "rprojroot": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "rprojroot",
         "Title": "Finding Files in Project Subdirectories",
@@ -1088,7 +1119,7 @@
     },
     "sass": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Type": "Package",
         "Package": "sass",
@@ -1117,7 +1148,7 @@
     },
     "sodium": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "sodium",
         "Type": "Package",
@@ -1144,11 +1175,11 @@
     },
     "stringi": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "stringi",
-        "Version": "1.8.3",
-        "Date": "2023-12-10",
+        "Version": "1.8.2",
+        "Date": "2023-11-22",
         "Title": "Fast and Portable Character String Processing Facilities",
         "Description": "A collection of character string/text/natural language\n    processing tools for pattern searching (e.g., with 'Java'-like regular\n    expressions or the 'Unicode' collation algorithm), random string generation,\n    case mapping, string transliteration, concatenation, sorting, padding,\n    wrapping, Unicode normalisation, date-time formatting and parsing,\n    and many more. They are fast, consistent, convenient, and -\n    thanks to 'ICU' (International Components for Unicode) -\n    portable across all locales and platforms. Documentation about 'stringi' is\n    provided via its website at <https://stringi.gagolewski.com/> and\n    the paper by Gagolewski (2022, <doi:10.18637/jss.v103.i02>).",
         "URL": "https://stringi.gagolewski.com/,\nhttps://github.com/gagolews/stringi, https://icu.unicode.org/",
@@ -1164,16 +1195,16 @@
         "RoxygenNote": "7.2.3",
         "Encoding": "UTF-8",
         "NeedsCompilation": "yes",
-        "Packaged": "2023-12-10 07:26:05 UTC; gagolews",
+        "Packaged": "2023-11-21 22:20:11 UTC; gagolews",
         "License_is_FOSS": "yes",
-        "Repository": "CRAN",
-        "Date/Publication": "2023-12-11 22:50:03 UTC",
-        "Built": "R 4.3.2; x86_64-pc-linux-gnu; 2023-12-12 13:32:12 UTC; unix"
+        "Repository": "RSPM",
+        "Date/Publication": "2023-11-23 09:20:03 UTC",
+        "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-11-24 11:48:01 UTC; unix"
       }
     },
     "stringr": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "stringr",
         "Title": "Simple, Consistent Wrappers for Common String Operations",
@@ -1203,7 +1234,7 @@
     },
     "swagger": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "swagger",
         "Type": "Package",
@@ -1229,7 +1260,7 @@
     },
     "tinytex": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "tinytex",
         "Type": "Package",
@@ -1255,7 +1286,7 @@
     },
     "vctrs": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "vctrs",
         "Title": "Vector Helpers",
@@ -1285,7 +1316,7 @@
     },
     "webutils": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "webutils",
         "Type": "Package",
@@ -1311,7 +1342,7 @@
     },
     "withr": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "withr",
         "Title": "Run Code 'With' Temporarily Modified Global State",
@@ -1341,7 +1372,7 @@
     },
     "xfun": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "xfun",
         "Type": "Package",
@@ -1368,13 +1399,13 @@
     },
     "yaml": {
       "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/latest",
       "description": {
         "Package": "yaml",
         "Type": "Package",
         "Title": "Methods to Convert R Data to YAML and Back",
-        "Date": "2023-11-28",
-        "Version": "2.3.8",
+        "Date": "2023-01-18",
+        "Version": "2.3.7",
         "Suggests": "RUnit",
         "Author": "Shawn P Garbett [aut], Jeremy Stephens [aut, cre], Kirill Simonov [aut], Yihui Xie [ctb],\n  Zhuoer Dong [ctb], Hadley Wickham [ctb], Jeffrey Horner [ctb], reikoch [ctb],\n  Will Beasley [ctb], Brendan O'Connor [ctb], Gregory R. Warnes [ctb],\n  Michael Quinn [ctb], Zhian N. Kamvar [ctb]",
         "Maintainer": "Shawn Garbett <shawn.garbett@vumc.org>",
@@ -1383,14 +1414,21 @@
         "URL": "https://github.com/vubiostat/r-yaml/",
         "BugReports": "https://github.com/vubiostat/r-yaml/issues",
         "NeedsCompilation": "yes",
-        "Packaged": "2023-12-11 16:46:09 UTC; garbetsp",
-        "Repository": "CRAN",
-        "Date/Publication": "2023-12-11 18:50:02 UTC",
-        "Built": "R 4.3.2; x86_64-pc-linux-gnu; 2023-12-12 13:31:55 UTC; unix"
+        "Packaged": "2023-01-18 17:20:16 UTC; garbetsp",
+        "Repository": "RSPM",
+        "Date/Publication": "2023-01-23 18:40:02 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-04-21 21:46:44 UTC; unix"
       }
     }
   },
   "files": {
+    ".Renviron": {
+      "checksum": "844083f0a25cac8c08e714d6fa49436c"
+    },
+    ".Rprofile": {
+      "checksum": "b0ff0f34ba1b4f3414cf5e62809e8e4c"
+    },
     "model/meta.json": {
       "checksum": "dac5074cb7cf0a693e3652287b48c43b"
     },
@@ -1424,8 +1462,17 @@
     "predict.py": {
       "checksum": "7fc8ab2af71f73b90e73577e3540921d"
     },
+    "README.md": {
+      "checksum": "f94dff09a8644abd6bac757d58df087e"
+    },
+    "renv.lock": {
+      "checksum": "347ed34bb6e743be04aa4340317193c5"
+    },
     "requirements.txt": {
-      "checksum": "06fb5fdab5d39dbaf8ce0236a1d0de04"
+      "checksum": "5b1e73d37c522c042e1c767a9d6f5b69"
+    },
+    "spacy_logo.jpg": {
+      "checksum": "1d3b50b1eba4c2b06244425ff0c49570"
     },
     "train.Rmd": {
       "checksum": "ee38da7d4e99bdb067c36afe12d127a3"
