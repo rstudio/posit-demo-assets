@@ -1,0 +1,128 @@
+---
+title: "Working with Databases in RStudio"
+format: 
+  html
+---
+
+## Introduction
+
+There are many ways to connect, query and write to databases from R. Hadley Wickham has a great [write up about the subject](https://r4ds.hadley.nz/databases.html) in his book [R for Data Science](https://r4ds.hadley.nz/) with more details.
+
+Using a database from R starts with `odbc` drivers to facilitate the connection and the help of R packages such as `DBI`, `odbc` and other database specific packages. [DSNs can be setup](https://solutions.posit.co/connections/db/best-practices/portable-code/index.html#deploying-with-dsns) in Workbench to make database access even more convenient for users so they do not need to manage credentials and/or database host details.
+
+Workbench has a "Connections" pane which can bring database information into the UI for easy discovery and navigation. When making a New Connection in this pane, pre-defined DSNs will be listed for quick access from a users R code to the database.
+
+Once a connection is setup in R code, data can be brought into memory or queries can be sent to the remote database. The `dbplyr` R package allows users to write familiar `dplyr` functions but turn those commands into SQL queries executed at the database. This process allows for efficient querying of large datasets without having to pull tables into memory right away.
+
+## Connect to a Database via a DSN
+
+We utilize the `odbc` [R package](https://github.com/r-dbi/odbc) to establish a connection with a DuckDB database via the DSN setup in `/etc/odbc.ini`. Note there are a wide variety of databases supported in the Posit Pro Drivers including PostgreSQL, MSSQL, Oracle and more, see a [full list here](https://solutions.posit.co/connections/db/databases/).
+
+The `/etc/odbc.ini` entry looks like:
+
+```
+[Demo Datasets (DuckDB)]
+Driver=DuckDB Driver
+Database=/data/duckdb/database/demo-datasets.db
+```
+
+If one was to setup a PostgreSQL connection it would look like:
+
+```
+[Postgres (finance)]
+driver = PostgreSQL
+server = db_server_address.com
+uid = admin
+pwd = XXXXXXXXXXXXXXX
+port = 5432
+database = demo-data
+```
+
+First we load the `tidyverse` set of packages and the `DBI` database interface package.
+
+```{r}
+library(tidyverse)
+library(DBI)
+```
+
+Then we establish a connection the the desired database. In this case `Demo Datasets (DuckDB)`, which is defined as a DSN in `/etc/odbc.ini`.
+
+```{r}
+con <- dbConnect(odbc::odbc(), "Demo Datasets (DuckDB)", timeout = 10)
+con
+```
+
+## Retrieve Data
+
+### Retrieve an entire table
+
+The simplest way is to retrieve the entire table from the database and bring it in memory. Here we bring the entire `covid` table from the `main` catalog into memory.
+
+```{r}
+table_name <- "covid"
+
+data_all <- dbReadTable(con, table_name)
+head(data_all)
+```
+
+Check the size of the data returned:
+
+```{r}
+format(object.size(data_all), units = "MB")
+```
+
+### Push compute to the database
+
+When working with larger quantities of data, retrieving entire tables is less practical. The [dbplyr package](https://dbplyr.tidyverse.org/) was created so users could use the same dplyr code they are used to writing, but now execute those functions against a remote table (versus a data.frame in memory).
+
+In the code below, no computation is done, SQL is generated under the hood and shown by `show_query()`.
+
+```{r}
+library(dbplyr)
+
+data <- tbl(con, table_name) |>
+  group_by(province_state, year = year(date)) |>
+  summarize(total_new_cases = sum(new_cases, na.rm = T)) |>
+  arrange(province_state, year) |>
+  show_query()
+```
+
+The query is executed by the database and the resulting data is retrieved when `collect()` is called.
+
+```{r}
+data_summary <- data |> collect() |> ungroup() |> mutate(total_new_cases = bit64::as.integer64(total_new_cases))
+data_summary
+```
+
+## Writing Data
+
+Data can be written to a database utilizing the same tools as used during the reading/querying. The DBI package utilizes the odbc package/drivers to pull data from a variety of sources including SQL Server and Postgres.
+
+### Create a new table
+
+```{r}
+write_table_name <- "covid_summary"
+
+dbWriteTable(
+  con,
+  write_table_name,
+  data_summary,
+  overwrite = T
+)
+```
+
+### Append new rows
+
+Check how many rows currently exist in the `covid_summary` table.
+
+```{r}
+tbl(con, write_table_name) %>% summarize(n())
+```
+
+Append 5 new rows and check the amount of rows in the table now.
+
+```
+data_partial <- data_summary[1:5,]
+results <- dbWriteTable(con, write_table_name, data_partial, append = T)
+tbl(con, write_table_name) %>% summarize(n())
+```
