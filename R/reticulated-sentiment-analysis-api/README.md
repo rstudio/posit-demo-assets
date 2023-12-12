@@ -24,7 +24,7 @@ renv::activate()
 renv::restore()
 ```
 
-To run the API locally select `plumber.R` and either use the "Run API" button on the top right of the IDE code pane or use:
+To run the API locally select `api/plumber.R` and either use the "Run API" button on the top right of the IDE code pane or use:
 
 ```r
 plumber::pr("api/plumber.R") |>
