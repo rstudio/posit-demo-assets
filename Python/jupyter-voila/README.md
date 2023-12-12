@@ -11,6 +11,8 @@ Voilà allows you to convert a Jupyter Notebook into an interactive dashboard.
 
 ## Usage
 
+Setup the `venv` environment:
+
 ```bash
 python -m venv .venv
 . .venv/bin/activate

@@ -4,10 +4,17 @@
 
 ## Usage
 
+Setup the `venv` environment:
+
 ```bash
 python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
 shiny run --reload app.py
 ```
 

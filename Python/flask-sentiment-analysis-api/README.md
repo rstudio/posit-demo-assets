@@ -13,6 +13,16 @@ python train.py
 
 ## Usage
 
+Setup the `venv` environment:
+
+```bash
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Run the API:
+
 ```bash
 flask --app app run
 ```

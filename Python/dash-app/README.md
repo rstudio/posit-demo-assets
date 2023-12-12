@@ -6,10 +6,17 @@ This example is from Plotly's [Dash tutorial](https://dash.plot.ly/getting-start
 
 ## Usage
 
+Setup the `venv` environment:
+
 ```bash
 python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
 python app.py
 ```
 
