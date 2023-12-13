@@ -10,10 +10,6 @@ source("helpers.R")
 
 # Define the user interface (UI)
 ui <- page_sidebar(
-
-  # Add github link
-  ribbon_css("https://github.com/rstudio/demo-co/tree/main/traveling-salesperson-app"),
-
   # Set CSS theme
   theme = bs_theme(bootswatch = "spacelab",
                    success ="#86C7ED",
