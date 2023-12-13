@@ -2,8 +2,7 @@
 
 Palmer's penguins shiny dashboard demo.
 
-![screenshot](./imgs/app-screenshot.png)
-
+![screenshot](app-screenshot.png)
 
 ## Usage
 
@@ -14,10 +13,10 @@ renv::activate()
 renv::restore()
 ```
 
-To run the app either click the "Run App" button at the top of the IDE code pane or use:
+To run the app either open `app/app.R` and click the "Run App" button at the top of the IDE code pane or use:
 
 ```r
-shiny::runApp()
+shiny::runApp("app")
 ```
 
 ## Deployment
@@ -32,8 +31,7 @@ You can also deploy using the rsconnect package:
 
 ```
 rsconnect::deployApp(
-  appDir = ".",
-  appFiles = c("app.R"),
+  appDir = "app",
   appTitle = "Shiny Penguins"
 )
 ```
@@ -43,7 +41,7 @@ rsconnect::deployApp(
 Update the code, and then run:
 
 ```r
-rsconnect::writeManifest()
+rsconnect::writeManifest("app")
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
