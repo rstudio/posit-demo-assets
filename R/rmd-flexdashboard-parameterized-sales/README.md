@@ -19,7 +19,7 @@ To render the dashboard open `dashboard/sales-dashboard.Rmd` and use the "Knit" 
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `dashboard/sales-dashboard.Rmd` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 

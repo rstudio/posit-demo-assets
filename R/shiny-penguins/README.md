@@ -23,7 +23,7 @@ shiny::runApp("app")
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `app/app.R` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 

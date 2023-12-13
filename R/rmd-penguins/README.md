@@ -23,7 +23,7 @@ rmarkdown::render("report/rmd-penguins.Rmd")
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `report/rmd-penguins.Rmd` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 
