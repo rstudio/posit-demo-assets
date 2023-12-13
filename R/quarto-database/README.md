@@ -1,5 +1,7 @@
 # Working with Databases in RStudio
 
+![screenshot of Quarto doc](quarto-database.png)
+
 ## Usage
 
 Setup the `renv` environment:
@@ -9,17 +11,17 @@ renv::activate()
 renv::restore()
 ```
 
-To render the document either use the "Render" button on the top of the IDE code pane or use:
+To render the document either open `report/quarto-database.qmd` and use the "Render" button on the top of the IDE code pane or use:
 
 ```r
-quarto::quarto_render("quarto-database.qmd")
+quarto::quarto_render("report/quarto-database.qmd")
 ```
 
 ## Deployment
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `report/quarto-database.qmd` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 
@@ -27,7 +29,7 @@ You can also deploy using the rsconnect package:
 
 ```
 rsconnect::deployDoc(
-  doc = "quarto-database.qmd",
+  doc = "report/quarto-database.qmd",
   appTitle = "Quarto Database Example"
 )
 ```
@@ -37,7 +39,7 @@ rsconnect::deployDoc(
 Update the code, and then run:
 
 ```r
-rsconnect::writeManifest()
+rsconnect::writeManifest("report")
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
