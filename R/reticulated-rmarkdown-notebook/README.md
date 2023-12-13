@@ -26,7 +26,7 @@ renv::activate()
 renv::restore()
 ```
 
-To render the dashboard either use the "Knit" button on the top of the IDE code pane and select "Knit to HTML" or use:
+To render the dashboard either open `rmarkdown-notebook.Rmd` use the "Knit" button on the top of the IDE code pane and select "Knit to HTML" or use:
 
 ```r
 rmarkdown::render("rmarkdown-notebook.Rmd")
@@ -36,7 +36,7 @@ rmarkdown::render("rmarkdown-notebook.Rmd")
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `rmarkdown-notebook.Rmd` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 

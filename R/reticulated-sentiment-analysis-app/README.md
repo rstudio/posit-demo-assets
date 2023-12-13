@@ -24,7 +24,7 @@ renv::activate()
 renv::restore()
 ```
 
-To run the app locally select `app/app.R` and either use the "Run App" button on the top right of the IDE code pane or use:
+To run the app locally select `app.R` and either use the "Run App" button on the top right of the IDE code pane or use:
 
 ```r
 shiny::runApp()
@@ -34,7 +34,7 @@ shiny::runApp()
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `app.R` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 
