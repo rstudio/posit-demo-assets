@@ -4,7 +4,7 @@
   "platform": "4.3.2",
   "metadata": {
     "appmode": "rmd-static",
-    "primary_rmd": "report.Rmd",
+    "primary_rmd": "pins-r-penguins.Rmd",
     "primary_html": null,
     "content_category": null,
     "has_parameters": false
@@ -1911,8 +1911,8 @@
     }
   },
   "files": {
-    "report.Rmd": {
-      "checksum": "49b7d743eba4ca6e0ef8d282c5f5d673"
+    "pins-r-penguins.Rmd": {
+      "checksum": "312b2947d1572ebb6888c440deb66e39"
     }
   },
   "users": null

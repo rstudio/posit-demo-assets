@@ -107,6 +107,6 @@ content |>
 ## Send email
 
 ```{r send_email}
-blastula::render_connect_email(input = "./email.Rmd") |> 
+blastula::render_connect_email(input = "./connect-content-email.Rmd") |> 
   blastula::attach_connect_email(subject = glue("Connect Content Report - {today()}"))
 ```

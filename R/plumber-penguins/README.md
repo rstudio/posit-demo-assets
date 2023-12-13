@@ -2,7 +2,7 @@
 
 A demo of how to use [Plumber](https://www.rplumber.io/index.html) to create APIs on Posit Connect.
 
-![screenshot](imgs/screenshot.png)
+![screenshot of Plumber API docs](screenshot.png)
 
 ## Usage
 
@@ -15,13 +15,13 @@ renv::restore()
 
 To run the API locally:
 
-Open the `plumber.R` file in the IDE and click the "Run API" button.
+Open the `api/plumber.R` file in the IDE and click the "Run API" button.
 
 ## Deployment
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `api/plumber.R` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 
@@ -29,7 +29,7 @@ You can also deploy using the rsconnect package:
 
 ```
 rsconnect::deployAPI(
-  api = "app",
+  api = "api",
   appFiles = c("plumber.R"),
   appTitle = "Shiny Penguins Plumber"
 )
@@ -40,11 +40,10 @@ rsconnect::deployAPI(
 Update the code, and then run:
 
 ```r
-rsconnect::writeManifest("app")
+rsconnect::writeManifest("api")
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
-
 
 ## Resources
 

@@ -35,7 +35,7 @@ plumber::pr("plumber.R") |>
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
+Open `plumber.R` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### Git-backed
 

@@ -4,7 +4,7 @@
   "platform": "4.3.2",
   "metadata": {
     "appmode": "rmd-static",
-    "primary_rmd": "report.Rmd",
+    "primary_rmd": "connectwidgets-penguins.Rmd",
     "primary_html": null,
     "content_category": null,
     "has_parameters": false
@@ -1585,14 +1585,11 @@
     }
   },
   "files": {
+    "connectwidgets-penguins.Rmd": {
+      "checksum": "f30b73f01f25ca56c8a5fab003f28e46"
+    },
     "imgs/penguins.png": {
       "checksum": "294f95f2d596414de70edc35dbe6d0fe"
-    },
-    "imgs/screenshot.png": {
-      "checksum": "03235508cd6120cb56527a3a47d9a3ee"
-    },
-    "report.Rmd": {
-      "checksum": "f30b73f01f25ca56c8a5fab003f28e46"
     }
   },
   "users": null
