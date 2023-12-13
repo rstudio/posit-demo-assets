@@ -1,5 +1,5 @@
 ---
-title: "Pins Demo"
+title: "R Pins Demo"
 output: html_document
 ---
 
@@ -58,7 +58,7 @@ You can easily read the data into R using pins:
 board <- pins::board_connect(auth = "envvar")
 
 board |> 
-  pins::pin_read(paste0(Sys.getenv("OWNER_USERNAME"), "/penguins_pins_r_demo")) |> 
+  pins::pin_read(paste0(Sys.getenv("USER"), "/penguins_pins_r_demo")) |> 
   dplyr::glimpse()
 ```
 
