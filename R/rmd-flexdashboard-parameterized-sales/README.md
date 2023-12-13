@@ -2,7 +2,7 @@
 
 A demo of a parameterized sales dashboard build using flexdashboard in an R Markdown file.
 
-![](img/sales-dashboard-screenshot.png)
+![screenshot of the R Markdown Flexdashboard](sales-dashboard-screenshot.png)
 
 ## Usage
 
@@ -13,11 +13,7 @@ renv::activate()
 renv::restore()
 ```
 
-To render the dashboard either use the "Knit" button on the top of the IDE code pane and select "Knit with Parameters" or use:
-
-```r
-knit_with_parameters("sales-dashboard.Rmd")
-```
+To render the dashboard open `dashboard/sales-dashboard.Rmd` and use the "Knit" button on the top of the IDE code pane and select "Knit with Parameters".
 
 ## Deployment
 
@@ -31,7 +27,7 @@ You can also deploy using the rsconnect package:
 
 ```
 rsconnect::deployDoc(
-  doc = "sales-dashboard.Rmd",
+  doc = "dashboard/sales-dashboard.Rmd",
   appTitle = "R Markdown Sales Flexdashboard"
 )
 ```
@@ -41,11 +37,10 @@ rsconnect::deployDoc(
 Update the code, and then run:
 
 ```r
-rsconnect::writeManifest()
+rsconnect::writeManifest("dashboard")
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
-
 
 ## Resources
 

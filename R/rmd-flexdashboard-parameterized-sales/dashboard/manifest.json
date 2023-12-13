@@ -2465,37 +2465,6 @@
         "Built": "R 4.3.0; ; 2023-04-21 21:48:15 UTC; unix"
       }
     },
-    "renv": {
-      "Source": "CRAN",
-      "Repository": "https://p3m.dev/cran/latest",
-      "description": {
-        "Package": "renv",
-        "Type": "Package",
-        "Title": "Project Environments",
-        "Version": "1.0.3",
-        "Authors@R": "c(\n    person(\"Kevin\", \"Ushey\", role = c(\"aut\", \"cre\"), email = \"kevin@rstudio.com\",\n           comment = c(ORCID = \"0000-0003-2880-7407\")),\n    person(\"Hadley\", \"Wickham\", role = c(\"aut\"), email = \"hadley@rstudio.com\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n    )",
-        "Description": "A dependency management toolkit for R. Using 'renv', you can create\n    and manage project-local R libraries, save the state of these libraries to\n    a 'lockfile', and later restore your library as required. Together, these\n    tools can help make your projects more isolated, portable, and reproducible.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://rstudio.github.io/renv/, https://github.com/rstudio/renv",
-        "BugReports": "https://github.com/rstudio/renv/issues",
-        "Imports": "utils",
-        "Suggests": "BiocManager, cli, covr, cpp11, devtools, gitcreds, jsonlite,\nknitr, miniUI, packrat, pak, R6, remotes, reticulate,\nrmarkdown, rstudioapi, shiny, testthat, uuid, waldo, yaml,\nwebfakes",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.2.3",
-        "VignetteBuilder": "knitr",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Config/testthat/parallel": "true",
-        "Config/testthat/start-first": "bioconductor,python,install,restore,snapshot,retrieve,remotes",
-        "NeedsCompilation": "no",
-        "Packaged": "2023-09-18 18:18:27 UTC; kevin",
-        "Author": "Kevin Ushey [aut, cre] (<https://orcid.org/0000-0003-2880-7407>),\n  Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Kevin Ushey <kevin@rstudio.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2023-09-19 08:10:02 UTC",
-        "Built": "R 4.3.0; ; 2023-09-20 11:13:18 UTC; unix"
-      }
-    },
     "reprex": {
       "Source": "CRAN",
       "Repository": "https://p3m.dev/cran/latest",
@@ -3487,20 +3456,8 @@
     }
   },
   "files": {
-    ".Rprofile": {
-      "checksum": "3a87de6180174ad50396f30b5a0dc49f"
-    },
     "data/all_year_sales.csv": {
       "checksum": "d1da3987fc4c2ad74f967e4161f2d342"
-    },
-    "img/sales-dashboard-screenshot.png": {
-      "checksum": "91e86a69d419b8a1228cc7b0fedcd160"
-    },
-    "README.md": {
-      "checksum": "2bd6f484e20593cee736337f7e210cfe"
-    },
-    "renv.lock": {
-      "checksum": "0279c0b9dbaead52afa555f4982d7d75"
     },
     "sales-dashboard.html": {
       "checksum": "6a599fd06a8b36b6e93dfc79bee9c05c"
