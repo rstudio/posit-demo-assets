@@ -4,7 +4,7 @@
   "platform": "4.3.2",
   "metadata": {
     "appmode": "rmd-static",
-    "primary_rmd": "full-report.Rmd",
+    "primary_rmd": "connect-content-report.Rmd",
     "primary_html": null,
     "content_category": null,
     "has_parameters": false
@@ -2337,7 +2337,7 @@
     }
   },
   "files": {
-    "email.Rmd": {
+    "connect-content-email.Rmd": {
       "checksum": "2fa3ccbc18792b71e2a836e881fa8f4f"
     }
   },

@@ -19,18 +19,19 @@ renv::activate()
 renv::restore()
 ```
 
-To render the report locally to preview the email:
+To render the report locally open `report/connect-content-report.Rmd` and use the "Knit" button on the top of the IDE code pane and select "Knit to HTML".
+
+To render an email preview locally use:
 
 ```r
-rmarkdown::render("full-report.Rmd")
+rmarkdown::render("report/connect-content-report.Rmd")
 ```
 
 ## Deployment
 
 ### Push Button
 
-Use the blue publish icon in the upper right corner of the IDE code pane.
-Ensure you select "Publish document with source code" and include `full-report.Rmd` and `email.Rmd` documents.
+Open `report/connect-content-report.Rmd` and use the blue publish icon in the upper right corner of the IDE code pane. Ensure you select "Publish document with source code" and include `connect-content-report.Rmd` and `connect-content-email.Rmd` documents.
 
 ### Git-backed
 
@@ -38,9 +39,9 @@ Update the code, and then run:
 
 ```r
 rsconnect::writeManifest(
-  appDir = ".", 
-  appPrimaryDoc = "full-report.Rmd",
-  appFiles = c("email.Rmd")
+  appDir = "report", 
+  appPrimaryDoc = "connect-content-report.Rmd",
+  appFiles = c("connect-content-email.Rmd")
 )
 ```
 
