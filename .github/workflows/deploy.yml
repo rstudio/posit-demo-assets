@@ -8,7 +8,7 @@ jobs:
     list-manifests:
         runs-on: ubuntu-latest
         outputs:
-            manifests: ${{ steps.list-manifests.outputs.manifests }}
+            paths: ${{ steps.list-manifests.outputs.paths }}
         steps:
             - name: List manifests
               id: list-manifests
@@ -23,8 +23,8 @@ jobs:
         needs: list-manifests
         runs-on: ubuntu-latest
         strategy:
-            matrix:
-                paths: ${{ fromJson(needs.list-manifests.outputs.manifests) }}
+          matrix:
+            paths: ${{ fromJson(needs.list-manifests.outputs.paths) }}
         steps:
             - name: Install Python
               uses: actions/setup-python@v4
