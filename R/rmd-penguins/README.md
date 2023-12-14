@@ -1,39 +1,52 @@
-# demo-rmd-penguins
+# R Markdown Report with Penguins Data
 
-An parameterized RMarkdown report!
+A parameterized RMarkdown report!
 
-- Code: <https://github.com/SamEdwardes/demo-rmd-penguins>
-- Deployment: <https://colorado.rstudio.com/rsc/demo-rmd-penguins/>
-
-![](report/imgs/report-screenshot.png)
+![screenshot of the R Markdown report](report-screenshot.png)
 
 ## Usage
 
-To render the report run:
+Setup the `renv` environment:
 
 ```r
-knit_with_parameters("~/projects/demo-rmd-penguins/report.Rmd")
+renv::activate()
+renv::restore()
+```
+
+To render the dashboard either open `report/rmd-penguins.Rmd` and use the "Knit" button on the top of the IDE code pane and select "Knit to HTML" or use:
+
+```r
+rmarkdown::render("report/rmd-penguins.Rmd")
 ```
 
 ## Deployment
 
-### Git-backed
+### Push Button
 
-To deploy the report to RStudio Connect:
+Open `report/rmd-penguins.Rmd` and use the blue publish icon in the upper right corner of the IDE code pane.
 
-```r
-rsconnect::writeManifest("report")
+### rsconnect package
+
+You can also deploy using the rsconnect package:
+
 ```
-
-Then commit any changes to GitHub.
-
-### Programatic
-
-You can also deploy using the `rsconnect` api:
-
-```r
 rsconnect::deployDoc(
-  doc = "report/report.Rmd",
-  appTitle = "RMarkdown Penguins API Deployment"
+  doc = "report/rmd-penguins.Rmd",
+  appTitle = "R Markdown Penguins"
 )
 ```
+
+### Git-backed
+
+Update the code, and then run:
+
+```r
+rsconnect::writeManifest(appDir = "report")
+```
+
+Commit the new `manifest.json` file to the git repo along with the code.
+
+## Resources
+
+[Posit Connect User Guide: R Markdown](https://docs.posit.co/connect/user/rmarkdown/)
+

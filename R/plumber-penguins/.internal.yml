@@ -1,0 +1,9 @@
+default:
+  content:
+    - name: "Penguins API"
+      path: "./app"
+      description: "An API serving penguin data measurements, built with Plumber."
+      tag:
+        - "Examples|R|Plumber"
+      url: "/r/plumber-penguins/"
+      image: "./imgs/screenshot.png"
