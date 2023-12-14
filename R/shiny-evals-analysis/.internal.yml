@@ -1,0 +1,9 @@
+default:
+  content:
+    - name: "Evaluation Analysis Dashboard"
+      path: "."
+      description: "A dashboard of free trial information by customer segment, built with Shiny for R."
+      tag:
+        - "Examples|R|Shiny"
+      url: "/r/evals-analysis/"
+      image: "./images/screenshot.png"
