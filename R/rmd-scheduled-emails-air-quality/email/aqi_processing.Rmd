@@ -17,7 +17,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(pointblank)
 library(dplyr)
 library(lubridate)
-library(pins)
 library(httr)
 library(blastula)
 library(xml2)
@@ -181,19 +180,6 @@ good_air <- get_sundered_data(agent_aqi, type = "pass")
 
 ```
 
-# Pin data for use by other assets 
-```{r}
-# pin the bad air and all station data
-board <- board_rsconnect()
-pin_write(board, bad_air, "aqi_exceeding_stations", type="csv")
-pin_write(board, clean_response, "aqi_readings")
-
-# prune to last 45 days
-pin_versions_prune(board, "katie.masiello/aqi_exceeding_stations", days = 45)
-pin_versions_prune(board, "katie.masiello/aqi_readings", days = 45)
-```
-
-
 # Create the informant table / Data Dictionary
 ```{r echo = FALSE, message = FALSE}
 
@@ -245,6 +231,7 @@ if(nrow(bad_air) > 0){
 
 
 # Logging information
+
 Very simplistic log of date and data sent:
 ```{r}
 xlist <- agent_aqi %>% get_agent_x_list()
