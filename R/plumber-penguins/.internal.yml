@@ -1,7 +1,7 @@
 default:
   content:
     - name: "Penguins API"
-      path: "./app"
+      path: "./api"
       description: "An API serving penguin data measurements, built with Plumber."
       tag:
         - "Examples|R|Plumber"
