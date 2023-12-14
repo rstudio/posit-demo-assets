@@ -17,7 +17,7 @@ jobs:
                 repo: ${{ github.repository }}
                 ref: ${{ github.ref }}
                 path: "."
-                ext: ".json"
+                ext: "manifest.json"
 
     deploy:
         needs: list-manifests
