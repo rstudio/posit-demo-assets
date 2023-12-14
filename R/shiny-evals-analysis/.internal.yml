@@ -1,7 +1,7 @@
 default:
   content:
     - name: "Evaluation Analysis Dashboard"
-      path: "."
+      path: "./app"
       description: "A dashboard of free trial information by customer segment, built with Shiny for R."
       tag:
         - "Examples|R|Shiny"

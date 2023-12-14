@@ -6,4 +6,4 @@ default:
       tag:
         - "Examples|R|Plumber"
       url: "/r/plumber-penguins/"
-      image: "./imgs/screenshot.png"
+      image: "screenshot.png"

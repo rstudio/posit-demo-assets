@@ -1,0 +1,9 @@
+default:
+  content:
+    - name: "Conditional Emails with blastula"
+      path: "./email"
+      description: "An R Markdown report to generate different outcomes when rendering a report on Posit Connect and email results."
+      tag:
+        - "Examples|R|R Markdown"
+      url: "/r/rmd-conditional-emails/"
+      image: "screenshot.png"
