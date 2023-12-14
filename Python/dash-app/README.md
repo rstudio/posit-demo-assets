@@ -4,12 +4,40 @@ This example is from Plotly's [Dash tutorial](https://dash.plot.ly/getting-start
 
 ![example app image](app.png)
 
+## Usage
+
+Setup the `venv` environment:
+
+```bash
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+python app.py
+```
+
 ## Deploy
 
+### rsconnect-python CLI
+
+```bash
+rsconnect deploy dash .
 ```
-rsconnect deploy dash . -n <SERVER-NICKNAME>
+
+### Git-backed
+
+Update the code, and then run:
+
+```bash
+rsconnect write-manifest dash --overwrite .
 ```
+
+Commit the new `manifest.json` file to the git repo along with the code.
 
 ## Resources
 
-[Posit Connect User Guide - Dash](https://docs.posit.co/connect/user/dash/)
+[Posit Connect User Guide: Dash](https://docs.posit.co/connect/user/dash/)

@@ -1,10 +1,10 @@
 {
   "R": {
-    "Version": "4.2.0",
+    "Version": "4.3.2",
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cloud.r-project.org"
+        "URL": "https://packagemanager.posit.co/cran/latest"
       }
     ]
   },
@@ -670,13 +670,13 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.17.0",
+      "Version": "1.0.3",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "utils"
       ],
-      "Hash": "ce3065fc1a0b64a859f55ac3998d6927"
+      "Hash": "41b847654f567341725473431dd0d5ab"
     },
     "reticulate": {
       "Package": "reticulate",

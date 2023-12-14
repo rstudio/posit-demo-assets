@@ -1,38 +1,51 @@
-# demo-shiny-penguins
+# Shiny Dashboard with Penguins Data
 
 Palmer's penguins shiny dashboard demo.
 
-- Code: <https://github.com/SamEdwardes/demo-shiny-penguins>
-- Deployment: <https://colorado.rstudio.com/rsc/demo-shiny-penguins/>
-
-![screenshot](./imgs/app-screenshot.png)
+![screenshot](app-screenshot.png)
 
 ## Usage
 
+Setup the `renv` environment:
+
 ```r
-shiny::runApp('app')
+renv::activate()
+renv::restore()
+```
+
+To run the app either open `app/app.R` and click the "Run App" button at the top of the IDE code pane or use:
+
+```r
+shiny::runApp("app")
 ```
 
 ## Deployment
+
+### Push Button
+
+Open `app/app.R` and use the blue publish icon in the upper right corner of the IDE code pane.
+
+### rsconnect package
+
+You can also deploy using the rsconnect package:
+
+```
+rsconnect::deployApp(
+  appDir = "app",
+  appTitle = "Shiny Penguins"
+)
+```
 
 ### Git-backed
 
 Update the code, and then run:
 
 ```r
-rsconnect::writeManifest()
+rsconnect::writeManifest("app")
 ```
 
-The app will be automatically redeployed by RStudio Connect.
+Commit the new `manifest.json` file to the git repo along with the code.
 
-### Programatic
+## Resources
 
-You can also deploy the app using the `rsconnect` api:
-
-```r
-rsconnect::deployApp(
-  appDir = ".",
-  appFiles = c("app.R"),
-  appTitle = "Shiny Penguins API Deployment"
-)
-```
+[Posit Connect User Guide: Shiny](https://docs.posit.co/connect/user/shiny/)

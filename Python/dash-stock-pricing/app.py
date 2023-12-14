@@ -3,33 +3,22 @@ import os
 
 import dash
 import dash_bootstrap_components as dbc
-
-# from dash import dcc
-# from dash import html
-import dash_table as dt
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dash_table, dcc, html
 from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.express as px
 
 MIN_DATE = pd.Timestamp(2010, 1, 4, 0).date()
 MAX_DATE = pd.Timestamp(2018, 11, 7, 0).date()
-"""try and accept for imports to get rid of deprecation warning"""
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
-
-def custom_date_parser(date):
-    return pd.datetime.strptime(date, "%Y-%m-%d")
-
 
 # Fetch prices from local CSV using pandas
 prices = pd.read_csv(
     os.path.join(os.path.dirname(__file__), "prices.csv"),
     # index_col=0,
     parse_dates=True,
-    date_parser=custom_date_parser,
+    date_format="%Y-%m-%d",
 )
 
 prices["date"] = pd.to_datetime(prices["date"], format="%Y-%m-%d")
@@ -155,7 +144,7 @@ graphs = [
     ),
 ]
 
-max_table_dash = dt.DataTable(
+max_table_dash = dash_table.DataTable(
     data=max_vol.to_dict("records"),
     style_as_list_view=True,
     fill_width=False,
@@ -442,4 +431,4 @@ def update_scatter_plot(all_tickers, price):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(debug=True)

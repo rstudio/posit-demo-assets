@@ -1,0 +1,9 @@
+default:
+  content:
+    - name: "Using Databases with Posit Products"
+      path: "."
+      description: "Quarto document showing data access patterns."
+      tag:
+        - "Examples|R|Quarto"
+      url: "/r/quarto-database"
+      image: "quarto-database.png"

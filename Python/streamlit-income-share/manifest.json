@@ -6,22 +6,31 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.10.0",
+    "version": "3.11.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.0.1",
+      "version": "23.2.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "dc5fd71da5f6d9a5ac6121e4f25a8f25"
+      "checksum": "7a8ac63e632715a0f4eb43ed75866c48"
+    },
+    ".internal.yml": {
+      "checksum": "f1fff527b600fbc9329f00b260a1fc9f"
+    },
+    "README.md": {
+      "checksum": "4dbb2afeef83537f7c32b7ba3b21597f"
     },
     "app.py": {
       "checksum": "2b45ae76a59492827ba0370737a2a3d5"
     },
     "data.csv": {
       "checksum": "8da5e3f4e5d46c024310cd04354f81bd"
+    },
+    "streamlit-income-share.png": {
+      "checksum": "4870b5dc9d209e007b8f5d4d627a0a5a"
     }
   }
 }

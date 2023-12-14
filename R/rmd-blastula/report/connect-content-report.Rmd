@@ -1,0 +1,112 @@
+---
+title: "Connect Content Report"
+date: "`r lubridate::today()`"
+---
+
+This report includes a summary of all the content that is currently published on Connect.
+
+```{r setup, warning=FALSE, message=FALSE}
+library(glue)
+library(lubridate)
+library(connectapi)
+library(ggplot2)
+library(dplyr)
+library(janitor)
+library(stringr)
+library(scales)
+library(forcats)
+
+colour_mapping_lang <- c(
+  "Python" = "#FFD43B",
+  "R" = "#276BBE",
+  "Quarto" = "#75AADB",
+  "Unknown" = "#C4C7C9"
+)
+colour_mapping_type <- c(
+  "Document" = "#447099",
+  "Web App" = "#72994E",
+  "API" = "#EE6331",
+  "Unknown" = "#C4C7C9"
+)
+
+client <- connect()
+content <- get_content(client)
+```
+
+## Data ETL
+
+```{r tidy-data}
+content <- content |>
+  # Classify content
+  mutate(
+    language = case_when(
+      !is.na(r_version) ~ "R",
+      !is.na(py_version) ~ "Python",
+      !is.na(quarto_version) ~ "Quarto",
+      TRUE ~ "Unknown"
+    ),
+    app_type = case_when(
+      str_ends(app_mode, "static") ~ "Document",
+      str_ends(app_mode, "api") ~ "API",
+      str_ends(app_mode, "shiny") ~ "Web App",
+      str_ends(app_mode, "streamlit") ~ "Web App",
+      str_ends(app_mode, "bokeh") ~ "Web App",
+      str_ends(app_mode, "dash") ~ "Web App",
+      TRUE ~ "Unknown"
+    )
+  ) |> 
+  # Orgnize factors
+  mutate(
+    language = factor(language, levels = c("Unknown", "QUarto", "Python", "R")),
+    app_type = factor(app_type, levels = c("Unknown", "API", "Web App", "Document"))
+  )
+```
+
+## Deployed by language
+
+```{r plot-by-lang}
+#| fig-align: center
+content |> 
+  group_by(language, app_type) |>
+  summarise(n = n(), .groups = "drop") |> 
+  ggplot(aes(x = app_type, y = n)) +
+  geom_col(aes(fill = language)) +
+  scale_fill_manual(values = colour_mapping_lang) +
+  scale_y_continuous(label=comma) +
+  labs(
+    title = "Distribution of Content Deployed",
+    subtitle = "By Langauge and Type",
+    x = "Type",
+    y = "Count",
+    fill = "Language"
+  ) +
+  coord_flip()
+```
+
+## App Mode
+
+```{r plot-by-type}
+#| fig-align: center
+content |> 
+  tabyl(app_mode) |> 
+  arrange(desc(n)) |> 
+  mutate(app_mode = fct_reorder(factor(app_mode), n)) |> 
+  ggplot(aes(x = app_mode, y = n)) +
+  geom_col() +
+  geom_label(aes(label = percent(percent, accuracy = 1)), nudge_y = 100) +
+  scale_y_continuous(label=comma) +
+  labs(
+    title = "Distribution of Content Deployed",
+    subtitle = "By App Mode",
+    x = "App Mode",
+    y = "Count"
+  ) +
+  coord_flip()
+```
+
+## Send email
+
+```{r send_email}
+blastula::render_connect_email(input = "./connect-content-email.Rmd") |> 
+  blastula::attach_connect_email(subject = glue("Connect Content Report - {today()}"))
+```

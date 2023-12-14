@@ -1,40 +1,50 @@
-# demo-plumber-penguins
+# Plumber API with Penguins Data
 
-A demo of how to use [Plumber](https://www.rplumber.io/index.html) to create APIs on RStudio Connect.
+A demo of how to use [Plumber](https://www.rplumber.io/index.html) to create APIs on Posit Connect.
 
-- Code: <https://github.com/SamEdwardes/demo-plumber-penguins>
-- Deployment: <https://colorado.rstudio.com/rsc/demo-plumber-penguins/>
-
-<https://colorado.rstudio.com/rsc/palmerspenguins/>
-
-![screenshot](imgs/screenshot.png)
+![screenshot of Plumber API docs](screenshot.png)
 
 ## Usage
 
-```bash
-curl -X GET "https://colorado.rstudio.com/rsc/palmerspenguins/penguins?sample_size=5"
+Setup the `renv` environment:
+
+```r
+renv::activate()
+renv::restore()
 ```
+
+To run the API locally:
+
+Open the `api/plumber.R` file in the IDE and click the "Run API" button.
 
 ## Deployment
 
-### Git-backed
+### Push Button
 
-After making any code changes run the following:
+Open `api/plumber.R` and use the blue publish icon in the upper right corner of the IDE code pane.
 
-```r
-rsconnect::writeManifest("app")
+### rsconnect package
+
+You can also deploy using the rsconnect package:
+
 ```
-
-RStudio Connect will then automatically redeploy the app.
-
-### Programatic
-
-You can also deploy the app using the `rsconnect` api:
-
-```r
 rsconnect::deployAPI(
-  api = "app",
+  api = "api",
   appFiles = c("plumber.R"),
   appTitle = "Shiny Penguins Plumber"
 )
 ```
+
+### Git-backed
+
+Update the code, and then run:
+
+```r
+rsconnect::writeManifest("api")
+```
+
+Commit the new `manifest.json` file to the git repo along with the code.
+
+## Resources
+
+[Posit Connect User Guide: Plumber](https://docs.posit.co/connect/user/plumber/)
