@@ -1,7 +1,7 @@
 default:
   content:
     - name: "Using Databases with Posit Products"
-      path: "."
+      path: "./report"
       description: "Quarto document showing data access patterns."
       tag:
         - "Examples|R|Quarto"

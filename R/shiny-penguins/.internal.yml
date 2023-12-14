@@ -1,9 +1,9 @@
 default:
   content:
     - name: "Penguins Dashboard"
-      path: "."
+      path: "./app"
       description: "A dashboard of penguin data measurements, built with Shiny for R."
       tag:
         - "Examples|R|Shiny"
       url: "/r/shiny-penguins/"
-      image: "./imgs/app-screenshot.png"
+      image: "app-screenshot.png"
