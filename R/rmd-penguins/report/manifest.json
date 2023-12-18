@@ -4,7 +4,7 @@
   "platform": "4.3.2",
   "metadata": {
     "appmode": "rmd-static",
-    "primary_rmd": "report.Rmd",
+    "primary_rmd": "rmd-penguins.Rmd",
     "primary_html": null,
     "content_category": null,
     "has_parameters": true
@@ -1741,7 +1741,7 @@
         "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
         "Repository": "RSPM",
         "Date/Publication": "2023-08-10 08:20:07 UTC",
-        "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-08-11 13:03:49 UTC; unix"
+        "Built": "R 4.3.0; x86_64-pc-linux-gnu; 2023-12-12 11:29:03 UTC; unix"
       }
     },
     "rappdirs": {
@@ -2581,13 +2581,7 @@
     "imgs/lter_penguins.png": {
       "checksum": "294f95f2d596414de70edc35dbe6d0fe"
     },
-    "imgs/report-screenshot.png": {
-      "checksum": "5138e885dfd67e3c4e344b824de01bcd"
-    },
-    "report.html": {
-      "checksum": "d4c94e48f6279b483bbfca5257223e22"
-    },
-    "report.Rmd": {
+    "rmd-penguins.Rmd": {
       "checksum": "ae68a2ea29595fd3abef06abd7331ca7"
     }
   },
