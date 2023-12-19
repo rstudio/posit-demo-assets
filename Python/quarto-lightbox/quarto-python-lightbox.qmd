@@ -74,4 +74,3 @@ Images are from Wikipedia and in the public domain:
 - Bears: <https://en.wikipedia.org/wiki/Bear#/media/File:Chengdu-pandas-d10.jpg>
 - Wizard of Oz: <https://commons.wikimedia.org/wiki/File:The_Wizard_of_Oz_1955_Lobby_Card.jpg>
 
-Check out the code: [here](https://github.com/sol-eng/python-examples/tree/main/quarto-lightbox/)
