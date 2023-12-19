@@ -79,9 +79,9 @@ There are two ways to open an R project.
 
 ##### Option 1:
 
-1. Find the Files tab on the bottom left of the screen 
+1. Find the Files tab on the right side of your screen 
 2. Navigate to the project folder you want to work in.
-3. Launch the project
+3. Launch the project by clicking on the .Rproj file
 
 ##### Option 2: 
 1. Navigate to the project folder you want to work in.
