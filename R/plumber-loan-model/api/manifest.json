@@ -4625,8 +4625,14 @@
     }
   },
   "files": {
+    "district.parquet": {
+      "checksum": "c4820f76ce47ac4c8847a954289caf1a"
+    },
+    "model/xgb_final_fit.rds": {
+      "checksum": "c510a0d12e6122ba00f07a15051a394f"
+    },
     "plumber.R": {
-      "checksum": "0a92f053ba3a9fc576d650161c9a8ec4"
+      "checksum": "b44c31d08d7e479290ca7804524cc3c8"
     }
   },
   "users": null

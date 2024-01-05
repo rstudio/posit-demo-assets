@@ -46,4 +46,4 @@ xgb_final_spec <-
 xgb_final_fit <- xgb_final_spec %>% fit(status ~ ., data = select(model_data, -client_id))
 
 mod_bundle <- bundle(xgb_final_fit)
-saveRDS(mod_bundle, file = "model/xgb_final_fit.rds")
+saveRDS(mod_bundle, file = "api/model/xgb_final_fit.rds")

@@ -20,7 +20,7 @@ library(bundle)
 #* @post /predict
 function(age=47L, district_id=63L, amount=5000, duration=12L, fico=750){
   
-  mod_bundle <- readRDS("../model/xgb_final_fit.rds")
+  mod_bundle <- readRDS("model/xgb_final_fit.rds")
   xgb_final_fit <- unbundle(mod_bundle)
 
   predict_df <- tibble(
@@ -43,7 +43,7 @@ function(age=47L, district_id=63L, amount=5000, duration=12L, fico=750){
 #* @param division:string Division name
 #* @get /districts
 function(city="", state_abbrev="", region="", division="") {
-  district_df <- read_parquet("../data/district.parquet") |>
+  district_df <- read_parquet("district.parquet") |>
     mutate(district_id = as.integer(district_id))
 
   if (city != "") {
