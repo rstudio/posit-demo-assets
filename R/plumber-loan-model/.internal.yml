@@ -1,0 +1,9 @@
+default:
+  content:
+    - name: "Loan Risk API"
+      path: "./api"
+      description: "An API serving predictions from a loan risk model, built with Plumber."
+      tag:
+        - "Examples|R|Plumber"
+      url: "/r/plumber-loan-model/"
+      image: "screenshot.png"
