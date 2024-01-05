@@ -30,7 +30,6 @@ You can also deploy using the rsconnect package:
 ```
 rsconnect::deployAPI(
   api = "api",
-  appFiles = c("plumber.R"),
   appTitle = "Loan Risk Model Plumber"
 )
 ```
