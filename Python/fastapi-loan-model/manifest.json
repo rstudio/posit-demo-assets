@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "locale": "en_US.UTF-8",
+  "metadata": {
+    "appmode": "python-fastapi",
+    "entrypoint": "main"
+  },
+  "python": {
+    "version": "3.11.6",
+    "package_manager": {
+      "name": "pip",
+      "version": "23.2.1",
+      "package_file": "requirements.txt"
+    }
+  },
+  "files": {
+    "requirements.txt": {
+      "checksum": "b93439dd28b711ed207916f510de146f"
+    },
+    "README.md": {
+      "checksum": "662bfd76330331957b33a6ca3120a700"
+    },
+    "data/client.parquet": {
+      "checksum": "b7731a83d0a5e6425a4e471480f6bb2b"
+    },
+    "data/disposition.parquet": {
+      "checksum": "b4a43a26eed4cac4cfd55e1ac9b07afd"
+    },
+    "data/district.parquet": {
+      "checksum": "c4820f76ce47ac4c8847a954289caf1a"
+    },
+    "data/loan.parquet": {
+      "checksum": "001b522d4a071d1e08ef8707cc53e421"
+    },
+    "main.py": {
+      "checksum": "5d9f22ba075d1949fa8836c346a015f5"
+    },
+    "model/xgb_final_model.json": {
+      "checksum": "40cac1067468f83745cb1ffa28361db1"
+    },
+    "train.ipynb": {
+      "checksum": "4cf4f94a658b05277f745af856d951c4"
+    }
+  }
+}
