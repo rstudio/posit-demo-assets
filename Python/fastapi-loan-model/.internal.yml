@@ -1,0 +1,9 @@
+default:
+  content:
+    - name: "Loan Risk Prediction Model using FastAPI"
+      path: "."
+      description: "An API serving predictions from a loan risk model, built with FastAPI."
+      tag:
+        - "Examples|Python|FastAPI"
+      url: "/python/fastapi-loan-model/"
+      image: "screenshot.png"

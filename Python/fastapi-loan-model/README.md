@@ -1,4 +1,4 @@
-# Serving Stock Information with FastAPI 
+# Loan Risk Prediction Model using FastAPI
 
 ## Usage
 
@@ -33,6 +33,10 @@ rsconnect write-manifest fastapi --overwrite .
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
+
+## Training
+
+This example has a pre-created `model` directory. If you wish to re-run the training then run the `train.ipynb` notebook.
 
 ## Resources
 
