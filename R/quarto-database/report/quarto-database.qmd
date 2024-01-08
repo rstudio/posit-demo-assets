@@ -14,29 +14,11 @@ Workbench has a "Connections" pane which can bring database information into the
 
 Once a connection is setup in R code, data can be brought into memory or queries can be sent to the remote database. The `dbplyr` R package allows users to write familiar `dplyr` functions but turn those commands into SQL queries executed at the database. This process allows for efficient querying of large datasets without having to pull tables into memory right away.
 
-## Connect to a Database via a DSN
+The Test Drive environment is not a place to connect to external data sources. If you would like to evaluate this functionality please reach out to your Posit contact and look into a self-hosted evaluation where you can connect to your private data sources.
 
-We utilize the `odbc` [R package](https://github.com/r-dbi/odbc) to establish a connection with a DuckDB database via the DSN setup in `/etc/odbc.ini`. Note there are a wide variety of databases supported in the Posit Pro Drivers including PostgreSQL, MSSQL, Oracle and more, see a [full list here](https://solutions.posit.co/connections/db/databases/).
+To simulate external database access a [DuckDB](https://duckdb.org/) database has been provided on the Test Drive instance and the rest of this document shows how to work with data using it. Once a `con` object is created, you can treat it like an external database connection and experiment with `DBI` and `dbplyr` functionality.
 
-The `/etc/odbc.ini` entry looks like:
-
-```
-[Demo Datasets (DuckDB)]
-Driver=DuckDB Driver
-Database=/data/duckdb/database/demo-datasets.db
-```
-
-If one was to setup a PostgreSQL connection it would look like:
-
-```
-[Postgres (finance)]
-driver = PostgreSQL
-server = db_server_address.com
-uid = admin
-pwd = XXXXXXXXXXXXXXX
-port = 5432
-database = demo-data
-```
+## Connect to a Database
 
 First we load the `tidyverse` set of packages and the `DBI` database interface package.
 
@@ -44,13 +26,14 @@ First we load the `tidyverse` set of packages and the `DBI` database interface p
 #| warning: false
 library(tidyverse)
 library(DBI)
+library(duckdb)
 ```
 
-Then we establish a connection the the desired database. In this case `Demo Datasets (DuckDB)`, which is defined as a DSN in `/etc/odbc.ini`.
+Then we establish a connection to the demo DuckDB database.
 
 ```{r}
 #| warning: false
-con <- dbConnect(odbc::odbc(), "Demo Datasets (DuckDB)", timeout = 10)
+con <- dbConnect(duckdb(), dbdir = "/data/duckdb/database/demo-datasets.db")
 con
 ```
 
@@ -134,4 +117,10 @@ Append 5 new rows and check the amount of rows in the table now.
 data_partial <- data_summary[1:5,]
 results <- dbWriteTable(con, write_table_name, data_partial, append = T)
 tbl(con, write_table_name) %>% summarize(n())
+```
+
+## Disconnect
+
+```{r}
+dbDisconnect(con, shutdown=TRUE)
 ```
