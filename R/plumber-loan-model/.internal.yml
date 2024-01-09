@@ -1,6 +1,6 @@
 default:
   content:
-    - name: "Loan Risk API"
+    - name: "Serving Loan Risk Predictions with Plumber"
       path: "./api"
       description: "An API serving predictions from a loan risk model, built with Plumber."
       tag:
