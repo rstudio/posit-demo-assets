@@ -1,6 +1,6 @@
 default:
   content:
-    - name: "Loan Risk Prediction Model using FastAPI"
+    - name: "Serving Loan Risk Predictions with FastAPI"
       path: "."
       description: "An API serving predictions from a loan risk model, built with FastAPI."
       tag:
