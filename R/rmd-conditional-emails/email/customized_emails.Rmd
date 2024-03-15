@@ -48,11 +48,17 @@ For demonstration, let's define 4 possible outcomes:
     completely
 -   **case 4** - Send a "something went wrong" email and prematurely end
     notebook rendering
+-   Or set the environment variable CASE_OVERRIDE to `1 | 2 | 3 | 4` to
+    set the desired outcome
 
 ```{r random-selection-of-case}
 
-# randomly select a case 1, 2, 3, or 4
-case <- sample(1:4, 1) 
+if (Sys.getenv("CASE_OVERRIDE") %in% 1:4){
+  case <- as.numeric(Sys.getenv("CASE_OVERRIDE"))
+}else {
+  # randomly select a case 1, 2, 3, or 4
+  case <- sample(1:4, 1) 
+}
 
 ```
 
