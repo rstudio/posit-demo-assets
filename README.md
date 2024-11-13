@@ -120,6 +120,8 @@ For R based projects the requirements are:
 3. Create a [`manifest.json` file](https://docs.posit.co/connect/user/git-backed/#creating-a-manifest-file-from-r) to support git-backed publishing
 4. Submit the Pull Request (PR) to have your changes added to this repository.
 
+Updates for the environment can be done with: R -e 'renv::record("renv@1.0.11"); renv::restore(packages = "renv"); renv::install(); renv::snapshot(); rsconnect::writeManifest()'
+
 For Python based projects the requirements are:
 
 1. Clone and branch this project.
