@@ -30,6 +30,15 @@ client |>
   rsc_grid()
 ```
 
+## Documents
+
+```{r}
+client |> 
+  content() |> 
+  filter(title == "Penguins Document") |>
+  rsc_grid()
+```
+
 ## APIs
 
 ```{r}
@@ -39,12 +48,12 @@ client |>
   rsc_grid()
 ```
 
-## Documents
+## Pins
 
 ```{r}
 client |> 
   content() |> 
-  filter(title == "Penguins Document") |>
+  filter(title == "Penguins Pin") |>
   rsc_grid()
 ```
 
