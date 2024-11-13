@@ -7,9 +7,27 @@
 Setup the `venv` environment:
 
 ```bash
+# Create virtual environment
 python -m venv .venv
+
+# Activate virtual environment
 . .venv/bin/activate
+
+# Install all of the requirements
 pip install -r requirements.txt
+```
+
+Alternatively, use [uv](https://github.com/astral-sh/uv): 
+
+```bash
+# Create virtual environment
+uv venv
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Install all of the requirements
+uv pip sync requirements.txt
 ```
 
 Run the application:

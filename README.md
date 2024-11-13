@@ -72,6 +72,18 @@ Learn how to use certain product features and deploy content to share with other
 - [Install a package from a date-based snapshot](https://docs.posit.co/rspm/user/get-repo-url/#ui-frozen-urls)
 - [Identify the system dependencies of a package](https://docs.posit.co/rspm/admin/appendix/system-dependency-detection/#system-dependency-detection)
 
+#### Second week and on
+
+Get inspired!
+
+- [Quarto gallery](https://quarto.org/docs/gallery/)
+- [Shiny for R gallery](https://shiny.posit.co/r/gallery/)
+- [Shiny for Python gallery](https://shiny.posit.co/py/gallery/)
+- [Winners of the 2024 Shiny Competition](https://posit.co/blog/winners-of-the-2024-shiny-contest/)
+- Explore the 2024 Workshop materials for the [Data Science Workflows with Posit Tools — Python Focus Workshop](https://github.com/posit-conf-2024/ds-workflows-python)
+- Explore the 2024 Workshop materials for the [Data Science Workflows with Posit Tools — R Focus Workshop](https://github.com/posit-conf-2024/ds-workflows-r)
+
+
 ### How do I open a project?
 #### R content
 
