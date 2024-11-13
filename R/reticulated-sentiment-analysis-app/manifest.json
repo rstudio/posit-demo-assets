@@ -9,14 +9,6 @@
     "content_category": null,
     "has_parameters": false
   },
-  "python": {
-    "version": "3.12.6",
-    "package_manager": {
-      "name": "pip",
-      "version": "24.3.1",
-      "package_file": "requirements.txt"
-    }
-  },
   "packages": {
     "Matrix": {
       "Source": "CRAN",
@@ -1320,7 +1312,7 @@
       "checksum": "7652b1fbaa515fee028b68e662071b27"
     },
     "requirements.txt": {
-      "checksum": "5b1e73d37c522c042e1c767a9d6f5b69"
+      "checksum": "1c04aad23ea51bdf07fd52cf299b4abd"
     },
     "train.Rmd": {
       "checksum": "ee38da7d4e99bdb067c36afe12d127a3"

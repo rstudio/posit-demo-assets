@@ -48,6 +48,7 @@ rmarkdown-notebook/flights.csv
 # Virtual environments - might have to uncache local first with `git rm --cached .env`
 *.env
 */renv/*
+*/renv/activate.R
 /renv/
 .venv
 venv

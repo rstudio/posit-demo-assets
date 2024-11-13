@@ -9,14 +9,6 @@
     "content_category": null,
     "has_parameters": false
   },
-  "python": {
-    "version": "3.12.6",
-    "package_manager": {
-      "name": "pip",
-      "version": "24.3.1",
-      "package_file": "requirements.txt"
-    }
-  },
   "packages": {
     "MASS": {
       "Source": "CRAN",
@@ -2036,7 +2028,7 @@
       "checksum": "d86717c83b3f195d05e447bbe300f673"
     },
     "requirements.txt": {
-      "checksum": "64a32f3b345f1fe5604f3779e771e2f8"
+      "checksum": "6fc5e77b6cacd2d37c5ff336973f45e8"
     },
     "rmarkdown-notebook.Rmd": {
       "checksum": "d5b1ded62a78f364090cba8d8b6a1850"
