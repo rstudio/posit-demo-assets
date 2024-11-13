@@ -1,0 +1,79 @@
+---
+title: "Connect Widgets - Palmer Penguins"
+output: html_document
+resource_files:
+  - imgs/penguins.png
+---
+
+```{r setup, include=FALSE}
+library(connectwidgets)
+library(dplyr)
+library(rsconnect)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+client <- connect(
+  server  = Sys.getenv("CONNECT_SERVER"),
+  api_key = Sys.getenv("CONNECT_API_KEY")
+)
+```
+
+A curated list of Posit Connect demos using the [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) data set 🐧.
+
+
+## Applications
+
+```{r}
+client |> 
+  content() |> 
+  filter(title == "Penguins Dashboard") |>
+  rsc_grid()
+```
+
+## Documents
+
+```{r}
+client |> 
+  content() |> 
+  filter(title == "Penguins Document") |>
+  rsc_grid()
+```
+
+## APIs
+
+```{r}
+client |> 
+  content() |> 
+  filter(title == "Penguins API") |>
+  rsc_grid()
+```
+
+## Pins
+
+```{r}
+client |> 
+  content() |> 
+  filter(title == "Penguins Pin") |>
+  rsc_grid()
+```
+
+
+## R Content
+
+```{r}
+client |> 
+  content() |> 
+  by_tags("R") |> 
+  filter(stringr::str_detect(title, "Penguins")) |>
+  rsc_grid()
+```
+
+## Python content
+
+```{r}
+client |> 
+  content() |> 
+  by_tags("Python") |> 
+  filter(stringr::str_detect(title, "Penguins")) |>
+  rsc_grid()
+```

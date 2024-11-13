@@ -1,0 +1,66 @@
+---
+title: "R Pins Demo"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pins <img src="https://pins.rstudio.com/logo.png" align="right" height="50"/>
+
+The pins package can be used to publish data, models, and other R objects. Learn more about it here <https://pins.rstudio.com>.
+
+## Palmer Penguins <img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/logo.png" align="right" height="50"/>
+
+The Palmer Penguins package is an R package created by Allison Horst that makes some data about penugins easily available to R users. Read more about it here <https://allisonhorst.github.io/palmerpenguins/>
+
+This is what the data looks like:
+
+```{r}
+library(palmerpenguins)
+
+penguins |> 
+  head() |> 
+  kableExtra::kbl() |> 
+  kableExtra::kable_styling()
+
+```
+
+This is great if you have the `palmerpenguins` package installed in R. But what if you want to share this data with your colleagues who use python 🐍?
+
+This is where `pins` can help!
+
+## Publish data to connect using pins
+
+With `pins` you can easily publish data (and other stuff) to connect. In a few lines of code I can save this data to connect as a *pin*.
+
+```{r}
+board <- pins::board_connect(auth = "envvar")
+
+# Troubleshooting: errors can come up if the user doesn't match the Connect user, or if there is a piece of content on connect that already has that name
+board |> 
+  pins::pin_write(
+    penguins,
+    name = paste0(Sys.getenv("USER"), "/penguins_pins_r"),
+    type = "csv",
+    force_identical_write = TRUE
+  )
+```
+
+You can now see the data on connect!
+
+## Reading data from connect
+
+Now that the data has been published to connect, you and and other uses can pull the data from connect.
+
+You can easily read the data into R using pins:
+
+```{r}
+board <- pins::board_connect(auth = "envvar")
+
+board |> 
+  pins::pin_read(paste0(Sys.getenv("USER"), "/penguins_pins_r_demo")) |> 
+  dplyr::glimpse()
+```
+
