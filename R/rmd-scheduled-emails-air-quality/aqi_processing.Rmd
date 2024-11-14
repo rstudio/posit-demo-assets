@@ -45,8 +45,8 @@ req <- request(base_url) |>
   req_url_query(longitude=stations$long, .multi = "comma") |> 
   req_url_query(timezone="US/Pacific") |> 
   req_url_query(hourly="us_aqi,us_aqi_pm2_5,us_aqi_pm10") |>
-  req_url_query(start_date=today()-days_back) |> 
-  req_url_query(end_date=today())
+  req_url_query(start_date=today(tz="US/Pacific")-days_back) |> 
+  req_url_query(end_date=today(tz="US/Pacific"))
 req
 ```
 
