@@ -113,7 +113,8 @@ data <- response_body |>
   mutate(forecasted = if_else(as.POSIXct(time, tz="US/Pacific") > now(), TRUE, FALSE)) |> 
   # we are only interested in historical data, not forecast
   filter(forecasted == FALSE)
-     
+
+data
 ```
 
 # Data Validation
@@ -134,7 +135,7 @@ agent
 
 If there are records that do not pass the basic checks, we can omit those records and move forward with only those that pass.
 ```{r}
-clean_data <- get_sundered_data(agent, type = "pass") |>  
+validated_data <- get_sundered_data(agent, type = "pass") |>  
   mutate(color = case_when(
     dplyr::between(us_aqi, 0, 50) ~ "green",
     dplyr::between(us_aqi, 51, 100) ~ "yellow", 
@@ -150,7 +151,7 @@ fail_data <- get_sundered_data(agent, type = "fail")
 # Snapshot of AQI trend for station with highest reading
 ```{r}
 #Historical readings at worst site
-max_site_data <- clean_data |> 
+max_site_data <- validated_data |> 
     group_by(station) |> 
     mutate(max_aqi = max(us_aqi, na.rm = TRUE)) |>
     ungroup() |> 
@@ -172,7 +173,7 @@ Is air quality unhealthy?  Email me if air quality index is over a specific thre
 
 ```{r}
 threshold <- 60
-(agent_aqi <- clean_data |> 
+(agent_aqi <- validated_data |> 
     create_agent() |> 
     col_vals_lte(vars(us_aqi), value = threshold) |> 
     interrogate())
