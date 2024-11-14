@@ -1,0 +1,67 @@
+---
+title: "Email Document"
+output: blastula::blastula_email
+editor_options: 
+  chunk_output_type: console
+---
+
+Breathe easy! AQI measurements are all good for `r nrow(good_air)` measurements.
+
+![[^1]](blue_skies.jpeg){width="225"}
+
+[^1]: Photo by <a href="https://unsplash.com/@frostroomhead">Rodion Kutsaiev</a> on <a href="https://unsplash.com/images/nature/cloud">Unsplash</a>
+  
+
+comprehensive view of local air quality, see the [Air Quality Dashboard](https://pub.current.posit.team/public/aqi_dashboard/).
+
+A sample of the most recent readings from 6 random sites:
+
+```{r echo=FALSE}
+most_recent <- good_air %>% 
+  group_by(station) %>% 
+  slice(1) %>% ungroup() %>% 
+  select(station, us_aqi, time, color)
+
+sample_readings <- most_recent %>% sample_n(6)
+
+ggplot(sample_readings, aes(fill = color, ymax = us_aqi/350, ymin = 0, xmax = 2, xmin = 1)) +
+  geom_rect(aes(ymax=1, ymin=0, xmax=2, xmin=1), fill ="whitesmoke") +
+  geom_rect() + 
+  coord_polar(theta = "y",start=-pi/2) + xlim(c(0, 2)) + ylim(c(0,2)) +
+  geom_text(aes(x = 0, y = 0, label = us_aqi, colour=color), size=5.5) +
+  geom_text(aes(x=1.5, y=1.5, label=station), size=3) + 
+  facet_wrap(~station, ncol = 3) +
+  theme_void() +
+  scale_fill_manual(values = c(
+    "green"="forestgreen","yellow"="yellow", "orange"="darkorange", 
+    "red"="red", "purple"="purple1", "maroon"="red4")) +
+  scale_colour_manual(values = c("green"="forestgreen","yellow"="yellow", "orange"="darkorange", 
+                                 "red"="red", "purple"="purple1", "maroon"="red4")) +
+  theme(strip.background = element_blank(),
+        strip.text.x = element_blank()) +
+  guides(fill="none") +
+  guides(colour="none")
+```
+
+```{r echo=FALSE}
+suppressMessages(library(gt))
+```
+
+The highest reading over the last `r days_back` days is from the **`r max_site_data$station[1]`** site. This peak reading was **`r max_site_data$us_aqi[1]`**.
+
+Here's the trend at that site:
+
+```{r echo=FALSE}
+site_plot
+```
+
+Here's a summary of the highest readings over the last `r days_back` days from each site:
+
+```{r echo=FALSE}
+good_air %>% select(station, us_aqi, us_aqi_pm2_5, us_aqi_pm10) %>% 
+  group_by(station) %>% 
+  arrange(desc(us_aqi)) %>% 
+  slice(1) %>% 
+  ungroup() %>%
+  gt() 
+```

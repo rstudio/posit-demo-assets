@@ -1,0 +1,217 @@
+---
+title: "Air Quality Processing and Analysis"
+author: "Katie Masiello"
+date: "2023-01-10"
+output: html_document
+editor_options:
+  chunk_output_type: console
+resource_files:
+- email_bad_air.rmd
+- email_good_air.rmd
+- hazy.jpeg
+- blue_skies.jpeg
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(httr2)
+library(pointblank)
+library(blastula)
+library(xml2)
+library(glue)
+library(gt)
+```
+
+# Get Air Quality readings
+
+```{r}
+# read reference stations list
+stations <- read_csv("stations.csv", show_col_types = FALSE)
+```
+
+
+## Build the API query
+
+```{r}
+base_url <- "https://air-quality-api.open-meteo.com"
+endpoint <- "v1/air-quality"
+days_back <- 1
+
+# Compose the API request 
+req <- request(base_url) |> 
+  req_url_path_append(endpoint) |> 
+  req_url_query(latitude=stations$lat, .multi = "comma") |> 
+  req_url_query(longitude=stations$long, .multi = "comma") |> 
+  req_url_query(timezone="US/Pacific") |> 
+  req_url_query(hourly="us_aqi,us_aqi_pm2_5,us_aqi_pm10") |>
+  req_url_query(start_date=today()-days_back) |> 
+  req_url_query(end_date=today())
+req
+```
+
+### Perform the API request
+```{r}
+
+# perform the request
+response <- req |> 
+  req_perform()
+response
+
+# convert the body of the response to a tibble
+response_body <- response |> 
+  resp_body_string() |> 
+  jsonlite::fromJSON() |> 
+  as_tibble() |> 
+  select(latitude, longitude, hourly, location_id)
+response_body
+     
+```
+
+## Column Schema Verification
+Since the data is coming in from an external source, validate the schema to ensure there are no surprises.
+
+```{r}
+# Define a column schema so we can check inputted data is as expected
+schema_aqi_table <- col_schema(latitude = "numeric",
+                               longitude = "numeric",
+                               hourly = "list",
+                               location_id = "numeric")
+```
+
+```{r validate = TRUE}
+schema_agent <- create_agent(response_body) |> 
+  col_schema_match(schema_aqi_table, is_exact = FALSE) |> 
+  interrogate() 
+
+all_passed(schema_agent)
+```
+
+If there is an issue with the data schema, stop processing.
+
+```{r}
+
+if(all_passed(schema_agent) == FALSE){knitr::knit_exit("Processing stopped; there was an issue with the input data column schema")}
+
+```
+
+# Tidy results
+
+```{r}
+
+data <- response_body |>
+  # modify index
+  mutate(location_id = row_number()) |>
+  # unnest hourly data
+  unnest(hourly) |> 
+  unnest(where(is.list)) |> 
+  # convert time to datetime
+  mutate(time = as.POSIXct(strptime(time, format="%Y-%m-%dT%H:%M"), tz="US/Pacific")) |>
+  # add station names
+  left_join(select(stations, id, station), by = c("location_id" = "id")) |> 
+  # identify if historical or forcast
+  mutate(forecasted = if_else(as.POSIXct(time, tz="US/Pacific") > now(), TRUE, FALSE)) |> 
+  # we are only interested in historical data, not forecast
+  filter(forecasted == FALSE)
+     
+```
+
+# Data Validation
+
+## Data in-range validation
+
+### Does the data make sense?
+We can do basic checks on the columns to ensure the values are valid
+```{r}
+# define another agent with col_vals_* functions
+agent <- data |> 
+  create_agent() |> 
+  col_vals_between(columns = c(us_aqi, us_aqi_pm2_5, us_aqi_pm10), left = 0, right = 500) |> 
+  interrogate()
+
+agent
+```
+
+If there are records that do not pass the basic checks, we can omit those records and move forward with only those that pass.
+```{r}
+clean_data <- get_sundered_data(agent, type = "pass") |>  
+  mutate(color = case_when(
+    dplyr::between(us_aqi, 0, 50) ~ "green",
+    dplyr::between(us_aqi, 51, 100) ~ "yellow", 
+    dplyr::between(us_aqi, 101, 150) ~ "orange", 
+    dplyr::between(us_aqi, 151, 200) ~ "red", 
+    dplyr::between(us_aqi, 201, 300) ~ "purple", 
+    dplyr::between(us_aqi, 301, Inf) ~ "maroon"
+    ))
+
+fail_data <- get_sundered_data(agent, type = "fail")
+```
+
+# Snapshot of AQI trend for station with highest reading
+```{r}
+#Historical readings at worst site
+max_site_data <- clean_data |> 
+    group_by(station) |> 
+    mutate(max_aqi = max(us_aqi, na.rm = TRUE)) |>
+    ungroup() |> 
+    arrange(desc(max_aqi)) |> 
+    filter(station == first(station))
+
+site_plot <- ggplot(max_site_data, aes(x = time, y = us_aqi)) + 
+  geom_step(color = "#219ebc") + 
+  theme_minimal() +
+  labs(title = paste("AQI Readings for last", days_back, "days at", max_site_data$station[1])) +
+  xlab("AQI Reading") 
+
+site_plot
+```
+
+
+# Define some alerts
+Is air quality unhealthy?  Email me if air quality index is over a specific threshold.
+
+```{r}
+threshold <- 60
+(agent_aqi <- clean_data |> 
+    create_agent() |> 
+    col_vals_lte(vars(us_aqi), value = threshold) |> 
+    interrogate())
+
+bad_air <- get_sundered_data(agent_aqi, type = "fail")
+good_air <- get_sundered_data(agent_aqi, type = "pass")
+
+```
+
+
+# Generate email
+
+```{r}
+
+if(nrow(bad_air) > 0){
+  email <- render_connect_email("email_bad_air.rmd") 
+  
+  attach_connect_email(email, subject = "Air Quality Alert - it's bad out there")
+} else {
+  email <- render_connect_email("email_good_air.rmd")
+  
+  attach_connect_email(email, subject = "Good air report")
+}
+
+```
+
+
+# Logging information
+
+Very simplistic log of date and data sent:
+```{r}
+xlist <- agent_aqi |> get_agent_x_list()
+
+glue("Report run {blastula::add_readable_time()} 
+      {xlist$n_failed} readings exceeded threshold of {threshold} in the last {days_back} days. ")
+```
+
+## Email that was sent:
+```{r results = "asis", echo=FALSE}
+email$html_html 
+```
+
