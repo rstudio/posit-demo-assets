@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-Mask up! There's some bad air out there, baby.  Air quality index exceeds `r threshold` for **`r nrow(bad_air)` readings**.  These are taken over the last `r timespan` hours. 
+Mask up! There's some bad air out there, baby.  Air quality index exceeds `r threshold` for **`r nrow(bad_air)` readings**.  These are taken over the last `r days_back` days. 
 
 ![[^1]](hazy.jpeg){width="225"}
 
@@ -23,9 +23,10 @@ For a comprehensive view of local air quality, see the [Air Quality Dashboard](h
 
 ```{r echo=FALSE}
 most_recent <- bad_air %>% 
-  group_by(Site_Name) %>% 
+  group_by(station) %>% 
+  arrange(desc(time)) |> 
   slice(1) %>% ungroup() %>% 
-  select(Site_Name, AQI, UTC, color)
+  select(station, us_aqi, time, color)
 
 #how many sites
 num_sites <- nrow(most_recent)
@@ -37,13 +38,13 @@ A sample of the most recent readings from `r sample_size` random site(s) that ex
 ```{r echo=FALSE}
 sample_readings <- most_recent %>% sample_n(sample_size)
 
-ggplot(sample_readings, aes(fill = color, ymax = AQI/350, ymin = 0, xmax = 2, xmin = 1)) +
+ggplot(sample_readings, aes(fill = color, ymax = us_aqi/350, ymin = 0, xmax = 2, xmin = 1)) +
   geom_rect(aes(ymax=1, ymin=0, xmax=2, xmin=1), fill ="whitesmoke") +
   geom_rect() + 
   coord_polar(theta = "y",start=-pi/2) + xlim(c(0, 2)) + ylim(c(0,2)) +
-  geom_text(aes(x = 0, y = 0, label = AQI, colour=color), size=5.5, family="Poppins SemiBold") +
-  geom_text(aes(x=1.5, y=1.5, label=Site_Name), family="Poppins Light", size=3) + 
-  facet_wrap(~Site_Name, ncol = 3) +
+  geom_text(aes(x = 0, y = 0, label = us_aqi, colour=color), size=5.5) +
+  geom_text(aes(x=1.5, y=1.5, label=station), size=3) + 
+  facet_wrap(~station, ncol = 3) +
   theme_void() +
   scale_fill_manual(values = c(
     "green"="forestgreen","yellow"="#EDCB6E", "orange"="darkorange", 
@@ -52,11 +53,11 @@ ggplot(sample_readings, aes(fill = color, ymax = AQI/350, ymin = 0, xmax = 2, xm
                                  "red"="red", "purple"="purple1", "maroon"="red4")) +
   theme(strip.background = element_blank(),
         strip.text.x = element_blank()) +
-  guides(fill=FALSE) +
-  guides(colour=FALSE)
+  guides(fill="none") +
+  guides(colour="none")
 ```
   
-The highest reading over the last `r timespan` hours is from the **`r tbl$Site_Name[1]`** site. This peak reading was **`r tbl$AQI[1]`**.   
+The highest reading over the last `r days_back` days is from the **`r max_site_data$station[1]`** site. This peak reading was **`r max_site_data$max_aqi[1]`**.   
 
 Here's the trend at that site:  
 
@@ -65,13 +66,13 @@ site_plot
 ```
 
 
-Here's a summary of the highest readings over the last `r timespan` hours from each site:
+Here's a summary of the highest readings over the last `r days_back` days from each site:
 
 ```{r echo=FALSE}
 
-bad_air %>% select(Site_Name, AQI, Pollutant, Concentration, Unit) %>% 
-  group_by(Site_Name) %>% 
-  arrange(desc(AQI)) %>% 
+bad_air %>% select(station, us_aqi, us_aqi_pm2_5, us_aqi_pm10) %>% 
+  group_by(station) %>% 
+  arrange(desc(us_aqi)) %>% 
   slice(1) %>% 
   ungroup() %>%
   gt() 
