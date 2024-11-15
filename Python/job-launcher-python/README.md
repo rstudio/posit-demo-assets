@@ -13,6 +13,3 @@ Navigate to the Posit Workbench Extension tab in the left sidebar to view the Wo
 ### Start a Workbench Job
 
 Click on the ‘+’ icon in the top right of the Workbench Jobs pane to open the Launcher options for a new job. This dialog is similar to the one in RStudio Pro. To enable the launch button, the job name must be specified, and the script extension must either be .r or .py.
-
-
-

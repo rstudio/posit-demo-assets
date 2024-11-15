@@ -72,6 +72,18 @@ Learn how to use certain product features and deploy content to share with other
 - [Install a package from a date-based snapshot](https://docs.posit.co/rspm/user/get-repo-url/#ui-frozen-urls)
 - [Identify the system dependencies of a package](https://docs.posit.co/rspm/admin/appendix/system-dependency-detection/#system-dependency-detection)
 
+#### Second week and on
+
+Get inspired!
+
+- [Quarto gallery](https://quarto.org/docs/gallery/)
+- [Shiny for R gallery](https://shiny.posit.co/r/gallery/)
+- [Shiny for Python gallery](https://shiny.posit.co/py/gallery/)
+- [Winners of the 2024 Shiny Competition](https://posit.co/blog/winners-of-the-2024-shiny-contest/)
+- Explore the 2024 Workshop materials for the [Data Science Workflows with Posit Tools — Python Focus Workshop](https://github.com/posit-conf-2024/ds-workflows-python)
+- Explore the 2024 Workshop materials for the [Data Science Workflows with Posit Tools — R Focus Workshop](https://github.com/posit-conf-2024/ds-workflows-r)
+
+
 ### How do I open a project?
 #### R content
 
@@ -93,10 +105,21 @@ There are two ways to open an R project.
 
 #### Python content
 
+##### The uv way
+
+Use [uv](https://github.com/astral-sh/uv). It will detect that this is a project and create the venv for us when we go to run the application. 
+
+```bash
+    cd Python/quarto-lightbox
+    uv run quarto render quarto-python-lightbox.qmd
+```
+
+##### The pip way
+
 1. Create a virtual environment in the folder you want to work in.
 2. Restore the needed packages into the virtual environment.
 ````
-    cd python-examples/dash-app
+    cd Python/dash-app
     python3 -m venv .venv
     source .venv/bin/activate
     python3 -m pip install -U pip setuptools wheel
@@ -120,7 +143,10 @@ For R based projects the requirements are:
 3. Create a [`manifest.json` file](https://docs.posit.co/connect/user/git-backed/#creating-a-manifest-file-from-r) to support git-backed publishing
 4. Submit the Pull Request (PR) to have your changes added to this repository.
 
-Updates for the environment can be done with: R -e 'renv::record("renv@1.0.11"); renv::restore(packages = "renv"); renv::install(); renv::snapshot(); rsconnect::writeManifest()'
+Updates for the environment can be done with: 
+```bash
+    R -e 'renv::record("renv@1.0.11"); renv::restore(packages = "renv"); renv::install(); renv::snapshot(); rsconnect::writeManifest()'
+```
 
 For Python based projects the requirements are:
 
@@ -128,3 +154,15 @@ For Python based projects the requirements are:
 2. Create a `venv` to isolatle enviornments and generate a `requirements.txt` file so that only the minimum packages needed to support your project are included. Read [this](https://docs.posit.co/connect/admin/python/package-management/index.html) for more on Python package management.
 3. Create a [`manifest.json` file](https://docs.posit.co/connect/user/publishing-cli-notebook/index.html#creating-a-manifest-for-future-deployment) to support git-backed publishing
 4. Submit the Pull Request (PR) to have your changes added to this repository.
+
+For uv projects, they can be initalizated and updated with (change format and packages as needed): 
+```bash
+    uv init --app --python 3.12.6
+    uv add numpy matplotlib jupyter
+    uv sync --upgrade
+    uv export -o requirements.txt --no-hashes
+    uv run rsconnect write-manifest api .
+
+    # Dev dependencies may need to be added 
+    uv add --dev uv ipykernel
+```

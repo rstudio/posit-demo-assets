@@ -6,31 +6,40 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "c33dfeb3ff76def5e83b57322069db07"
+      "checksum": "330d608dc5391111b3a814d9f60d5b25"
     },
     ".internal.yml": {
       "checksum": "2604c72648ee14a99ecd9d1d41d3b9c1"
     },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+    },
     "README.md": {
-      "checksum": "ccbd2da22cd8885ab23a7907e0b84d7f"
+      "checksum": "b92f359d94911aca7eca0c5105b953ad"
     },
     "app.py": {
-      "checksum": "a7726fc4fe5374b54158a049180653a1"
+      "checksum": "da61dbb8757d8fcda7f8faef1ac4c87e"
     },
     "data.csv": {
       "checksum": "8da5e3f4e5d46c024310cd04354f81bd"
     },
+    "pyproject.toml": {
+      "checksum": "ab680752417c91b8c7c6ae692da4a2c9"
+    },
     "shiny-income-share.png": {
       "checksum": "3f3af442fb2f4a07a4944406f90fda5f"
+    },
+    "uv.lock": {
+      "checksum": "ec43655a248afed9dbfc6538f0333eb7"
     }
   }
 }
