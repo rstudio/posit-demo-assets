@@ -6,19 +6,25 @@
     "entrypoint": "main"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "b93439dd28b711ed207916f510de146f"
+      "checksum": "b47ec931ca85b425830a736ffde9a319"
+    },
+    ".internal.yml": {
+      "checksum": "5c5dee0fd316bb176d6485cd64d05502"
+    },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
     },
     "README.md": {
-      "checksum": "662bfd76330331957b33a6ca3120a700"
+      "checksum": "c1f7ac25e599aa6a35dd0fe821e98107"
     },
     "data/client.parquet": {
       "checksum": "b7731a83d0a5e6425a4e471480f6bb2b"
@@ -38,8 +44,17 @@
     "model/xgb_final_model.json": {
       "checksum": "40cac1067468f83745cb1ffa28361db1"
     },
+    "pyproject.toml": {
+      "checksum": "c21b7e7cf7002ecbf437436c3298d67e"
+    },
+    "screenshot.png": {
+      "checksum": "5a45cd5e03a71c7d0a7843ac8278fe33"
+    },
     "train.ipynb": {
       "checksum": "4cf4f94a658b05277f745af856d951c4"
+    },
+    "uv.lock": {
+      "checksum": "f8fa4a5d77a7ad241b7078ff46e95ce3"
     }
   }
 }

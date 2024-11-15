@@ -57,8 +57,10 @@ Update the code, and then run:
 
 ```bash
 # With uv
+uv export -o requirements.txt --no-hashes
 uv run rsconnect write-manifest voila --overwrite . --multi-notebook
 # Without uv
+pip freeze > requirements.txt 
 rsconnect write-manifest voila --overwrite . --multi-notebook
 ```
 

@@ -6,34 +6,40 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "44ede469564b11fef5138f0c48f10c5c"
-    },
-    ".env": {
-      "checksum": "ab7ab8f3e687f13229e34078ea337736"
+      "checksum": "27d35a8108b19bfa7dbc46355a73b022"
     },
     ".internal.yml": {
       "checksum": "870363855de3284fdcc9c4719dbab960"
     },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+    },
     "README.md": {
-      "checksum": "4c5bd7c360e964e7385b8a69a8accc00"
+      "checksum": "44ddb34662573d0cdb2f84f6765fdcb8"
     },
     "app.py": {
-      "checksum": "08ee7a868dc448a75292fb4e39f0d6f2"
+      "checksum": "3cc0edae1d7654c8c3d2a73591aa0c4b"
     },
     "dash-stock-pricing.png": {
       "checksum": "443950aea92fd5479e0b813d28a845a0"
     },
     "prices.csv": {
       "checksum": "90a908060f20dfa7e229e631a42c5081"
+    },
+    "pyproject.toml": {
+      "checksum": "826b028eb9a63eeba646331ed6fd0bb2"
+    },
+    "uv.lock": {
+      "checksum": "78ccdbec2f8b582e0ad5ec39e54a1f66"
     }
   }
 }

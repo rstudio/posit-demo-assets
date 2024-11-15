@@ -52,8 +52,10 @@ Update the code, and then run:
 
 ```bash
 # With uv
+uv export -o requirements.txt --no-hashes
 uv run rsconnect write-manifest quarto --overwrite .
 # Without uv
+pip freeze > requirements.txt 
 rsconnect write-manifest quarto --overwrite .
 ```
 
