@@ -2,6 +2,27 @@
 
 ## Usage
 
+### The uv way
+
+Use [uv](https://github.com/astral-sh/uv). It will detect that this is a project and create the venv for us when we go to run the application. 
+
+```bash
+cd Python/quarto-python-lightbox
+
+# Create the kernel
+uv run ipython kernel install --user --name=project
+
+# Optionally, render the document
+uv run quarto preview quarto-python-lightbox.qmd --no-browser --no-watch-inputs
+```
+
+- Open the `.qmd` file for interactive use.
+- Chose the just created kernel (you may need to refresh).
+- Click "Run All". 
+
+
+### The pip way
+
 Setup the `venv` environment:
 
 ```bash
@@ -19,6 +40,9 @@ pip install -r requirements.txt
 ### rsconnect-python CLI
 
 ```bash
+# With uv
+uv run rsconnect deploy quarto .
+# Without uv
 rsconnect deploy quarto .
 ```
 
@@ -27,6 +51,9 @@ rsconnect deploy quarto .
 Update the code, and then run:
 
 ```bash
+# With uv
+uv run rsconnect write-manifest quarto --overwrite .
+# Without uv
 rsconnect write-manifest quarto --overwrite .
 ```
 

@@ -6,22 +6,25 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "7a8ac63e632715a0f4eb43ed75866c48"
+      "checksum": "d234f8dec51927d12c0e7febee8f4ab8"
     },
     ".internal.yml": {
       "checksum": "f1fff527b600fbc9329f00b260a1fc9f"
     },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+    },
     "README.md": {
-      "checksum": "4dbb2afeef83537f7c32b7ba3b21597f"
+      "checksum": "eb63708c48c84eb935234c54c9606a2f"
     },
     "app.py": {
       "checksum": "2b45ae76a59492827ba0370737a2a3d5"
@@ -29,8 +32,17 @@
     "data.csv": {
       "checksum": "8da5e3f4e5d46c024310cd04354f81bd"
     },
+    "pyproject.toml": {
+      "checksum": "15897e2b7e36c10921ce0e8f199af111"
+    },
+    "requirements.in": {
+      "checksum": "1dd8d283deaba5b75c5a25552fd897b2"
+    },
     "streamlit-income-share.png": {
       "checksum": "4870b5dc9d209e007b8f5d4d627a0a5a"
+    },
+    "uv.lock": {
+      "checksum": "0f691925af72f92831a0bc90ed17421e"
     }
   }
 }
