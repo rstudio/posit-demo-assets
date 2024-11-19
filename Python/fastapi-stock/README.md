@@ -25,9 +25,6 @@ pip install -r requirements.txt
 Run the API (to see the OpenAPI Documentation go to the proxied servers tab and add `/docs` to the URL):
 
 ```bash
-# With uv
-uv run uvicorn main:app --reload
-# Without uv
 uvicorn main:app --reload
 ```
 
