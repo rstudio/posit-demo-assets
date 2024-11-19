@@ -9,8 +9,15 @@ Use [uv](https://github.com/astral-sh/uv). It will detect that this is a project
 Run the application:
 
 ```bash
-uv run app.py
+cd Python/jupyter-interactive-visualization
+
+# Create the kernel
+uv run ipython kernel install --user --name=project
 ```
+
+- Open the `bqplot.ipynb`, `ipyvolume.ipynb`, or `hash.ipynb` file for interactive use.
+- Chose the just created kernel (you may need to refresh).
+- Click "Run All"
 
 ### The pip way
 

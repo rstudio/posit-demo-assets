@@ -6,25 +6,31 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "f3bbb1f5cb93fc9c7946859931132721"
+      "checksum": "d4f7dda7c7b4270e379378ea3a31804e"
+    },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
     },
     "README.md": {
-      "checksum": "7d13e4b1c1843638f3b766c1b64b8cdc"
+      "checksum": "0aa40e1af0a6101f14a6da85be43ed36"
     },
     "app.py": {
       "checksum": "97a4329602214c7e49afca478ba37a52"
     },
     "getting-started-flask.png": {
       "checksum": "4e617c88e590a6e31d3f86db0f4a3eef"
+    },
+    "pyproject.toml": {
+      "checksum": "2a32e19243f7e88076dc60d1a1db6d7b"
     },
     "static/api-snippet.png": {
       "checksum": "7d75b4ee6c3834edc79e114b8b371c21"
@@ -34,6 +40,9 @@
     },
     "templates/index.html": {
       "checksum": "45d683c60a7a5e11d5557e4d9c848e07"
+    },
+    "uv.lock": {
+      "checksum": "3db3a864d33b52abb3014e3399753858"
     }
   }
 }

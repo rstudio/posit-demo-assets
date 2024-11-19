@@ -6,19 +6,22 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "16122fcf84a4d9d281f1085a923a7fc7"
+      "checksum": "6c12f7cb89f01bb5aa50640b965419f8"
+    },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
     },
     "README.md": {
-      "checksum": "ff2c59388e5ffe4402745a71564fb98a"
+      "checksum": "df61ea728370de27e0589dcd9954f5bc"
     },
     "app.py": {
       "checksum": "c975c4c876bec68321f7701aa289663a"
@@ -50,8 +53,14 @@
     "model/vocab/vectors": {
       "checksum": "63fd11f249a725dee9c2941b339ea037"
     },
+    "pyproject.toml": {
+      "checksum": "23f47381be089ea1504173d2c42bb5e4"
+    },
     "train.py": {
       "checksum": "01a48fac33a8ddac5597a7b6c4df687e"
+    },
+    "uv.lock": {
+      "checksum": "b65c734d089ea8c25e9f5c5038019b0a"
     }
   }
 }

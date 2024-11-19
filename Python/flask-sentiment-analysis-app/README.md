@@ -21,7 +21,7 @@ Use [uv](https://github.com/astral-sh/uv). It will detect that this is a project
 Run the application:
 
 ```bash
-uv run app.py
+uv run flask --app app run
 ```
 
 ### The pip way
@@ -45,6 +45,9 @@ flask --app app run
 ### rsconnect-python CLI
 
 ```bash
+# With uv
+uv run rsconnect deploy api .
+# Without uv
 rsconnect deploy api .
 ```
 

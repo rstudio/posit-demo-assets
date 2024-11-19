@@ -2,7 +2,7 @@
   "version": 1,
   "locale": "en_US.UTF-8",
   "metadata": {
-    "appmode": "python-fastapi",
+    "appmode": "python-streamlit",
     "entrypoint": "main"
   },
   "python": {
@@ -15,7 +15,7 @@
   },
   "files": {
     "requirements.txt": {
-      "checksum": "b47ec931ca85b425830a736ffde9a319"
+      "checksum": "e5d44269041ce28484a657b7a95c5019"
     },
     ".internal.yml": {
       "checksum": "5c5dee0fd316bb176d6485cd64d05502"
@@ -45,7 +45,7 @@
       "checksum": "40cac1067468f83745cb1ffa28361db1"
     },
     "pyproject.toml": {
-      "checksum": "c21b7e7cf7002ecbf437436c3298d67e"
+      "checksum": "fa442d8cf3699098addd133db3990e31"
     },
     "screenshot.png": {
       "checksum": "5a45cd5e03a71c7d0a7843ac8278fe33"
@@ -54,7 +54,7 @@
       "checksum": "4cf4f94a658b05277f745af856d951c4"
     },
     "uv.lock": {
-      "checksum": "f8fa4a5d77a7ad241b7078ff46e95ce3"
+      "checksum": "213bdeb4d5c6e45edcc5fc7a9bd8fa2c"
     }
   }
 }

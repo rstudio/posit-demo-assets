@@ -6,19 +6,19 @@
     "entrypoint": "jupyter-interactive-visualization.ipynb"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "jupyter-interactive-visualization.ipynb": {
-      "checksum": "14e21cb9ee0d597adb3125190c672870"
+      "checksum": "8671b36996277b09affca0c6161d7739"
     },
     "requirements.txt": {
-      "checksum": "24e2bb3a6c237787078f1a633e6561c8"
+      "checksum": "ebcba96824c46ac8b06299c9b020b00b"
     }
   }
 }
