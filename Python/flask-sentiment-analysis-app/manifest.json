@@ -6,19 +6,22 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "64f5693e5c981c56fa575424de93c432"
+      "checksum": "6c12f7cb89f01bb5aa50640b965419f8"
+    },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
     },
     "README.md": {
-      "checksum": "64db5d4ed981b49cd751a7039157bad5"
+      "checksum": "3e3295bdc7f0b72caeffee85d2564007"
     },
     "app.py": {
       "checksum": "93f287990eb3003c4adf5a734f99c8fb"
@@ -49,6 +52,9 @@
     },
     "model/vocab/vectors": {
       "checksum": "63fd11f249a725dee9c2941b339ea037"
+    },
+    "pyproject.toml": {
+      "checksum": "fd161da230bde592bb4bb23d1ca37317"
     },
     "static/css/landing-page.css": {
       "checksum": "a3e8907479702059069af23513f5cd21"
@@ -250,6 +256,9 @@
     },
     "train.py": {
       "checksum": "01a48fac33a8ddac5597a7b6c4df687e"
+    },
+    "uv.lock": {
+      "checksum": "a8a97fe0f42616b8869ccf438c243a80"
     }
   }
 }

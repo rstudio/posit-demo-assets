@@ -1,0 +1,13 @@
+[project]
+name = "shiny-income-share"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12.6"
+dependencies = [
+    "altair>=5.4.1",
+    "anywidget>=0.9.13",
+    "pandas>=2.2.3",
+    "shiny>=1.2.1",
+    "shinywidgets>=0.3.4",
+]

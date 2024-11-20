@@ -6,31 +6,40 @@
     "entrypoint": ""
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "7b0d91ed5494a7b89b6b36f4c4d6ce61"
+      "checksum": "7b65f4fee09f4775e7f8ff30a4a2d514"
     },
     ".internal.yml": {
       "checksum": "a9fdf100d8a7f7ebc4364c3bd6eb6b28"
     },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+    },
     "README.md": {
-      "checksum": "f2b5a4d1c63825e12af05af49f0cae8d"
+      "checksum": "ffeb972c1056163135c6e00d269ff704"
     },
     "bqplot.ipynb": {
-      "checksum": "b8e0142580333884c8e25379c74de9b3"
+      "checksum": "349f27859d9b3b33bbea128fb79c0973"
     },
     "hash.ipynb": {
-      "checksum": "9374db80fa67cdc9ff264683d3af6173"
+      "checksum": "2be0375899a7e247ec6669ed59bc1ec5"
     },
-    "ipyvolume.ipynb": {
-      "checksum": "56a4d1a4e342e3fd6dd5f0fe849a5b5f"
+    "ipv.ipynb": {
+      "checksum": "4b2b7ea2a16af5da31fd1b2ebd5fb342"
+    },
+    "pyproject.toml": {
+      "checksum": "d06969fe1fb90155217243aeaa379eed"
+    },
+    "uv.lock": {
+      "checksum": "bb23357676067f3a876ca901ed9066b9"
     },
     "voila.png": {
       "checksum": "7b1b11e04f0ded89a30adc69b86d1834"

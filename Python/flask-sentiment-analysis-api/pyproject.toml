@@ -1,0 +1,10 @@
+[project]
+name = "flask-sentiment-analysis-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12.6"
+dependencies = [
+    "flask>=3.1.0",
+    "spacy>=3.8.2",
+]

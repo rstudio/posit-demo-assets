@@ -6,34 +6,40 @@
     "entrypoint": "app"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "7ec3b84c0154d03c675c3c5c8f03fc1a"
+      "checksum": "d325c03d2d851fde6ff36ed19bae7fe2"
     },
-    ".env": {
-      "checksum": "ab7ab8f3e687f13229e34078ea337736"
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
     },
     "README.md": {
-      "checksum": "620db0230ac803c7480ee3ed5d1fc1d5"
+      "checksum": "f0147a01d466e4905e3f51aa24092126"
     },
     "app.png": {
       "checksum": "d7dc349dbfd3e2dd7be1d7f77b2f3309"
     },
     "app.py": {
-      "checksum": "53f605c53154f5d085a179ffba44b0e1"
+      "checksum": "b212c4e34cbe9227c5c47ab8ab140377"
     },
     "country_indicators.csv": {
       "checksum": "aa6e4392aeef18d537d9fcbd8d68e3ad"
     },
+    "pyproject.toml": {
+      "checksum": "d8fd60371590b0bda046f14e5cfe15cd"
+    },
     "styles.css": {
       "checksum": "a4e86ec9273e07fdb85cf5dd6c6fed1e"
+    },
+    "uv.lock": {
+      "checksum": "7df08eb599ffb4eea4548f598f7a7822"
     }
   }
 }

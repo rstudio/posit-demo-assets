@@ -6,22 +6,25 @@
     "entrypoint": "main"
   },
   "python": {
-    "version": "3.11.6",
+    "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "23.2.1",
+      "version": "24.3.1",
       "package_file": "requirements.txt"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "ae5edf585e957db633fad13d6e2fa9ca"
+      "checksum": "682eb0ad05b631f1d9bdb1cd3c19d276"
     },
     ".internal.yml": {
       "checksum": "1675209966d04e186e77e266409d0b4e"
     },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+    },
     "README.md": {
-      "checksum": "54d318448f0d3f3af9eea92b5c7599a1"
+      "checksum": "43b00c70a4f0c726d00cdb5c0f2de0a1"
     },
     "fastapi-stock.png": {
       "checksum": "528f3dfdd2984a725398a8c4dbf6156e"
@@ -31,6 +34,12 @@
     },
     "prices.csv": {
       "checksum": "e0bc27e3dd358c360863807e09079985"
+    },
+    "pyproject.toml": {
+      "checksum": "5c35967242f0f796fc9eff1eee7e00fc"
+    },
+    "uv.lock": {
+      "checksum": "2fce21251462f21e817de749b6cc3707"
     }
   }
 }

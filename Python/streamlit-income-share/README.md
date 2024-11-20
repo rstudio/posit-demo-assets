@@ -4,11 +4,28 @@
 
 ## Usage
 
+### The uv way
+
+Use [uv](https://github.com/astral-sh/uv). It will detect that this is a project and create the venv for us when we go to run the application. 
+
+Run the application:
+
+```bash
+uv run streamlit run app.py
+```
+
+### The pip way
+
 Setup the `venv` environment:
 
 ```bash
+# Create virtual environment
 python -m venv .venv
+
+# Activate virtual environment
 . .venv/bin/activate
+
+# Install all of the requirements
 pip install -r requirements.txt
 ```
 
@@ -23,6 +40,9 @@ streamlit run app.py
 ### rsconnect-python CLI
 
 ```bash
+# With uv
+uv run rsconnect deploy streamlit .
+# Without uv
 rsconnect deploy streamlit .
 ```
 
@@ -31,10 +51,16 @@ rsconnect deploy streamlit .
 Update the code, and then run:
 
 ```bash
+# With uv
+uv export -o requirements.txt --no-hashes
+uv run rsconnect write-manifest streamlit --overwrite .
+# Without uv
+pip freeze > requirements.txt 
 rsconnect write-manifest streamlit --overwrite .
 ```
 
 Commit the new `manifest.json` file to the git repo along with the code.
+
 ## Resources
 
 [Posit Connect User Guide: Streamlit](https://docs.posit.co/connect/user/streamlit/)
