@@ -1,0 +1,338 @@
+---
+title: "Getting started with R (Quarto and Shiny)"
+date: today
+author:
+  name: Lisa Anders
+  email: lisa.anders@posit.co 
+lightbox: true
+format:
+  html:
+    anchor-sections: true
+    smooth-scroll: true
+    embed-resources: true
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+editor: visual
+---
+
+## Why code based analytics?
+
+Code based analytics makes your life so much easier as a developer.
+
+Analytics as code lets you:
+
+-   Leverage the best of what the open source community is making
+-   Control everything that is displayed, no more pixel paranoia
+-   Version control for backups and collaboration
+-   Write [tests](https://testthat.r-lib.org/) to ensure performance
+-   Reproduceability by auditing the package environment with [renv](https://rstudio.github.io/renv/articles/renv.html)
+
+<center>
+
+![](/img/allisonhorst-cetinkaya-rundel-lowndes-quarto-keynote.png){width="70%"}
+
+<!-- ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/c7e0e26c-5ca7-49f1-ba8d-093b1f8e541d.png?h=a790567e29efb477a6b7fd4197c514d7){width="80%"} -->
+
+::: {.citation style="font-size: 16px"}
+"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by [Allison Horst](https://allisonhorst.com/cetinkaya-rundel-lowndes-quarto-keynote)
+:::
+
+</center>
+
+## Getting started with R
+
+There are so many resources out there, here are some of our favorites:
+
+-   Our [online learning](https://education.rstudio.com/learn/) page links to a number of courses and resources for learning R
+-   [R for Data Science](http://r4ds.had.co.nz/) is a free book that teaches how to how to do data science with R, from getting your data into R and transforming it to visualizing and modeling it.
+-   The RStudio [cheatsheets](https://posit.co/resources/cheatsheets/) give a good overview on using the IDE and popular R packages
+-   Our [webinars](https://posit.co/resources/videos/) contain a lot of useful information - check out the RStudio Essentials section for some helpful R material
+-   The [R Style Guide](http://adv-r.had.co.nz/Style.html) provides some guidelines for writing readable and maintainable R code.
+
+## Getting started with Quarto
+
+<!-- ![](https://raw.githubusercontent.com/rstudio/hex-stickers/ce526bb5880f348c6970f44f9d8001eb504c4cf6/SVG/quarto.svg){width="25%"} -->
+
+### What is Quarto?
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see: <https://quarto.org>.
+
+-   Check out examples in the [gallery](https://quarto.org/docs/gallery/).
+
+-   Check out the [awesome list](https://github.com/mcanouil/awesome-quarto).
+
+### Running Code in Quarto
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+### Re-use branding / theme-ing
+
+Quarto templates: <https://quarto.org/docs/extensions/starter-templates.html>
+
+## Loading packages
+
+Build on what the open source community has created by using community built packages.
+
+Load packages into your library with:
+
+```{r}
+#| warning: false
+library(ggplot2)
+library(pointblank)
+library(tidyverse)
+library(data.table)
+library(DT)
+library(dplyr)
+library(stringr)
+library(readr)
+library(pins)
+library(rsconnect)
+library(usethis)
+library(ggpmisc)
+library(quantmod)
+library(chattr)
+library(httr)
+```
+
+## Connecting to data
+
+Connecting to data can either be pre-configured by an admin, or done manually by putting in the connection string.
+
+For example, for connecting to a data source like `redshift` you could use:
+
+``` r
+library(odbc)
+
+con <- DBI::dbConnect(odbc::odbc(),
+                      Driver       = "[your driver's name]",
+                      servername   = "[your server's path]",
+                      database     = "[your database's name]",
+                      UID          = rstudioapi::askForPassword("Database user"),
+                      PWD          = rstudioapi::askForPassword("Database password"),
+                      Port         = 5439)
+```
+
+Reference and useful website with examples for other data types: <https://solutions.posit.co/connections/db/databases/redshift/index.html#driver-options>
+
+### Displaying data
+
+::: panel-tabset
+#### DT with download
+
+Or use it to give your users the ability to download the data by copying it to their clipboard:
+
+```{r}
+iris %>%
+  datatable(extensions = 'Buttons', escape = FALSE,
+            options = list(dom = 'Blfrtip',
+                           buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                           lengthMenu = list(c(10,25,50,-1),
+                                             c(10,25,50,"All"))))
+```
+
+#### DT with formatting
+
+Use a package like DT to do something cool, like preview data with coloring and formatting:
+
+```{r}
+datatable(iris) %>% 
+  formatStyle('Sepal.Length', fontWeight = styleInterval(5, c('normal', 'bold'))) %>%
+  formatStyle(
+    'Sepal.Width',
+    color = styleInterval(c(3.4, 3.8), c('white', 'blue', 'red')),
+    backgroundColor = styleInterval(3.4, c('gray', 'yellow'))
+  ) %>%
+  formatStyle(
+    'Petal.Length',
+    background = styleColorBar(iris$Petal.Length, 'steelblue'),
+    backgroundSize = '100% 90%',
+    backgroundRepeat = 'no-repeat',
+    backgroundPosition = 'center'
+  ) %>%
+  formatStyle(
+    'Species',
+    transform = 'rotateX(45deg) rotateY(20deg) rotateZ(30deg)',
+    backgroundColor = styleEqual(
+      unique(iris$Species), c('lightblue', 'lightgreen', 'lightpink')
+    )
+  )
+```
+:::
+
+### "Pin" that data so others can access it, or to speed up apps
+
+Pin your dataset to the Connect server:
+
+```{r}
+board <- board_connect(auth = "envvar")
+
+board %>% pin_write(iris, "lisa.anders/iris_dataset", type = "rds", force_identical_write = TRUE)
+```
+
+Read it back with:
+
+``` r
+board <- board_connect(auth = "envvar")
+
+iris_data_back <-board %>% pin_read("lisa.anders/iris_dataset")
+```
+
+When deployed to Connect, an API key will be automatically added into the environment.
+
+[Pin package](https://pins.rstudio.com/)
+
+### Validate data
+
+Check your data for errors or inconsistencies with the [pointblank package](https://rstudio.github.io/pointblank/)
+
+## Creating visualizations
+
+Create visualizations using the most popular packge, [ggplot2](https://ggplot2.tidyverse.org/)
+
+Make them interactive with [plotly](https://plotly.com/r/)
+
+```{r}
+#| echo: false
+#| warning: false
+#| layout-ncol: 3
+#| fig-cap: 
+#|   - "Plot 1"
+#|   - "Plot 2"
+#|   - "Plot 3"
+
+ggplot(data = mtcars, aes(x = hp, y = mpg)) + 
+  geom_point() + 
+  theme(panel.grid = element_line(color = "#8ccde3",
+                                  size = 0.75,
+                                  linetype = 2))
+
+df <- economics[economics$date > as.Date("2000-01-01"), ]
+
+ggplot(df, aes(x = date, y = unemploy)) +
+  geom_line() +
+  stat_valleys(geom = "point", span = 11, color = "red", size = 2) +
+  stat_valleys(geom = "label", span = 11, color = "red", angle = 0,
+               hjust = -0.1, x.label.fmt = "%Y-%m-%d") +
+  stat_valleys(geom = "rug", span = 11, color = "red", sides = "b")
+
+
+# Dates
+start <- "2020-10-01"
+end <- "2021-01-01"
+
+# Get the data
+symbol <- getSymbols("^GSPC", 
+           from = start, to = end,
+           src = "yahoo",
+           warnings = FALSE) 
+
+# Plot the data
+chartSeries(GSPC,
+            theme = chartTheme("white"),
+            name = "SP500",  
+            TA = list("addBBands(n = 10)",
+                      "addVo()",
+                      "addEMA(20)",
+                      "addEMA(10, col = 2)"))
+```
+
+Amazing resource for creating different types of plots [here](https://r-graph-gallery.com/)
+
+## Make LLM's
+
+<center>![](https://i1.wp.com/www.business-science.io/assets/080_chattr_diagram.jpg?w=578&ssl=1){width="80%"}</center>
+
+Make large language models with [chattr](https://mlverse.github.io/chattr/)
+
+We can even use that model inside your editor to provide coding assistance: <https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/>
+
+``` r
+# Add your API Keys, as needed
+key=Sys.getenv("OPENAI_API_KEY")
+host=Sys.getenv("DATABRICKS_HOST")
+token=Sys.getenv("DATABRICKS_TOKEN")
+
+# Set configs
+chattr::chattr_defaults(max_data_files = 0)
+
+# Select an existing LLM, or create your own
+chattr_use("gpt4")
+chattr_use("gpt35")
+chattr_use(
+  "llamagpt",   
+  path = "[path to compiled program]",
+  model = "[path to model]"
+  )
+chattr_use("databricks-meta-llama3-70b")
+
+# To see what chattr will send to the model, set the preview argument to TRUE
+chattr(preview = TRUE)
+
+# Ask the LLM a question
+chattr("how do I remove the legend from a ggplot?")
+
+# Run the app
+chattr::chattr_app()
+
+# Test the connection 
+chattr_test()
+```
+
+<center>
+
+::: {.citation style="font-size: 16px"}
+Image from r-bloggers article ["How to Get ChatGPT in R with chattr"](https://www.r-bloggers.com/2024/05/how-to-get-chatgpt-in-r-with-chattr/)
+:::
+
+</center>
+
+## Make ML models
+
+<center>![](https://vetiver.posit.co/images/ml_ops_cycle.png){width="80%"}</center>
+
+Make Machine Learning models with [vetiver](https://rstudio.github.io/vetiver-r/)
+
+Example: [Bike predict](https://solutions.posit.co/gallery/bike_predict/index.html)
+
+<center>
+
+::: {.citation style="font-size: 16px"}
+Image from [vetiver package](https://rstudio.github.io/vetiver-r/)
+:::
+
+</center>
+
+## Make an interactive application with Shiny
+
+<!-- ![](https://rstudio.github.io/shiny/reference/figures/logo.png){width="25%"} -->
+
+Make interactive applications that will give each visitor a personalized experience using [shiny](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html).
+
+Low code option: [shinyuieditor](shinyuieditor)
+
+Examples in the Shiny Gallery: <https://shiny.posit.co/r/gallery/>
+
+### Re-use branding / theme-ing
+
+Shinythemes: <https://rstudio.github.io/shinythemes/>
+
+## End-to-end example: Ferryland
+
+Ferryland git repo with workshop materials: <https://github.com/posit-conf-2024/ds-workflows-r>
+
+Ferryland [deployed materials](https://pub.current.posit.team/ferries-overview/) and [deployed materials publisher's page](https://pub.current.posit.team/connect/#/apps/f6b2cd8d-5bd7-42ba-82cb-c25078918043/access/57) (currently only available to Posit employees).

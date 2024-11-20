@@ -11,17 +11,17 @@ renv::activate()
 renv::restore()
 ```
 
-To render the document either open `email/ppm-report.qmd` and use the "Render" button on the top of the IDE code pane or use:
+To render the document either open `ppm-report.qmd` and use the "Render" button on the top of the IDE code pane or use:
 
 ```r
-quarto::quarto_render("email/ppm-report.qmd")
+quarto::quarto_render("ppm-report.qmd")
 ```
 
 ## Deployment
 
 ### Push Button
 
-Open `email/ppm-report.qmd` and use the blue publish icon in the upper right corner of the IDE code pane.
+Open `ppm-report.qmd` and use the blue publish icon in the upper right corner of the IDE code pane.
 
 ### rsconnect package
 
@@ -29,7 +29,7 @@ You can also deploy using the rsconnect package:
 
 ```
 rsconnect::deployDoc(
-  doc = "email/ppm-report.qmd",
+  doc = "ppm-report.qmd",
   appTitle = "Quarto Emails (with Connect): Including plots"
 )
 ```
