@@ -13,11 +13,6 @@ format:
       dark: darkly
     toc: true
 editor: source
-jupyter: 
-  kernelspec:
-    name: "project"
-    language: "python"
-    display_name: "project"
 ---
 
 ## Why code based analytics? 
@@ -83,7 +78,8 @@ uv export -o requirements.txt --no-hashes
 # In 6 months run this to upgrade packages 
 uv sync --upgrade
 #Run it with 
-uv run ipython kernel install --user --name=project
+uv run ipython kernel install --user --name=project 
+# Open the command palette (ctl-shift-p), select "Python: Select Interpreter", and choose the just created kernel (you may need to refresh)
 uv run quarto render getting-started-python.qmd
 ```
 

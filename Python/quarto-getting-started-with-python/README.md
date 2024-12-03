@@ -16,8 +16,8 @@ uv run ipython kernel install --user --name=project
 uv run quarto preview getting-started-python.qmd --no-browser --no-watch-inputs
 ```
 
-- Open the `.qmd` file for interactive use.
-- Chose the just created kernel (you may need to refresh).
+- Open the `getting-started-python.qmd` file for interactive use.
+- Open the command palette (ctl-shift-p), select "Python: Select Interpreter", and choose the just created kernel (you may need to refresh)
 - Click "Run All". 
 
 
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 ```
 
 - Open the `getting-started-python.qmd` file for interactive use.
-- Chose the just created `.venv` as the selected kernel.
+- Open the command palette (ctl-shift-p), select "Python: Select Interpreter", and choose the just created kernel (you may need to refresh)
 - Click "Preview"
 
 ## Deploy

@@ -17,7 +17,7 @@ uv run quarto preview quarto-python-lightbox.qmd --no-browser --no-watch-inputs
 ```
 
 - Open the `.qmd` file for interactive use.
-- Chose the just created kernel (you may need to refresh).
+- Open the command palette (ctl-shift-p), select "Python: Select Interpreter", and choose the just created kernel/venv (you may need to refresh)
 - Click "Run All". 
 
 
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 ```
 
 - Open the `quarto-python-lightbox.qmd` file for interactive use.
-- Chose the just created `.venv` as the selected kernel.
+- Open the command palette (ctl-shift-p), select "Python: Select Interpreter", and choose the just created kernel/venv (you may need to refresh)
 - Click "Preview"
 
 ## Deploy
