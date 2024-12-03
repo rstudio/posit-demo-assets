@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "locale": "en_US.UTF-8",
+  "metadata": {
+    "appmode": "quarto-static"
+  },
+  "quarto": {
+    "version": "1.5.57",
+    "engines": [
+      "jupyter"
+    ]
+  },
+  "python": {
+    "version": "3.12.6",
+    "package_manager": {
+      "name": "pip",
+      "version": "24.3.1",
+      "package_file": "requirements.txt"
+    }
+  },
+  "files": {
+    "requirements.txt": {
+      "checksum": "4b1b83183ebfde3fca6af7b09e3af165"
+    },
+    ".gitignore": {
+      "checksum": "06d306ff933a023ca365a9fbf6589381"
+    },
+    ".python-version": {
+      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+    },
+    "README.md": {
+      "checksum": "ee5980e74910c8499946c851dae6d9ec"
+    },
+    "_quarto.yml": {
+      "checksum": "8bcb58edffa33aa3bee95456f721054c"
+    },
+    "getting-started-python.qmd": {
+      "checksum": "4eb6f9e365f2c5c6105a6179228dd0ae"
+    },
+    "pyproject.toml": {
+      "checksum": "7dd83687d8c41260ec9c30c5649d8654"
+    },
+    "uv.lock": {
+      "checksum": "e195c552edc50abd7466d926ce2aee2c"
+    }
+  }
+}
