@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quarto matplotlib and lightbox demo</title>
+<title>readme</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,19 +57,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="quarto-python-lightbox_files/libs/clipboard/clipboard.min.js"></script>
-<script src="quarto-python-lightbox_files/libs/quarto-html/quarto.js"></script>
-<script src="quarto-python-lightbox_files/libs/quarto-html/popper.min.js"></script>
-<script src="quarto-python-lightbox_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="quarto-python-lightbox_files/libs/quarto-html/anchor.min.js"></script>
-<link href="quarto-python-lightbox_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="quarto-python-lightbox_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="quarto-python-lightbox_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="quarto-python-lightbox_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="quarto-python-lightbox_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="quarto-python-lightbox_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="quarto-python-lightbox_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="quarto-python-lightbox_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="README_files/libs/clipboard/clipboard.min.js"></script>
+<script src="README_files/libs/quarto-html/quarto.js"></script>
+<script src="README_files/libs/quarto-html/popper.min.js"></script>
+<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="README_files/libs/quarto-html/anchor.min.js"></script>
+<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="README_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -80,120 +77,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Quarto matplotlib and lightbox demo</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
-</section>
-<section id="matplotlib-demo" class="level2">
-<h2 class="anchored" data-anchor-id="matplotlib-demo">matplotlib demo</h2>
-<p>Quarto can use different languages and packages, for example <a href="https://quarto.org/docs/computations/python.html">Python</a>. This example is using the Jupyter engine (python3 kernel) following the Quarto instructions on <a href="https://quarto.org/docs/tools/rstudio.html#jupyter-engine">this page</a>.</p>
-<p>For example, inserting Python code creating a line plot on a polar axis using Jupyter for rendering (taken from the Quarto documentation):</p>
-<div id="cell-fig-polar" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div id="fig-polar" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="quarto-python-lightbox_files/figure-html/fig-polar-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: A line plot on a polar axis"><img src="quarto-python-lightbox_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: A line plot on a polar axis
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="lightbox" class="level2">
-<h2 class="anchored" data-anchor-id="lightbox">lightbox</h2>
-<p>Quarto can arrange images for you, with the ability to both arrange them in various grid configurations as well as for a pop-out interaction when clicked on.</p>
-<p>These images are interactive, try clicking on one!</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/Lion_waiting_in_Namibia.jpg" class="lightbox" data-gallery="my-gallery" title="Lions"><img src="img/Lion_waiting_in_Namibia.jpg" class="img-fluid figure-img" alt="Lions"></a></p>
-<figcaption>Lions</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/Panthera_tigris_corbetti_%28Tierpark_Berlin%29_832-714-%28118%29.jpg" class="lightbox" data-gallery="my-gallery" title="and tigers"><img src="img/Panthera_tigris_corbetti_%28Tierpark_Berlin%29_832-714-%28118%29.jpg" class="img-fluid figure-img" alt="and tigers"></a></p>
-<figcaption>and tigers</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/Chengdu-pandas-d10.jpg" class="lightbox" data-gallery="my-gallery" title="and bears"><img src="img/Chengdu-pandas-d10.jpg" class="img-fluid figure-img" alt="and bears"></a></p>
-<figcaption>and bears</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/The_Wizard_of_Oz_1955_Lobby_Card.jpg" class="lightbox" data-gallery="my-gallery" title="oh my!"><img src="img/The_Wizard_of_Oz_1955_Lobby_Card.jpg" class="img-fluid figure-img" alt="oh my!"></a></p>
-<figcaption>oh my!</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<p>References:</p>
+<section id="getting-started-with-python-quarto-and-shiny" class="level1">
+<h1>Getting started with Python (Quarto and Shiny)</h1>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<section id="the-uv-way" class="level3">
+<h3 class="anchored" data-anchor-id="the-uv-way">The uv way</h3>
+<p>Use <a href="https://github.com/astral-sh/uv">uv</a>. It will detect that this is a project and create the venv for us when we go to run the application.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Python/quarto-getting-started-with-python</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the kernel</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run ipython kernel install <span class="at">--user</span> <span class="at">--name</span><span class="op">=</span>project</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Optionally, render the document</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run quarto preview getting-started-python.qmd <span class="at">--no-browser</span> <span class="at">--no-watch-inputs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><p>Tips on dealing with displaying images in a rendered quarto document: <a href="https://quarto.org/docs/authoring/figures.html#figure-panels" class="uri">https://quarto.org/docs/authoring/figures.html#figure-panels</a></p></li>
-<li><p>Install the lightbox extension: <a href="https://github.com/quarto-ext/lightbox" class="uri">https://github.com/quarto-ext/lightbox</a></p></li>
+<li>Open the <code>getting-started-python.qmd</code> file for interactive use.</li>
+<li>Open the command palette, select “Python: elect Interpreter”, and choose the just created kernel (you may need to refresh)</li>
+<li>Click “Run All”.</li>
 </ul>
-<p>Images are from Wikipedia and in the public domain:</p>
+</section>
+<section id="the-pip-way" class="level3">
+<h3 class="anchored" data-anchor-id="the-pip-way">The pip way</h3>
+<p>Setup the <code>venv</code> environment:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> .venv/bin/activate</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Lions: <a href="https://en.wikipedia.org/wiki/File:Lion_waiting_in_Namibia.jpg" class="uri">https://en.wikipedia.org/wiki/File:Lion_waiting_in_Namibia.jpg</a></li>
-<li>Tigers: <a href="https://commons.wikimedia.org/wiki/File:Panthera_tigris_corbetti_(Tierpark_Berlin)_832-714-(118).jpg" class="uri">https://commons.wikimedia.org/wiki/File:Panthera_tigris_corbetti_(Tierpark_Berlin)_832-714-(118).jpg</a></li>
-<li>Bears: <a href="https://en.wikipedia.org/wiki/Bear#/media/File:Chengdu-pandas-d10.jpg" class="uri">https://en.wikipedia.org/wiki/Bear#/media/File:Chengdu-pandas-d10.jpg</a></li>
-<li>Wizard of Oz: <a href="https://commons.wikimedia.org/wiki/File:The_Wizard_of_Oz_1955_Lobby_Card.jpg" class="uri">https://commons.wikimedia.org/wiki/File:The_Wizard_of_Oz_1955_Lobby_Card.jpg</a></li>
+<li>Open the <code>getting-started-python.qmd</code> file for interactive use.</li>
+<li>Open the command palette, select “Python: elect Interpreter”, and choose the just created kernel (you may need to refresh)</li>
+<li>Click “Preview”</li>
 </ul>
+</section>
+</section>
+<section id="deploy" class="level2">
+<h2 class="anchored" data-anchor-id="deploy">Deploy</h2>
+<section id="rsconnect-python-cli" class="level3">
+<h3 class="anchored" data-anchor-id="rsconnect-python-cli">rsconnect-python CLI</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With uv</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run rsconnect deploy quarto .</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Without uv</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rsconnect</span> deploy quarto .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="git-backed" class="level3">
+<h3 class="anchored" data-anchor-id="git-backed">Git-backed</h3>
+<p>Update the code, and then run:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With uv</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> export <span class="at">-o</span> requirements.txt <span class="at">--no-hashes</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run rsconnect write-manifest quarto <span class="at">--overwrite</span> .</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Without uv</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">rsconnect</span> write-manifest quarto <span class="at">--overwrite</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commit the new <code>manifest.json</code> file to the git repo along with the code.</p>
+</section>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://docs.posit.co/connect/user/publishing-cli-quarto/">Posit Connect User Guide: Quarto (Python)</a></li>
+<li><a href="https://quarto.org/docs/publishing/rstudio-connect.html">quarto cli</a></li>
+<li><a href="https://github.com/rstudio/rsconnect">rsconnect</a></li>
+<li><a href="https://github.com/rstudio/rsconnect-python">rsconnect-python</a></li>
+<li><a href="https://quarto.org/docs/projects/quarto-projects.html">quarto projects</a></li>
+<li><a href="https://docs.posit.co/connect/user/git-backed/">Posit Connect User Guide - Git Backed Publishing</a></li>
+<li><a href="https://github.com/dpastoor/qvm">Quarto Version Manager</a></li>
+</ul>
+</section>
 </section>
 
 </main>
@@ -619,38 +571,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

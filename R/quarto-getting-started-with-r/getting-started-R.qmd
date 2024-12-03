@@ -41,6 +41,12 @@ Analytics as code lets you:
 
 </center>
 
+## Session Details
+
+```{r}
+sessionInfo()
+```
+
 ## Getting started with R
 
 There are so many resources out there, here are some of our favorites:
@@ -323,13 +329,21 @@ Image from [vetiver package](https://rstudio.github.io/vetiver-r/)
 
 Make interactive applications that will give each visitor a personalized experience using [shiny](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html).
 
-Low code option: [shinyuieditor](shinyuieditor)
+### Low code
 
-Examples in the Shiny Gallery: <https://shiny.posit.co/r/gallery/>
+There are some tools out there to help you quickly mock up a template for a shiny app:
+
+-   [shinyuieditor](shinyuieditor)
+-   [shiny assistant](https://shiny.posit.co/blog/posts/shiny-assistant/)
+
+### Get inspired
+
+-   Examples in the Shiny Gallery: <https://shiny.posit.co/r/gallery/>
+-   Annual shiny app building contest: <https://posit.co/blog/winners-of-the-2024-shiny-contest/>
 
 ### Re-use branding / theme-ing
 
-Shinythemes: <https://rstudio.github.io/shinythemes/>
+-   shinythemes: <https://rstudio.github.io/shinythemes/>
 
 ## End-to-end example: Ferryland
 

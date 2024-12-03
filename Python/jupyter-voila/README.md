@@ -20,6 +20,9 @@ cd Python/jupyter-voila
 
 # Create the kernel
 uv run ipython kernel install --user --name=project
+
+# List the available kernels
+jupyter kernelspec list
 ```
 
 - Open the `bqplot.ipynb`, `ipyvolume.ipynb`, or `hash.ipynb` file for interactive use.
