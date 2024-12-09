@@ -1,0 +1,511 @@
+---
+title: "Getting started with Python (Quarto and Shiny)"
+date: today
+author:
+  name: Lisa Anders
+  email: lisa.anders@posit.co 
+lightbox: true
+format:
+  html:
+    embed-resources: true
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+editor: source
+---
+
+## Why code based analytics? 
+
+Code based analytics makes your life so much easier as a developer.
+
+Analytics as code lets you:
+
+-   Leverage the best of what the open source community is making
+-   Control everything that is displayed, no more pixel paranoia
+-   Version control for backups and collaboration
+-   Write [tests](https://docs.python.org/3/library/unittest.html#module-unittest) to ensure performance
+-   Reproduceability by auditing the package environment with [uv](https://github.com/astral-sh/uv) or [venv](https://docs.posit.co/connect/admin/python/package-management/index.html)
+
+<center>
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/c7e0e26c-5ca7-49f1-ba8d-093b1f8e541d.png?h=a790567e29efb477a6b7fd4197c514d7){width="80%"}
+
+::: {.citation style="font-size: 16px"}
+"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by [Allison Horst](https://allisonhorst.com/cetinkaya-rundel-lowndes-quarto-keynote)
+:::
+
+</center>
+
+## Session Details 
+
+```{python .cell-code}
+import session_info
+print(session_info.show())
+```
+
+```{python .cell-code}
+import sys
+print(sys.executable)
+```
+
+## Getting started with Python
+
+The [Python Software Foundation](https://www.python.org/) has developed many good resources for starting with learning Python:
+
+-   The recommended starting place is with the [tutorial](https://docs.python.org/3/tutorial/index.html#tutorial-index).
+-   You could also view the [Beginner’s Guide to Python](https://wiki.python.org/moin/BeginnersGuide).
+-   Other training resources are listed at [Getting Started](https://www.python.org/about/gettingstarted/). You can find many resources developed for different backgrounds ranging from expert programmers to those without programming experience, and even some developed for young children.
+-   There is an extensive list of [books written on various Python topics](https://wiki.python.org/moin/PythonBooks).
+-   The [r/learnpython](https://www.reddit.com/r/learnpython/) Reddit maintains an [extensive wiki](https://www.reddit.com/r/learnpython/wiki/index/) for resources for getting started with Python.
+
+
+### Environments with uv
+
+We can use [uv](https://github.com/astral-sh/uv). It will detect that this is a project and create the venv for us when we go to run anything. 
+
+Initialize the project: 
+
+``` bash
+# Flow for updating 
+# delete the old venv
+uv init --app --python 3.12.6
+# delete the created hello.py file
+# Add the relevant packages
+uv add quarto numpy matplotlib openpyxl pandas great_tables pins plotly ipyleaflet pygwalker statsmodels session_info pyyaml 
+#Create the requirements.txt file
+uv export -o requirements.txt --no-hashes
+# In 6 months run this to upgrade packages 
+uv sync --upgrade
+#Run it with 
+uv run ipython kernel install --user --name=project 
+# Open the command palette (ctl-shift-p), select "Python: Select Interpreter", and choose the just created kernel (you may need to refresh)
+uv run quarto render getting-started-python.qmd
+```
+
+#### Usage
+
+It will detect that this is a project and create the venv for us when we go to run the application.
+
+``` bash
+cd Python/report-getting-started-python
+
+# Create the kernel
+uv run ipython kernel install --user --name=project
+
+# List the available kernels - this may need to be added to the top of the quarto document so it knows what kernel to use
+jupyter kernelspec list --json
+
+# Optionally, render the document
+uv run quarto preview getting-started-python.qmd --no-browser --no-watch-inputs
+```
+
+-   Open the `.qmd` file for interactive use.
+-   Choose the just created kernel (you may need to refresh).
+-   Click "Run All".
+
+##### Environment naming
+
+The trick with venv's and quarto is one of naming: <https://quarto.org/docs/projects/virtual-environments.html#vs-code>
+
+> If you create a virtual environment with venv in the env/ directory as described above, Visual Studio Code should automatically discover that environment when you load a workspace from the environment’s parent directory.
+
+Source: <https://quarto.org/docs/projects/virtual-environments.html#vs-code>
+
+#### Deploy
+
+##### rsconnect-python CLI
+
+``` bash
+#In order to deploy it needs to be a project (default is fine):
+quarto create project 
+
+# With uv - either of these
+uv run rsconnect deploy quarto .
+uv run quarto publish 
+# Without uv
+rsconnect deploy quarto .
+```
+
+##### Git-backed
+
+Update the code, and then run:
+
+``` bash
+# With uv
+uv export -o requirements.txt --no-hashes
+uv run rsconnect write-manifest quarto --overwrite .
+# Without uv
+pip freeze > requirements.txt 
+rsconnect write-manifest quarto --overwrite .
+```
+
+Commit the new `manifest.json` file to the git repo along with the code.
+
+## Getting started with Quarto
+
+<!-- ![](https://raw.githubusercontent.com/rstudio/hex-stickers/ce526bb5880f348c6970f44f9d8001eb504c4cf6/SVG/quarto.svg){width="25%"} -->
+
+### What is Quarto?
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see: <https://quarto.org>.
+
+-   Check out examples in the [gallery](https://quarto.org/docs/gallery/).
+
+-   Check out the [awesome list](https://github.com/mcanouil/awesome-quarto).
+
+### Running Code in Quarto
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{python}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{python}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+### Re-use branding / theme-ing
+
+Quarto templates: <https://quarto.org/docs/extensions/starter-templates.html>
+
+## Loading packages
+
+Build on what the open source community has created by using community built packages.
+
+Load packages into your library with:
+
+```{python}
+#| warning: false
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+## Connecting to data
+
+Connecting to data can either be pre-configured by an admin, or done manually by putting in the connection string. Some commonly used packages include: 
+
+- hivis
+- pandas
+- polars 
+- just using installed drivers with a plain sql statement 
+- using a package wrapper around a sql connection
+
+For example, for connecting to a data source like `mysql` you could use:
+
+``` python
+import mysql.connector
+
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "yourusername",
+    password = "your_password"
+)
+```
+
+or for a `postgres` datasource:
+
+``` python
+import psycopg2
+
+conn = psycopg2.connect(
+    dbname="name",
+    user="postgres",
+    password="your_password",
+    host="localhost"
+)
+```
+
+Reference and useful website with examples for other data types: <https://solutions.posit.co/connections/db/databases/>
+
+For working with data tables the [polars](https://pola.rs/) package is invaluable
+
+#### Opening data from excel
+
+Create a workbook
+
+```{python}
+from openpyxl import Workbook
+
+workbook = Workbook()
+sheet = workbook.active
+
+sheet["A1"] = "hello"
+sheet["B1"] = "world!"
+
+workbook.save(filename="hello_world.xlsx")
+```
+
+Load a Workbook
+
+```{python}
+from openpyxl import load_workbook
+workbook = load_workbook(filename="hello_world.xlsx")
+```
+
+Reference: <https://realpython.com/openpyxl-excel-spreadsheets-python/>
+
+### Displaying data
+
+We could also use a package like `pygwalker` for interactive tables. 
+
+::: panel-tabset
+
+#### DataFrame.style
+
+```{python}
+import pandas as pd
+
+dict = {'Name' : ['Martha', 'Tim', 'Rob', 'Georgia'],
+        'Maths' : [87, 91, 97, 95],
+        'Science' : [83, 99, 84, 76]}
+df = pd.DataFrame(dict)
+
+# display
+df.style
+```
+
+[Example from this useful article](https://www.geeksforgeeks.org/display-the-pandas-dataframe-in-table-style/)
+
+#### Simple tables with great_tables
+
+Use a package like great_tables to do something cool, like preview data with coloring and formatting:
+
+```{python}
+#| warning: false
+
+import numpy 
+import pandas
+import great_tables as gt
+from great_tables.data import sp500
+
+# Define the start and end dates for the data range
+start_date = "2010-06-07"
+end_date = "2010-06-14"
+
+# Filter sp500 using Pandas to dates between `start_date` and `end_date`
+sp500_mini = sp500[(sp500["date"] >= start_date) & (sp500["date"] <= end_date)]
+
+# Create a display table based on the `sp500_mini` table data
+(
+    gt.GT(data=sp500_mini)
+    .tab_header(title="S&P 500", subtitle=f"{start_date} to {end_date}")
+    .fmt_currency(columns=["open", "high", "low", "close"])
+    .fmt_date(columns="date", date_style="wd_m_day_year")
+    .fmt_number(columns="volume", compact=True)
+    .cols_hide(columns="adj_close")
+)
+
+```
+
+#### Amazing looking tables with great_tables
+
+```{python}
+import polars as pl
+import polars.selectors as cs
+from great_tables import GT, loc, style
+
+coffee_sales = pl.DataFrame.deserialize("./_data/coffee-sales.json", format="json")
+
+sel_rev = cs.starts_with("revenue")
+sel_prof = cs.starts_with("profit")
+
+# yo
+
+coffee_table = (
+    GT(coffee_sales)
+    .tab_header("Sales of Coffee Equipment")
+    .tab_spanner(label="Revenue", columns=sel_rev)
+    .tab_spanner(label="Profit", columns=sel_prof)
+    .cols_label(
+        revenue_dollars="Amount",
+        profit_dollars="Amount",
+        revenue_pct="Percent",
+        profit_pct="Percent",
+        monthly_sales="Monthly Sales",
+        icon="",
+        product="Product",
+    )
+    # formatting ----
+    .fmt_number(
+        columns=cs.ends_with("dollars"),
+        compact=True,
+        pattern="${x}",
+        n_sigfig=3,
+    )
+    .fmt_percent(columns=cs.ends_with("pct"), decimals=0)
+    # style ----
+    .tab_style(
+        style=style.fill(color="aliceblue"),
+        locations=loc.body(columns=sel_rev),
+    )
+    .tab_style(
+        style=style.fill(color="papayawhip"),
+        locations=loc.body(columns=sel_prof),
+    )
+    .tab_style(
+        style=style.text(weight="bold"),
+        locations=loc.body(rows=pl.col("product") == "Total"),
+    )
+    .fmt_nanoplot("monthly_sales", plot_type="bar")
+    .fmt_image("icon", path="_data/coffee-table-icons/")
+    .sub_missing(missing_text="")
+)
+
+coffee_table
+```
+
+:::
+
+### "Pin" that data so others can access it, or to speed up apps
+
+Pin your dataset to the Connect server:
+
+```python
+import pins
+from pins.data import mtcars
+
+# where environment vars CONNECT_SERVER and CONNECT_API_KEY are set
+board = board_connect()
+
+board.pin_write(mtcars.head(), "lisa.anders/mtcars", type="csv", force_identical_write = TRUE)
+```
+
+Read it back with:
+
+```python
+# where environment vars CONNECT_SERVER and CONNECT_API_KEY are set
+board = board_connect()
+
+board.pin_read("lisa.anders/mtcars")
+```
+
+When deployed to Connect, an API key will be automatically added into the environment.
+
+[Pin package](https://rstudio.github.io/pins-python/)
+
+### Validate data
+
+Check your data for errors or inconsistencies with 
+
+- [pydantic](https://pypi.org/project/pydantic/)
+- [pandera](https://pandera.readthedocs.io/en/stable/index.html) using the ["DataFrame Models" approach](https://pandera.readthedocs.io/en/stable/dataframe_models.html)
+
+## Creating visualizations
+
+Create visualizations using the most popular package, [ggplot2](https://ggplot2.tidyverse.org/)
+
+Make them interactive with [plotly](https://plotly.com/r/)
+
+::: {#fig-graphs layout-ncol="3"}
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+```{python}
+import plotly.express as px
+import plotly.io as pio
+df = px.data.iris()
+fig = px.scatter(df, x="sepal_width", y="sepal_length", 
+                 color="species", 
+                 marginal_y="violin", marginal_x="box", 
+                 trendline="ols", template="simple_white")
+fig.show()
+
+# If you are using Plotly within the VS Code Notebook Editor you will need to add a line of code to ensure that your plots can be seen both within VS Code and when rendered to HTML by Quarto. You can do this by configuring the Plotly default renderer as follows:
+
+# import plotly.io as pio
+# pio.renderers.default = "plotly_mimetype+notebook_connected"
+
+# Tip from: https://quarto.org/docs/interactive/widgets/jupyter.html#plotly
+```
+
+```{python}
+from ipyleaflet import Map, Marker, basemaps, basemap_to_tiles
+m = Map(
+  basemap=basemap_to_tiles(
+    basemaps.NASAGIBS.ModisTerraTrueColorCR, "2017-04-08"
+  ),
+  center=(52.204793, 360.121558),
+  zoom=4
+)
+m.add_layer(Marker(location=(52.204793, 360.121558)))
+m
+```
+
+:::
+
+There's an amazing resource for creating different types of plots [here](https://python-graph-gallery.com/)
+
+## Use LLM's
+
+We can even use LLM models inside the editor to provide coding assistance with this packages: 
+
+- [openai](https://pypi.org/project/openai/)
+
+## Make ML models
+
+<center>![](https://vetiver.posit.co/images/ml_ops_cycle.png){width="80%"}</center>
+
+Make Machine Learning models with [vetiver](https://rstudio.github.io/vetiver-python/). For training the model, [scikit-learn](https://scikit-learn.org/stable/) is a popular option. 
+
+- Example: [Bike predict](https://solutions.posit.co/gallery/bike_predict/index.html)
+
+<center>
+
+::: {.citation style="font-size: 16px"}
+Image from [vetiver package](https://rstudio.github.io/vetiver-python/)
+:::
+
+</center>
+
+## Make an interactive application with Shiny
+
+<!-- ![](https://rstudio.github.io/shiny/reference/figures/logo.png){width="25%"} -->
+
+Make interactive applications that will give each visitor a personalized experience using [shiny](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html).
+
+
+### Low code
+
+There are some tools out there to help you quickly mock up a template for a shiny app: 
+
+- [shiny express](https://shiny.posit.co/blog/posts/shiny-express/)
+- [shiny assistant](https://shiny.posit.co/blog/posts/shiny-assistant/)
+
+### Get inspired
+
+- Examples in the Shiny Gallery: <https://shiny.posit.co/python/gallery/>
+- Shiny live also has an amazing example set: <https://shinylive.io/py/examples/> 
+- Annual shiny app building contest: <https://posit.co/blog/winners-of-the-2024-shiny-contest/> 
+
+### Re-use branding / theme-ing
+
+-   shinyswatch: <https://posit-dev.github.io/py-shinyswatch/>
+
+## End-to-end example: Ferryland
+
+Ferryland git repo with workshop materials: <https://github.com/posit-conf-2024/ds-workflows-python>
+
+Ferryland [deployed materials](https://pub.current.posit.team/ferries-overview/) and [deployed materials publisher's page](https://pub.current.posit.team/connect/#/apps/f6b2cd8d-5bd7-42ba-82cb-c25078918043/access/57) (currently only available to Posit employees).
