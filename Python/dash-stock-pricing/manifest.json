@@ -15,7 +15,7 @@
   },
   "files": {
     "requirements.txt": {
-      "checksum": "27d35a8108b19bfa7dbc46355a73b022"
+      "checksum": "db53df6df217ad2f4deaec69f64ec17f"
     },
     ".internal.yml": {
       "checksum": "870363855de3284fdcc9c4719dbab960"
@@ -24,7 +24,7 @@
       "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
     },
     "README.md": {
-      "checksum": "44ddb34662573d0cdb2f84f6765fdcb8"
+      "checksum": "85a0860453edec71ae6000c561929613"
     },
     "app.py": {
       "checksum": "3cc0edae1d7654c8c3d2a73591aa0c4b"
@@ -36,10 +36,10 @@
       "checksum": "90a908060f20dfa7e229e631a42c5081"
     },
     "pyproject.toml": {
-      "checksum": "826b028eb9a63eeba646331ed6fd0bb2"
+      "checksum": "3cc69cf912c94c82f9abc0fa74e545e7"
     },
     "uv.lock": {
-      "checksum": "78ccdbec2f8b582e0ad5ec39e54a1f66"
+      "checksum": "4c500db646bae160716c59790bc4bec0"
     }
   }
 }
