@@ -16,6 +16,8 @@ Run the application:
 uv run app.py
 ```
 
+Stuck on the `loading...` screen? Try closing the session and re-running the above command. It seems like there can be a transient issue that happens when the environment setup and app run steps are run together. 
+
 ### The pip way
 
 Setup the `venv` environment:
