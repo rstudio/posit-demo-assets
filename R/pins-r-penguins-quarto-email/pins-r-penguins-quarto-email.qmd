@@ -1,0 +1,149 @@
+---
+title: "R Pins, Quarto, and Emails Demo"
+format: email
+email-attachments:
+  - data.csv
+editor: source
+---
+
+## Quarto <img src="https://quarto.org/quarto.png" align="right" height="50"/>
+
+Here is a Quarto document that renders to HTML and also produces a custom email message with [an attachment](https://docs.posit.co/connect/user/quarto/#attachments). learn more aout it here <https://quarto.org/>. 
+
+## Pins <img src="https://pins.rstudio.com/logo.png" align="right" height="50"/>
+
+The pins package can be used to publish data, models, and other R objects. Learn more about it here <https://pins.rstudio.com>.
+
+## Palmer Penguins <img src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/logo.png" align="right" height="50"/>
+
+The Palmer Penguins package is an R package created by Allison Horst that makes some data about penugins easily available to R users. Read more about it here <https://allisonhorst.github.io/palmerpenguins/>
+
+This is what the data looks like:
+
+```{r}
+library(palmerpenguins)
+library(pins)
+
+penguins |> 
+  head() |> 
+  kableExtra::kbl() |> 
+  kableExtra::kable_styling()
+
+```
+
+This is great if you have the `palmerpenguins` package installed in R. But what if you want to share this data with your colleagues who use python 🐍?
+
+This is where `pins` can help!
+
+## Publish data to connect using pins
+
+With `pins` you can easily publish data (and other stuff) to connect. In a few lines of code I can save this data to connect as a *pin*.
+
+```{r}
+# Only needed if on Workbench, Connect will automatically attach credentials
+# Sys.setenv(CONNECT_API_KEY = "<redacted>")
+# Sys.setenv(CONNECT_SERVER = "<redacted>")
+
+board <- pins::board_connect(auth = "envvar")
+
+# Troubleshooting: errors can come up if the user doesn't match the Connect user, or if there is a piece of content on connect that already has that name
+
+user <- "lisa.anders" # Sys.getenv("USER") # rstudio-connect
+
+board |> 
+  pins::pin_write(
+    penguins,
+    name = paste0(user, "/penguins_pins_r"),
+    type = "csv",
+    force_identical_write = TRUE
+  )
+```
+
+You can now see the data on connect!
+
+## Reading data from connect
+
+Now that the data has been published to connect, you and and other uses can pull the data from connect.
+
+You can easily read the data into R using pins:
+
+```{r}
+board <- pins::board_connect(auth = "envvar")
+
+df <- board |> 
+  pins::pin_read(paste0(user, "/penguins_pins_r")) |> 
+  dplyr::glimpse()
+
+df
+```
+
+## Deploying to Connect programmatically 
+
+```{r}
+# # Deploy it, this example is all self contained with no runtime
+# app_name <- "quarto-email-simple-deploy"
+# app_dir <- local_temp_app(list(
+#   "index.qmd" = c(
+#     "---",
+#     "title: Quarto Custom Email",
+#     "format: email",
+#     "email-attachments:",
+#     "  - data.csv",
+#     "---",
+#     "This is a Quarto document creating custom email",
+#     "",
+#     "::: {.email}",
+#     "::: {.subject}",
+#     "Important Message",
+#     ":::",
+#     "",
+#     "This message is so important, you must read it immediately!",
+#     ":::"
+#   ),
+#   "data.csv" = c(
+#     '"Name","Value"',
+#     '"Alice",42'
+#   )
+# ))
+# 
+# # Check that we can access the attachment
+# attachment_url <- paste0(app_url, "data.csv")
+# response <- GET(
+#   url = attachment_url,
+#   authenticate(CONNECT_ADMIN_USERNAME, CONNECT_ADMIN_PASSWORD)
+# )
+```
+
+## Emailing data from Connect 
+
+Add attachments to the email message with the email-attachments document metadata field. The attachment filenames can exist alongside the Quarto document or be produced as a side-effect of rendering the document.
+
+First let's save our data to a csv file. 
+
+```{r}
+write.csv(df, "data.csv", row.names=TRUE)
+```
+
+:: {.email}
+
+::: {.subject}
+The subject line.
+:::
+
+This is the message body. It is contained within an `email` block.
+
+We can use markdown syntax to: 
+
+* Make bullet point lists 
+
+- [ ] Include a checklist 
+
+1. Make numbered lists 
+
+::: {.email-text}
+An optional text-only version of the email message.
+:::
+
+:::
+
+
