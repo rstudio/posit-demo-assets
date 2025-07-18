@@ -8,7 +8,7 @@ editor: source
 
 ## Quarto <img src="https://quarto.org/quarto.png" align="right" height="50"/>
 
-Here is a Quarto document that renders to HTML and also produces a custom email message with [an attachment](https://docs.posit.co/connect/user/quarto/#attachments). learn more aout it here <https://quarto.org/>. 
+Here is a Quarto document that renders to HTML and also produces a custom email message with [an attachment](https://docs.posit.co/connect/user/quarto/#attachments). Learn more about it here <https://quarto.org/>. 
 
 ## Pins <img src="https://pins.rstudio.com/logo.png" align="right" height="50"/>
 
