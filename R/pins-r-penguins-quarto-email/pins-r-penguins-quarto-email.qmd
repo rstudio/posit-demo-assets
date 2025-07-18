@@ -47,7 +47,7 @@ board <- pins::board_connect(auth = "envvar")
 
 # Troubleshooting: errors can come up if the user doesn't match the Connect user, or if there is a piece of content on connect that already has that name
 
-user <- "lisa.anders" # Sys.getenv("USER") # rstudio-connect
+user <- Sys.getenv("USER") # rstudio-connect. or your admin user, etc
 
 board |> 
   pins::pin_write(
