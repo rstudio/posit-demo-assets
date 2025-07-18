@@ -1,0 +1,5 @@
+threshold_type,radiation_level,unit,authority,reference_document
+Public Alert,1,µSv/h,ASNR,ASNR-REG-2023-001
+Investigation Level,0.5,µSv/h,ASNR,ASNR-REG-2023-001
+Background Normal,0.2,µSv/h,ASNR,ASNR-REG-2023-001
+Instrument Detection,0.05,µSv/h,ASNR,ASNR-REG-2023-001
