@@ -28,7 +28,6 @@ penguins |>
   head() |> 
   kableExtra::kbl() |> 
   kableExtra::kable_styling()
-
 ```
 
 This is great if you have the `palmerpenguins` package installed in R. But what if you want to share this data with your colleagues who use python 🐍?
@@ -74,49 +73,14 @@ df <- board |>
   pins::pin_read(paste0(user, "/penguins_pins_r")) |> 
   dplyr::glimpse()
 
-df
-```
-
-## Deploying to Connect programmatically 
-
-```{r}
-# # Deploy it, this example is all self contained with no runtime
-# app_name <- "quarto-email-simple-deploy"
-# app_dir <- local_temp_app(list(
-#   "index.qmd" = c(
-#     "---",
-#     "title: Quarto Custom Email",
-#     "format: email",
-#     "email-attachments:",
-#     "  - data.csv",
-#     "---",
-#     "This is a Quarto document creating custom email",
-#     "",
-#     "::: {.email}",
-#     "::: {.subject}",
-#     "Important Message",
-#     ":::",
-#     "",
-#     "This message is so important, you must read it immediately!",
-#     ":::"
-#   ),
-#   "data.csv" = c(
-#     '"Name","Value"',
-#     '"Alice",42'
-#   )
-# ))
-# 
-# # Check that we can access the attachment
-# attachment_url <- paste0(app_url, "data.csv")
-# response <- GET(
-#   url = attachment_url,
-#   authenticate(CONNECT_ADMIN_USERNAME, CONNECT_ADMIN_PASSWORD)
-# )
+head(df, 6)
 ```
 
 ## Emailing data from Connect 
 
 Add attachments to the email message with the email-attachments document metadata field. The attachment filenames can exist alongside the Quarto document or be produced as a side-effect of rendering the document.
+
+Read more about it here: <https://quarto.org/docs/prerelease/1.4/email.html> 
 
 First let's save our data to a csv file. 
 
@@ -124,7 +88,7 @@ First let's save our data to a csv file.
 write.csv(df, "data.csv", row.names=TRUE)
 ```
 
-:: {.email}
+::: {.email}
 
 ::: {.subject}
 The subject line.
