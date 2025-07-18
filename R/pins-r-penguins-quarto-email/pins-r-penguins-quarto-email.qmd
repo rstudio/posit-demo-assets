@@ -1,11 +1,14 @@
 ---
-title: "R Pins Demo"
-output: html_document
+title: "R Pins, Quarto, and Emails Demo"
+format: email
+email-attachments:
+  - data.csv
+editor: source
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+## Quarto <img src="https://quarto.org/quarto.png" align="right" height="50"/>
+
+Here is a Quarto document that renders to HTML and also produces a custom email message with [an attachment](https://docs.posit.co/connect/user/quarto/#attachments). Learn more about it here <https://quarto.org/>. 
 
 ## Pins <img src="https://pins.rstudio.com/logo.png" align="right" height="50"/>
 
@@ -19,12 +22,12 @@ This is what the data looks like:
 
 ```{r}
 library(palmerpenguins)
+library(pins)
 
 penguins |> 
   head() |> 
   kableExtra::kbl() |> 
   kableExtra::kable_styling()
-
 ```
 
 This is great if you have the `palmerpenguins` package installed in R. But what if you want to share this data with your colleagues who use python 🐍?
@@ -36,13 +39,20 @@ This is where `pins` can help!
 With `pins` you can easily publish data (and other stuff) to connect. In a few lines of code I can save this data to connect as a *pin*.
 
 ```{r}
+# Only needed if on Workbench, Connect will automatically attach credentials
+# Sys.setenv(CONNECT_API_KEY = "<redacted>")
+# Sys.setenv(CONNECT_SERVER = "<redacted>")
+
 board <- pins::board_connect(auth = "envvar")
 
 # Troubleshooting: errors can come up if the user doesn't match the Connect user, or if there is a piece of content on connect that already has that name
+
+user <- Sys.getenv("USER") # rstudio-connect. or your admin user, etc
+
 board |> 
   pins::pin_write(
     penguins,
-    name = paste0(Sys.getenv("USER"), "/penguins_pins_r"),
+    name = paste0(user, "/penguins_pins_r"),
     type = "csv",
     force_identical_write = TRUE
   )
@@ -59,8 +69,45 @@ You can easily read the data into R using pins:
 ```{r}
 board <- pins::board_connect(auth = "envvar")
 
-board |> 
-  pins::pin_read(paste0(Sys.getenv("USER"), "/penguins_pins_r")) |> 
+df <- board |> 
+  pins::pin_read(paste0(user, "/penguins_pins_r")) |> 
   dplyr::glimpse()
+
+head(df, 6)
 ```
+
+## Emailing data from Connect 
+
+Add attachments to the email message with the email-attachments document metadata field. The attachment filenames can exist alongside the Quarto document or be produced as a side-effect of rendering the document.
+
+Read more about it here: <https://quarto.org/docs/prerelease/1.4/email.html> 
+
+First let's save our data to a csv file. 
+
+```{r}
+write.csv(df, "data.csv", row.names=TRUE)
+```
+
+::: {.email}
+
+::: {.subject}
+The subject line.
+:::
+
+This is the message body. It is contained within an `email` block.
+
+We can use markdown syntax to: 
+
+* Make bullet point lists 
+
+- [ ] Include a checklist 
+
+1. Make numbered lists 
+
+::: {.email-text}
+An optional text-only version of the email message.
+:::
+
+:::
+
 
