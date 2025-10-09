@@ -1,0 +1,27 @@
+# R Environment
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+renv/library/
+renv/local/
+renv/staging/
+
+# Synthetic data files
+data/synthetic-*
+
+# Model artifacts
+ml/*.rds
+ml/*.RDS
+
+# Shiny
+rsconnect/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.Rproj

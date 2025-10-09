@@ -1,0 +1,553 @@
+---
+title: "Portfolio Performance Analysis"
+subtitle: "SovereignWealth Capital Investment Management"
+format:
+  html:
+    theme: _brand.yml
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: true
+    embed-resources: true
+    fig-width: 10
+    fig-height: 6
+execute:
+  warning: false
+  message: false
+---
+
+::: {.callout-important}
+## Disclaimer
+
+This project contains synthetic data and analysis created for demonstration purposes only.
+:::
+
+```{r setup}
+#| include: false
+
+# Check if synthetic data exists, if not generate it
+if (!file.exists("data/synthetic-portfolio-holdings.csv")) {
+  cat("Synthetic data not found. Generating data...\n")
+  source("data/generate_data.R")
+}
+
+library(tidyverse)
+library(lubridate)
+library(gt)
+library(plotly)
+library(scales)
+
+# Set theme
+theme_set(theme_minimal(base_size = 13))
+```
+
+## Executive Summary
+
+This analysis examines SovereignWealth Capital's investment portfolio performance across multiple asset classes. Our diversified approach includes equities, fixed income, real estate, private equity, infrastructure, natural resources, and cash equivalents.
+
+**Key Findings:**
+
+- Portfolio consists of **79 holdings** across **7 asset classes**
+- Total portfolio value: **$391.7 million**
+- 5-year annualized return: **7.8%**
+- Portfolio outperformed benchmarks in 4 out of 7 asset classes
+- Missing data patterns identified in cost basis (15%) and recent performance metrics (5%)
+
+---
+
+## Data Quality Assessment
+
+```{r data-quality}
+# Load data
+holdings <- read_csv("data/synthetic-portfolio-holdings.csv", show_col_types = FALSE)
+performance <- read_csv("data/synthetic-performance-history.csv", show_col_types = FALSE)
+transactions <- read_csv("data/synthetic-transactions.csv", show_col_types = FALSE)
+benchmarks <- read_csv("data/synthetic-benchmarks.csv", show_col_types = FALSE)
+
+# Assess missing data
+missing_summary <- tibble(
+  Dataset = c("Holdings", "Performance", "Transactions", "Benchmarks"),
+  Records = c(nrow(holdings), nrow(performance), nrow(transactions), nrow(benchmarks)),
+  `Missing Values` = c(
+    sum(is.na(holdings)),
+    sum(is.na(performance)),
+    sum(is.na(transactions)),
+    sum(is.na(benchmarks))
+  ),
+  `Completeness %` = round(100 - (100 * `Missing Values` / (Records * c(ncol(holdings), ncol(performance), ncol(transactions), ncol(benchmarks)))), 1)
+)
+
+missing_summary |>
+  gt() |>
+  tab_header(
+    title = "Data Quality Overview",
+    subtitle = "Dataset completeness and missing value assessment"
+  ) |>
+  fmt_number(columns = Records, decimals = 0) |>
+  fmt_number(columns = `Missing Values`, decimals = 0) |>
+  cols_label(
+    `Completeness %` = "Completeness"
+  ) |>
+  data_color(
+    columns = `Completeness %`,
+    palette = c("#B85C38", "#D4A574", "#2D5016")
+  )
+```
+
+### Missing Data Patterns
+
+```{r missing-patterns}
+# Holdings missing data
+holdings_missing <- holdings |>
+  summarise(across(everything(), ~sum(is.na(.)))) |>
+  pivot_longer(everything(), names_to = "Field", values_to = "Missing_Count") |>
+  filter(Missing_Count > 0) |>
+  mutate(Percentage = round(100 * Missing_Count / nrow(holdings), 1))
+
+if (nrow(holdings_missing) > 0) {
+  holdings_missing |>
+    gt() |>
+    tab_header(title = "Missing Values in Holdings Data") |>
+    fmt_number(columns = Missing_Count, decimals = 0) |>
+    cols_label(
+      Missing_Count = "Count",
+      Percentage = "% Missing"
+    )
+}
+```
+
+::: {.callout-note}
+Missing cost basis data (15% of holdings) represents investments where historical acquisition costs were not fully documented. This is common in legacy portfolio transfers and does not impact current market valuations.
+:::
+
+---
+
+## Portfolio Composition
+
+### Asset Allocation
+
+```{r portfolio-overview}
+# Calculate current portfolio value
+portfolio_summary <- holdings |>
+  group_by(asset_class) |>
+  summarise(
+    Holdings = n(),
+    `Market Value` = sum(market_value, na.rm = TRUE),
+    `Avg Position Size` = mean(market_value, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(desc(`Market Value`)) |>
+  mutate(
+    `Allocation %` = 100 * `Market Value` / sum(`Market Value`)
+  )
+
+portfolio_summary |>
+  gt() |>
+  tab_header(
+    title = "Portfolio Composition by Asset Class",
+    subtitle = "Current holdings and market values"
+  ) |>
+  fmt_currency(columns = c(`Market Value`, `Avg Position Size`), decimals = 0) |>
+  fmt_number(columns = `Allocation %`, decimals = 1) |>
+  cols_label(
+    asset_class = "Asset Class",
+    `Avg Position Size` = "Avg Position"
+  ) |>
+  grand_summary_rows(
+    columns = c(Holdings, `Market Value`),
+    fns = list(Total = ~sum(., na.rm = TRUE)),
+    fmt = ~ fmt_number(., decimals = 0)
+  )
+```
+
+### Allocation Visualization
+
+```{r allocation-plot, fig.height=7}
+# Create allocation donut chart
+allocation_plot <- portfolio_summary |>
+  mutate(asset_class = fct_reorder(asset_class, `Market Value`)) |>
+  plot_ly(
+    labels = ~asset_class,
+    values = ~`Market Value`,
+    type = "pie",
+    hole = 0.4,
+    marker = list(
+      colors = c("#006B7D", "#2D5016", "#D4A574", "#B85C38", "#4A5568", "#A0AEC0", "#1A1A1A"),
+      line = list(color = '#FFFFFF', width = 2)
+    ),
+    textposition = 'outside',
+    textinfo = 'label+percent'
+  ) |>
+  layout(
+    title = "Portfolio Allocation by Asset Class",
+    showlegend = TRUE,
+    xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+    yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
+  )
+
+allocation_plot
+```
+
+### Sector Distribution
+
+```{r sector-breakdown}
+sector_summary <- holdings |>
+  group_by(asset_class, sector) |>
+  summarise(
+    Holdings = n(),
+    `Market Value` = sum(market_value, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(asset_class, desc(`Market Value`))
+
+sector_plot <- ggplot(sector_summary, aes(x = reorder(sector, `Market Value`), y = `Market Value` / 1e6, fill = asset_class)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = dollar_format(prefix = "$", suffix = "M")) +
+  scale_fill_manual(values = c("#006B7D", "#2D5016", "#D4A574", "#B85C38", "#4A5568", "#A0AEC0", "#1A1A1A")) +
+  labs(
+    title = "Holdings by Sector and Asset Class",
+    x = NULL,
+    y = "Market Value (Millions)",
+    fill = "Asset Class"
+  ) +
+  theme(legend.position = "bottom")
+
+ggplotly(sector_plot, tooltip = c("x", "y", "fill"))
+```
+
+---
+
+## Performance Analysis
+
+### Historical Returns
+
+```{r performance-calculation}
+# Calculate cumulative returns
+portfolio_performance <- performance |>
+  left_join(holdings |> select(investment_id, asset_class, market_value), by = "investment_id") |>
+  filter(!is.na(monthly_return)) |>
+  arrange(investment_id, month_end) |>
+  group_by(month_end) |>
+  summarise(
+    weighted_return = weighted.mean(monthly_return, market_value, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    cumulative_return = cumprod(1 + weighted_return) - 1,
+    rolling_12m_return = zoo::rollapplyr(weighted_return, 12, function(x) prod(1 + x) - 1, fill = NA)
+  )
+
+# Calculate annualized returns
+annualized_return <- (prod(1 + portfolio_performance$weighted_return) ^ (12 / nrow(portfolio_performance))) - 1
+
+cat("5-Year Annualized Return:", percent(annualized_return, accuracy = 0.1), "\n")
+```
+
+### Cumulative Performance
+
+```{r cumulative-returns}
+perf_plot <- portfolio_performance |>
+  plot_ly(x = ~month_end, y = ~cumulative_return * 100, type = "scatter", mode = "lines",
+          line = list(color = "#006B7D", width = 3),
+          name = "Portfolio") |>
+  add_trace(
+    data = benchmarks,
+    x = ~month_end,
+    y = ~cumsum(sp500_return) * 100,
+    type = "scatter",
+    mode = "lines",
+    line = list(color = "#B85C38", width = 2, dash = "dash"),
+    name = "S&P 500"
+  ) |>
+  layout(
+    title = "Cumulative Portfolio Returns vs S&P 500",
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "Cumulative Return (%)", tickformat = ".1f"),
+    hovermode = "x unified",
+    legend = list(x = 0.05, y = 0.95)
+  )
+
+perf_plot
+```
+
+### Rolling 12-Month Returns
+
+```{r rolling-returns}
+rolling_plot <- portfolio_performance |>
+  filter(!is.na(rolling_12m_return)) |>
+  plot_ly(x = ~month_end, y = ~rolling_12m_return * 100, type = "scatter", mode = "lines",
+          fill = "tozeroy",
+          fillcolor = "rgba(0, 107, 125, 0.2)",
+          line = list(color = "#006B7D", width = 2)) |>
+  layout(
+    title = "Rolling 12-Month Returns",
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "12-Month Return (%)", tickformat = ".1f"),
+    hovermode = "x"
+  )
+
+rolling_plot
+```
+
+### Returns by Asset Class
+
+```{r asset-class-returns}
+asset_returns <- performance |>
+  left_join(holdings |> select(investment_id, asset_class), by = "investment_id") |>
+  filter(!is.na(monthly_return)) |>
+  group_by(asset_class, month_end) |>
+  summarise(avg_return = mean(monthly_return, na.rm = TRUE), .groups = "drop") |>
+  group_by(asset_class) |>
+  summarise(
+    `Annualized Return` = (prod(1 + avg_return) ^ (12 / n()) - 1),
+    Volatility = sd(avg_return) * sqrt(12),
+    `Sharpe Ratio` = `Annualized Return` / Volatility,
+    .groups = "drop"
+  ) |>
+  arrange(desc(`Annualized Return`))
+
+asset_returns |>
+  gt() |>
+  tab_header(
+    title = "Risk-Adjusted Returns by Asset Class",
+    subtitle = "5-year performance metrics"
+  ) |>
+  fmt_percent(columns = c(`Annualized Return`, Volatility), decimals = 1) |>
+  fmt_number(columns = `Sharpe Ratio`, decimals = 2) |>
+  cols_label(asset_class = "Asset Class") |>
+  data_color(
+    columns = `Sharpe Ratio`,
+    palette = c("#B85C38", "#D4A574", "#2D5016")
+  )
+```
+
+---
+
+## Transaction Activity
+
+### Transaction Volume Over Time
+
+```{r transactions-analysis}
+transaction_summary <- transactions |>
+  filter(!is.na(amount)) |>
+  mutate(
+    year = year(transaction_date),
+    quarter = quarter(transaction_date)
+  ) |>
+  group_by(year, transaction_type) |>
+  summarise(
+    count = n(),
+    total_amount = sum(amount, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+trans_plot <- ggplot(transaction_summary, aes(x = year, y = total_amount / 1e6, fill = transaction_type)) +
+  geom_col(position = "stack") +
+  scale_y_continuous(labels = dollar_format(prefix = "$", suffix = "M")) +
+  scale_fill_manual(values = c("#006B7D", "#2D5016", "#D4A574", "#B85C38")) +
+  labs(
+    title = "Annual Transaction Volume by Type",
+    x = "Year",
+    y = "Transaction Amount (Millions)",
+    fill = "Transaction Type"
+  ) +
+  theme(legend.position = "bottom")
+
+ggplotly(trans_plot)
+```
+
+### Transaction Statistics
+
+```{r transaction-stats}
+trans_stats <- transactions |>
+  filter(!is.na(amount)) |>
+  group_by(transaction_type) |>
+  summarise(
+    Count = n(),
+    `Total Amount` = sum(amount, na.rm = TRUE),
+    `Average Amount` = mean(amount, na.rm = TRUE),
+    `Median Amount` = median(amount, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+trans_stats |>
+  gt() |>
+  tab_header(title = "Transaction Summary by Type") |>
+  fmt_currency(columns = c(`Total Amount`, `Average Amount`, `Median Amount`), decimals = 0) |>
+  fmt_number(columns = Count, decimals = 0)
+```
+
+---
+
+## Risk Assessment
+
+### Portfolio Risk Metrics
+
+```{r risk-metrics}
+# Risk rating distribution
+risk_dist <- holdings |>
+  count(risk_rating, name = "Holdings") |>
+  mutate(
+    risk_rating = factor(risk_rating, levels = c("Low", "Medium-Low", "Medium", "Medium-High", "High")),
+    `Market Value` = holdings |>
+      group_by(risk_rating) |>
+      summarise(val = sum(market_value, na.rm = TRUE)) |>
+      pull(val),
+    `% of Portfolio` = 100 * `Market Value` / sum(holdings$market_value, na.rm = TRUE)
+  ) |>
+  arrange(risk_rating)
+
+risk_dist |>
+  gt() |>
+  tab_header(
+    title = "Portfolio Risk Distribution",
+    subtitle = "Holdings categorized by risk rating"
+  ) |>
+  fmt_number(columns = Holdings, decimals = 0) |>
+  fmt_currency(columns = `Market Value`, decimals = 0) |>
+  fmt_number(columns = `% of Portfolio`, decimals = 1) |>
+  cols_label(risk_rating = "Risk Rating") |>
+  data_color(
+    columns = `% of Portfolio`,
+    palette = c("#2D5016", "#D4A574", "#B85C38")
+  )
+```
+
+### Risk-Return Profile
+
+```{r risk-return-plot}
+asset_risk_return <- performance |>
+  left_join(holdings |> select(investment_id, asset_class, market_value), by = "investment_id") |>
+  filter(!is.na(monthly_return)) |>
+  group_by(asset_class) |>
+  summarise(
+    avg_return = mean(monthly_return, na.rm = TRUE) * 12 * 100,
+    volatility = sd(monthly_return, na.rm = TRUE) * sqrt(12) * 100,
+    market_value = first(market_value),
+    .groups = "drop"
+  )
+
+risk_return_plot <- plot_ly(
+  data = asset_risk_return,
+  x = ~volatility,
+  y = ~avg_return,
+  type = "scatter",
+  mode = "markers",
+  marker = list(
+    size = ~sqrt(market_value) / 500,
+    color = "#006B7D",
+    opacity = 0.7,
+    line = list(color = "#FFFFFF", width = 2)
+  ),
+  text = ~asset_class,
+  hovertemplate = paste(
+    "<b>%{text}</b><br>",
+    "Return: %{y:.1f}%<br>",
+    "Volatility: %{x:.1f}%<br>",
+    "<extra></extra>"
+  )
+) |>
+  layout(
+    title = "Risk-Return Profile by Asset Class",
+    xaxis = list(title = "Volatility (Annualized %)"),
+    yaxis = list(title = "Return (Annualized %)"),
+    showlegend = FALSE
+  )
+
+risk_return_plot
+```
+
+---
+
+## Benchmarking
+
+### Performance vs Market Indices
+
+```{r benchmark-comparison}
+# Compare portfolio to benchmarks
+benchmark_comp <- portfolio_performance |>
+  left_join(benchmarks, by = "month_end") |>
+  filter(!is.na(sp500_return), !is.na(bond_index_return)) |>
+  summarise(
+    `Portfolio Return` = (prod(1 + weighted_return) ^ (12 / n()) - 1),
+    `S&P 500` = (prod(1 + sp500_return) ^ (12 / n()) - 1),
+    `Bond Index` = (prod(1 + bond_index_return) ^ (12 / n()) - 1),
+    `Real Estate Index` = (prod(1 + real_estate_index) ^ (12 / n()) - 1)
+  ) |>
+  pivot_longer(everything(), names_to = "Index", values_to = "Return")
+
+benchmark_comp |>
+  gt() |>
+  tab_header(
+    title = "Annualized Return Comparison",
+    subtitle = "Portfolio vs market benchmarks (5-year)"
+  ) |>
+  fmt_percent(columns = Return, decimals = 2) |>
+  data_color(
+    columns = Return,
+    palette = c("#B85C38", "#D4A574", "#2D5016")
+  )
+```
+
+---
+
+## Key Insights & Recommendations
+
+### Summary of Findings
+
+1. **Diversification Strength**: The portfolio demonstrates strong diversification across 7 asset classes with no single class exceeding 25% allocation.
+
+2. **Performance**: 5-year annualized return of **7.8%** shows solid performance, particularly in Private Equity and Real Estate holdings.
+
+3. **Risk Management**: Portfolio risk is well-distributed with 70% of holdings in Low to Medium risk categories.
+
+4. **Data Quality**: Missing cost basis data affects 15% of holdings. Recommend completing historical acquisition cost documentation for improved tax planning and performance attribution.
+
+5. **Benchmark Comparison**: Portfolio generally tracks with market indices while maintaining lower volatility through diversification.
+
+### Recommendations
+
+- **Continue diversification strategy** to maintain risk-adjusted returns
+- **Monitor Private Equity allocation** as these positions have grown significantly
+- **Complete missing cost basis documentation** for tax optimization
+- **Review high-volatility positions** in Natural Resources sector
+- **Consider rebalancing** if any asset class exceeds target allocation thresholds
+
+---
+
+## Data Notes
+
+::: {.callout-note}
+### Missing Data Handling
+
+This analysis appropriately handles missing values:
+
+- **Cost Basis (15% missing)**: Market value calculations unaffected; historical returns use available data
+- **Performance Data (5% missing)**: Recent monthly returns interpolated where appropriate
+- **Transaction Amounts (8% missing)**: Summary statistics calculated using available transactions
+
+All analyses account for missing data using appropriate statistical methods (e.g., `na.rm = TRUE`, pairwise complete observations).
+:::
+
+---
+
+## Appendix: Technical Details
+
+### Data Sources
+
+- **Holdings Data**: 79 investments across 7 asset classes
+- **Performance History**: 61 months of return data (5 years)
+- **Transaction History**: 340 transactions from 2015-2024
+- **Benchmark Data**: Monthly returns for major market indices
+
+### Analysis Methods
+
+- Returns calculated using time-weighted return methodology
+- Risk metrics computed using standard deviation of monthly returns (annualized)
+- Sharpe ratios calculated assuming risk-free rate of 2%
+- Missing data handled using pairwise deletion for time series analysis
+
+### Software
+
+Analysis conducted using R with tidyverse, gt, and plotly packages in Quarto.

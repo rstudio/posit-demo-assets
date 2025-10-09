@@ -1,0 +1,70 @@
+meta:
+  name:
+    short: SovereignWealth Capital
+    full: SovereignWealth Capital Management
+  link:
+    home: https://www.sovereignwealthcapital.example
+
+color:
+  palette:
+    white: "#FFFFFF"
+    black: "#1A1A1A"
+    deep-teal: "#006B7D"
+    gold: "#D4A574"
+    forest-green: "#2D5016"
+    rust: "#B85C38"
+    slate: "#4A5568"
+    warm-gray: "#A0AEC0"
+
+  foreground: "#1A1A1A"
+  background: "#FFFFFF"
+  primary: "#006B7D"
+  secondary: "#4A5568"
+  tertiary: "#A0AEC0"
+  success: "#2D5016"
+  info: "#006B7D"
+  warning: "#D4A574"
+  danger: "#B85C38"
+  light: "#FFFFFF"
+  dark: "#1A1A1A"
+
+typography:
+  fonts:
+    - family: Inter
+      source: google
+      weight: [400, 600, 700]
+      style: [normal]
+    - family: Merriweather
+      source: google
+      weight: [400, 700]
+      style: [normal]
+    - family: Fira Code
+      source: google
+      weight: [400, 500]
+      style: [normal]
+
+  base:
+    family: Inter
+    weight: 400
+    size: 16px
+    line-height: 1.6
+
+  headings:
+    family: Merriweather
+    weight: 700
+    line-height: 1.2
+    color: "#006B7D"
+
+  monospace:
+    family: Fira Code
+    weight: 400
+    size: 0.9em
+
+  monospace-inline:
+    color: "#2D5016"
+    background-color: "#F7FAFC"
+
+  link:
+    weight: 600
+    color: "#006B7D"
+    decoration: none

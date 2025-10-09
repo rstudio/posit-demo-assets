@@ -1,0 +1,18 @@
+file: portfolio_risk_predictor.rds
+file_size: 24967
+pin_hash: 152baa916c9b3014
+type: rds
+title: 'portfolio_risk_predictor: a pinned list'
+description: Random forest model to predict investment risk ratings based on performance
+  metrics
+tags: ~
+urls: ~
+created: 20251009T134902Z
+api_version: 1
+user:
+  required_pkgs:
+  - parsnip
+  - ranger
+  - recipes
+  - workflows
+  renv_lock: ~
