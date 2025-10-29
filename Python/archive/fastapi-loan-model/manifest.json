@@ -1,30 +1,35 @@
 {
   "version": 1,
-  "locale": "en_US.UTF-8",
+  "locale": "English_United States.1252",
   "metadata": {
-    "appmode": "python-streamlit",
+    "appmode": "python-fastapi",
     "entrypoint": "main"
   },
   "python": {
     "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "24.3.1",
+      "version": "25.3",
       "package_file": "requirements.txt"
+    }
+  },
+  "environment": {
+    "python": {
+      "requires": "~=3.12.0"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "e5d44269041ce28484a657b7a95c5019"
+      "checksum": "cf075de5fb4526fc12740dd403b5eea3"
     },
     ".internal.yml": {
-      "checksum": "5c5dee0fd316bb176d6485cd64d05502"
+      "checksum": "d0adefdb3b119d5a96d6e5c279cbd261"
     },
     ".python-version": {
-      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+      "checksum": "3a5333c73fad4f4e1dc6297c242f4a2a"
     },
     "README.md": {
-      "checksum": "c1f7ac25e599aa6a35dd0fe821e98107"
+      "checksum": "94aa1b67283d942597468c6867a1bb24"
     },
     "data/client.parquet": {
       "checksum": "b7731a83d0a5e6425a4e471480f6bb2b"
@@ -39,22 +44,22 @@
       "checksum": "001b522d4a071d1e08ef8707cc53e421"
     },
     "main.py": {
-      "checksum": "5d9f22ba075d1949fa8836c346a015f5"
+      "checksum": "83f588e705ae56a2d99210189198a612"
     },
     "model/xgb_final_model.json": {
       "checksum": "40cac1067468f83745cb1ffa28361db1"
     },
     "pyproject.toml": {
-      "checksum": "fa442d8cf3699098addd133db3990e31"
+      "checksum": "8c642f687d3fcfe26161bb9d8185d261"
     },
     "screenshot.png": {
       "checksum": "5a45cd5e03a71c7d0a7843ac8278fe33"
     },
     "train.ipynb": {
-      "checksum": "4cf4f94a658b05277f745af856d951c4"
+      "checksum": "b7d3dab7c4a778ae8dd7e5a9eac81a7e"
     },
     "uv.lock": {
-      "checksum": "213bdeb4d5c6e45edcc5fc7a9bd8fa2c"
+      "checksum": "2fdd2bf7c809d82b6ab8975f9649e1e9"
     }
   }
 }

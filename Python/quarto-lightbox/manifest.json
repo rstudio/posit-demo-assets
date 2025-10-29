@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "locale": "en_US.UTF-8",
+  "locale": "English_United States.1252",
   "metadata": {
     "appmode": "quarto-static"
   },
   "quarto": {
-    "version": "1.5.57",
+    "version": "1.8.23",
     "engines": [
       "jupyter"
     ]
@@ -14,34 +14,42 @@
     "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "24.3.1",
+      "version": "25.3",
       "package_file": "requirements.txt"
+    }
+  },
+  "environment": {
+    "python": {
+      "requires": "~=3.12.0"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "c762a4263f1e1192f658ee8051ea6662"
+      "checksum": "c5fe4295af1170413c7921f5f5e4f9f1"
     },
     ".gitignore": {
-      "checksum": "06d306ff933a023ca365a9fbf6589381"
+      "checksum": "fc521f01b0133ce91425504af753c558"
     },
     ".internal.yml": {
-      "checksum": "933f75ed6f9d60402c5cafb46facf13d"
+      "checksum": "1bbb03ba3f712257f6fe0cb838aae61f"
     },
     ".python-version": {
-      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+      "checksum": "3a5333c73fad4f4e1dc6297c242f4a2a"
+    },
+    "README.html": {
+      "checksum": "fdf6eb726e61f026c61e951021e2b52b"
     },
     "README.md": {
-      "checksum": "2079259ebe53703e8080c6b8e3025c75"
+      "checksum": "cbefcc794251dd7d49d361c4921e6f86"
     },
     "_extensions/quarto-ext/lightbox/_extension.yml": {
-      "checksum": "3db0b546785dbeb0117afef962c424bd"
+      "checksum": "fd3894fee085949228fdad733e53172e"
     },
     "_extensions/quarto-ext/lightbox/lightbox.css": {
-      "checksum": "f94b9cae12f142eaf34dc631afa138fc"
+      "checksum": "c01ba62eff844fa37093cd893d2c8026"
     },
     "_extensions/quarto-ext/lightbox/lightbox.lua": {
-      "checksum": "2ceffdc78094bca8e55b4be6d37cb12d"
+      "checksum": "da7f82fe987008cfaf30d8657c7166ae"
     },
     "_extensions/quarto-ext/lightbox/resources/css/glightbox.min.css": {
       "checksum": "9b438b29cef1c212d1c65a877ffc7232"
@@ -53,7 +61,7 @@
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
     "_quarto.yml": {
-      "checksum": "ab8efbe8e2d5444405b716b3bb917b3f"
+      "checksum": "3a51b61d48af82ee51e48d8a75495705"
     },
     "img/Chengdu-pandas-d10.jpg": {
       "checksum": "55ef49ea2db1762990435c43e2a8dca0"
@@ -68,19 +76,16 @@
       "checksum": "bdbf9246bd2eb7ff5942b3bdc0f3a401"
     },
     "pyproject.toml": {
-      "checksum": "62ce3bbf29b1170d0192154300c648b9"
+      "checksum": "dc4cddc0df6849ebe66dfe5c4b9361ff"
     },
     "quarto-lightbox.png": {
       "checksum": "1105422772d95ab055a6c8a2f96c7061"
     },
     "quarto-python-lightbox.qmd": {
-      "checksum": "48260afb44425b6d33f149c8fa2bf8b8"
-    },
-    "quarto-python-lightbox.quarto_ipynb": {
-      "checksum": "2b66988d26160d267f665f067060d5f8"
+      "checksum": "e94f5a74f40f67a9a1a08cfef79696c4"
     },
     "uv.lock": {
-      "checksum": "ad59fd2135ec910e5a1a3277d7b4994a"
+      "checksum": "6532c3e3053fdfe43a7a212258ac9e33"
     }
   }
 }

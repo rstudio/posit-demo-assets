@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "locale": "English_United States.1252",
+  "metadata": {
+    "appmode": "python-api",
+    "entrypoint": "main"
+  },
+  "python": {
+    "version": "3.12.6",
+    "package_manager": {
+      "name": "pip",
+      "version": "25.3",
+      "package_file": "requirements.txt"
+    }
+  },
+  "environment": {
+    "python": {
+      "requires": "~=3.12.0"
+    }
+  },
+  "files": {
+    "requirements.txt": {
+      "checksum": "d46842e39ac8163767c8a48c2f2ed38b"
+    },
+    ".internal.yml": {
+      "checksum": "e418152f70740a4c329270e6ac2b2fb8"
+    },
+    ".python-version": {
+      "checksum": "3a5333c73fad4f4e1dc6297c242f4a2a"
+    },
+    "README.md": {
+      "checksum": "da808aafe4ef19e2ecfd18de7ba50049"
+    },
+    "fastapi-stock.png": {
+      "checksum": "528f3dfdd2984a725398a8c4dbf6156e"
+    },
+    "main.py": {
+      "checksum": "c6716d35fb38311a037b3f52a068a50b"
+    },
+    "prices.csv": {
+      "checksum": "15571101f81a3c5bd99734b214e3d86f"
+    },
+    "pyproject.toml": {
+      "checksum": "bedbce59c222b7ffc54278ee61fc50af"
+    },
+    "uv.lock": {
+      "checksum": "976702edf3b13807ac753490329618c0"
+    }
+  }
+}
