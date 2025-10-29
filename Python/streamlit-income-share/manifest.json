@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "locale": "en_US.UTF-8",
+  "locale": "English_United States.1252",
   "metadata": {
     "appmode": "python-streamlit",
     "entrypoint": "app"
@@ -9,40 +9,45 @@
     "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "24.3.1",
+      "version": "25.3",
       "package_file": "requirements.txt"
+    }
+  },
+  "environment": {
+    "python": {
+      "requires": "~=3.12.0"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "d234f8dec51927d12c0e7febee8f4ab8"
+      "checksum": "51b7246065dda7201c7a0dc6a5747396"
     },
     ".internal.yml": {
-      "checksum": "f1fff527b600fbc9329f00b260a1fc9f"
+      "checksum": "2f90b85c7f6ac8cc17e41e959562adc7"
     },
     ".python-version": {
-      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+      "checksum": "3a5333c73fad4f4e1dc6297c242f4a2a"
     },
     "README.md": {
-      "checksum": "eb63708c48c84eb935234c54c9606a2f"
+      "checksum": "497bd6d2a34ecc5d56527dfb306e2b72"
     },
     "app.py": {
-      "checksum": "2b45ae76a59492827ba0370737a2a3d5"
+      "checksum": "cc4fd454102da8ae1c154206c8b6e512"
     },
     "data.csv": {
-      "checksum": "8da5e3f4e5d46c024310cd04354f81bd"
+      "checksum": "2a027d811327d9d70ff41c3d7cdc8435"
     },
     "pyproject.toml": {
-      "checksum": "15897e2b7e36c10921ce0e8f199af111"
+      "checksum": "2903a3b7c08f50e5effc178bdf4be997"
     },
     "requirements.in": {
-      "checksum": "1dd8d283deaba5b75c5a25552fd897b2"
+      "checksum": "218a64464e8b1df4fbb88c8ded70dbbc"
     },
     "streamlit-income-share.png": {
       "checksum": "4870b5dc9d209e007b8f5d4d627a0a5a"
     },
     "uv.lock": {
-      "checksum": "0f691925af72f92831a0bc90ed17421e"
+      "checksum": "e60c5f8776f2b7e5f645a814bf1ef283"
     }
   }
 }

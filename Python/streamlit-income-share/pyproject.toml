@@ -7,5 +7,6 @@ requires-python = ">=3.12.6"
 dependencies = [
     "altair>=5.4.1",
     "pandas>=2.2.3",
+    "rsconnect-python>=1.27.1",
     "streamlit>=1.40.1",
 ]

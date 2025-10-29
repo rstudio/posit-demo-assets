@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "locale": "en_US.UTF-8",
+  "locale": "English_United States.1252",
   "metadata": {
     "appmode": "jupyter-voila",
     "entrypoint": ""
@@ -9,37 +9,42 @@
     "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "24.3.1",
+      "version": "25.3",
       "package_file": "requirements.txt"
+    }
+  },
+  "environment": {
+    "python": {
+      "requires": "~=3.12.0"
     }
   },
   "files": {
     "requirements.txt": {
-      "checksum": "7b65f4fee09f4775e7f8ff30a4a2d514"
+      "checksum": "da91ffcbdaa04ad44e3e6bffec430ffc"
     },
     ".internal.yml": {
-      "checksum": "a9fdf100d8a7f7ebc4364c3bd6eb6b28"
+      "checksum": "81e06890b833e7d71b2a6d38612512f3"
     },
     ".python-version": {
-      "checksum": "90d65f090eeabe4dfd8ccb2ce9d300a2"
+      "checksum": "3a5333c73fad4f4e1dc6297c242f4a2a"
     },
     "README.md": {
-      "checksum": "ffeb972c1056163135c6e00d269ff704"
+      "checksum": "891c9cea391dc73092b9ddabb29f1c75"
     },
     "bqplot.ipynb": {
-      "checksum": "349f27859d9b3b33bbea128fb79c0973"
+      "checksum": "310df3447b5e345e4b00770a3ad9def3"
     },
     "hash.ipynb": {
-      "checksum": "2be0375899a7e247ec6669ed59bc1ec5"
+      "checksum": "74779a56d84cfae1c1fbd2378e7af243"
     },
     "ipv.ipynb": {
-      "checksum": "4b2b7ea2a16af5da31fd1b2ebd5fb342"
+      "checksum": "c70b1ef784cd6ccc8855ce0b40167227"
     },
     "pyproject.toml": {
-      "checksum": "d06969fe1fb90155217243aeaa379eed"
+      "checksum": "22a5a7cf91ed6a426bb623fea6988979"
     },
     "uv.lock": {
-      "checksum": "bb23357676067f3a876ca901ed9066b9"
+      "checksum": "29187cf15a4e308219471312be93f378"
     },
     "voila.png": {
       "checksum": "7b1b11e04f0ded89a30adc69b86d1834"

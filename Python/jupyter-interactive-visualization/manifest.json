@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "locale": "en_US.UTF-8",
+  "locale": "English_United States.1252",
   "metadata": {
     "appmode": "jupyter-static",
     "entrypoint": "jupyter-interactive-visualization.ipynb"
@@ -9,16 +9,21 @@
     "version": "3.12.6",
     "package_manager": {
       "name": "pip",
-      "version": "24.3.1",
+      "version": "25.3",
       "package_file": "requirements.txt"
+    }
+  },
+  "environment": {
+    "python": {
+      "requires": "~=3.12.0"
     }
   },
   "files": {
     "jupyter-interactive-visualization.ipynb": {
-      "checksum": "8671b36996277b09affca0c6161d7739"
+      "checksum": "769497ef33c5da9878e1044527c42794"
     },
     "requirements.txt": {
-      "checksum": "ebcba96824c46ac8b06299c9b020b00b"
+      "checksum": "2234baee6820ad6cdfa674b8d7cad9a7"
     }
   }
 }
