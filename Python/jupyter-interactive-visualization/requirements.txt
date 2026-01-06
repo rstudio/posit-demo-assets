@@ -26,7 +26,7 @@ beautifulsoup4==4.14.2
     # via nbconvert
 bleach==6.3.0
     # via nbconvert
-bokeh==3.8.0
+bokeh==3.8.2
     # via jupyter-interactive-visualization
 certifi==2025.10.5
     # via
