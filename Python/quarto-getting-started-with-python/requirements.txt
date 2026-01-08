@@ -105,7 +105,7 @@ traittypes==0.2.1
 types-python-dateutil==2.9.0.20241003
 typing-extensions==4.12.2
 tzdata==2024.2
-urllib3==2.2.3
+urllib3==2.6.3
 wasmtime==27.0.2
 wcwidth==0.2.13
 widgetsnbextension==4.0.13
