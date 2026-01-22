@@ -2,6 +2,10 @@
 
 This repo contains demo assets to be used in various demo environments. The goal of this repository is to give you some fast examples to help you learn more and try out the various features.
 
+## Related 
+
+For internal Posit folks you might want to check out <https://github.com/sol-eng/demobot-demos> 
+
 ## Disclaimer
 
 This repository was built and is maintained by Posit Solutions Engineering. There may be some delays in updating examples and it is possible that some of the project examples may have issues. If you come across an issue please let us know by putting in a git issue. 
