@@ -116,7 +116,7 @@ python-dateutil==2.9.0.post0
     # via
     #   pandas
     #   shinywidgets
-python-multipart==0.0.20 ; sys_platform != 'emscripten'
+python-multipart==0.0.22 ; sys_platform != 'emscripten'
     # via shiny
 pytz==2025.2
     # via pandas
