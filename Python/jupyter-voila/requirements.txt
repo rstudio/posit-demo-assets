@@ -250,7 +250,7 @@ pillow==12.0.0
     # via
     #   ipyvolume
     #   matplotlib
-pip==25.3
+pip==26.0
     # via rsconnect-python
 platformdirs==4.5.0
     # via jupyter-core
