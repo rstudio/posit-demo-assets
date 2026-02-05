@@ -31,6 +31,6 @@ six==1.16.0
 tenacity==9.0.0
 typing-extensions==4.12.2
 tzdata==2024.2
-urllib3==2.2.3
+urllib3==2.6.3
 werkzeug==3.0.6
 zipp==3.21.0
