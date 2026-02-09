@@ -174,7 +174,7 @@ narwhals==2.10.0
     #   plotly
 nbclient==0.10.2
     # via nbconvert
-nbconvert==7.16.6
+nbconvert==7.17.0
     # via
     #   jupyter
     #   jupyter-server
