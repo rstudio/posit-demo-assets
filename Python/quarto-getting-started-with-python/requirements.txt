@@ -26,7 +26,7 @@ duckdb==0.10.3
 et-xmlfile==2.0.0
 executing==2.1.0
 fastjsonschema==2.21.1
-fonttools==4.55.1
+fonttools==4.61.0
 fsspec==2024.10.0
 great-tables==0.14.0
 greenlet==3.1.1 ; (python_full_version < '3.13' and platform_machine == 'AMD64') or (python_full_version < '3.13' and platform_machine == 'WIN32') or (python_full_version < '3.13' and platform_machine == 'aarch64') or (python_full_version < '3.13' and platform_machine == 'amd64') or (python_full_version < '3.13' and platform_machine == 'ppc64le') or (python_full_version < '3.13' and platform_machine == 'win32') or (python_full_version < '3.13' and platform_machine == 'x86_64')
