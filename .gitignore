@@ -56,3 +56,6 @@ venv
 .Rprofile
 
 /.luarc.json
+
+# Posit Publisher deployment config (specific to each user's Connect target)
+.posit/
