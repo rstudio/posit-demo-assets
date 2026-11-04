@@ -11,8 +11,8 @@ expansion_groups <- expansions |>
   summarize(success_rate = round(mean(outcome == "Won")* 100),
             avg_amount = round(mean(amount)),
             avg_days = round(mean(days)),
-            n = n()) |>
-  ungroup()
+            n = n(),
+            .groups = "drop")
 
 # Compute expansion rates by trial
 overall_rates <- expansions |>

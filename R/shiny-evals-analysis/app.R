@@ -41,13 +41,13 @@ ui <- page_sidebar(
                       plotOutput("bar")),
                  value_box(title = "Recommended Trial",
                            value = textOutput("recommended_eval"),
-                           theme_color = "secondary"),
+                           theme = "secondary"),
                  value_box(title = "Customers",
                            value = textOutput("number_of_customers"),
-                           theme_color = "secondary"),
+                           theme = "secondary"),
                  value_box(title = "Avg Spend",
                            value = textOutput("average_spend"),
-                           theme_color = "secondary"),
+                           theme = "secondary"),
                  card(card_header("Conversion rates by subgroup"),
                       tableOutput("table")),
                  col_widths = c(8, 4, 4, 4, 4, 12),
@@ -83,8 +83,7 @@ server <- function(input, output) {
     filtered_expansions() |>
       mutate(date = floor_date(date, unit = "month")) |>
       group_by(date, evaluation) |>
-      summarize(n = sum(outcome == "Won")) |>
-      ungroup()
+      summarize(n = sum(outcome == "Won"), .groups = "drop")
   })
 
   # Retrieve conversion rates for selected groups
